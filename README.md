@@ -1,1 +1,1 @@
-# swift_BoostCamp
+# swift_BoostCourse
