@@ -58,6 +58,8 @@ extension TrackListViewController: UITableViewDataSource {
         cell.artist.text = row.artist
         cell.imgView.image = row.thumb
 
+        cell.selectionStyle = .none
+
         return cell
     }
 
