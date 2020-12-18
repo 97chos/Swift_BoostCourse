@@ -31,7 +31,7 @@ class TrackListViewController: UIViewController {
         self.TrackList = [
             TrackModel(title: "Swish", thumb: UIImage(named: "Swish")!, artist: "tyga"),
             TrackModel(title: "Dip", thumb: UIImage(named: "Dip")!, artist: "tyga"),
-            TrackModel(title: "The Harlem Barver Swing", thumb: UIImage(named: "The Harlem Barber Swing")!, artist: "Jazzinuf"),
+            TrackModel(title: "The Harlem Barber Swing", thumb: UIImage(named: "The Harlem Barber Swing")!, artist: "Jazzinuf"),
             TrackModel(title: "Believer", thumb: UIImage(named: "Believer")!, artist: "Imagine Dragon"),
             TrackModel(title: "Blue Birds", thumb: UIImage(named: "Blue Birds")!, artist: "Eevee"),
             TrackModel(title: "Best Mistake", thumb: UIImage(named: "Best Mistake")!, artist: "Ariana Grande"),
@@ -68,6 +68,12 @@ extension TrackListViewController: UITableViewDataSource {
 
 extension TrackListViewController: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let playerVC = PlayerVC()
+        playerVC.modalPresentationStyle = .fullScreen
+        playerVC.track = TrackList[indexPath.row]
+        present(playerVC, animated: true)
+    }
 
 }
 
