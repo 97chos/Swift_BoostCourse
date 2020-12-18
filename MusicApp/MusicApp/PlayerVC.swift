@@ -50,7 +50,7 @@ class PlayerVC: UIViewController {
 
         self.playPauseButton.addTarget(self, action: #selector(playpauseAction(_:)), for: .touchUpInside)
         self.timeSlider.addTarget(self, action: #selector(dragging(_:)), for: .valueChanged)
-        self.timeSlider.addTarget(self, action: #selector(endDrag(_:)), for: .touchUpInside) 
+        self.timeSlider.addTarget(self, action: #selector(endDrag(_:)), for: .touchUpInside)
         self.closeButton.addTarget(self, action: #selector(close(_:)), for: .touchUpInside)
     }
 
@@ -92,6 +92,8 @@ class PlayerVC: UIViewController {
             total.textColor = .darkGray
             return total
         }()
+        totalDurationTimeLabel.text = secondsToString(sec: totalDurationTime)
+
         self.closeButton = UIButton()
         closeButton.setImage(UIImage(named: "icClose"), for: .normal)
 
