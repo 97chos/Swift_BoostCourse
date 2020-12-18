@@ -1,0 +1,6 @@
+framework module Pods_MusicChart {
+  umbrella header "Pods-MusicChart-umbrella.h"
+
+  export *
+  module * { export * }
+}
