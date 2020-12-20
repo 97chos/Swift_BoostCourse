@@ -16,19 +16,24 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        searchBar = UISearchBar()
-        searchBar.frame.size = CGSize(width: self.view.frame.width, height: 60)
-        searchBar.barTintColor = .systemTeal
+        viewSafeAreaInsetsDidChange()
 
-        self.tv.frame = CGRect(x: 0, y: self.searchBar.frame.height, width: self.view.frame.width, height: self.view.frame.height)
+        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 56))
+        searchBar.barTintColor = .systemTeal
+        searchBar.delegate = self
+
         self.tv.register(ResultCell.self, forCellReuseIdentifier: "cell")
 
         tv.dataSource = self
         tv.delegate = self
-        searchBar.delegate = self
 
         self.view.addSubview(tv)
         self.view.addSubview(searchBar)
+    }
+
+    override func viewDidLayoutSubviews() {
+        searchBar.frame.origin = CGPoint(x: 0, y: self.view.safeAreaInsets.top)
+        self.tv.frame = CGRect(x: 0, y: self.searchBar.frame.height + self.view.safeAreaInsets.top, width: self.view.frame.width, height: self.view.frame.height)
     }
 }
 
