@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 class ViewController: UIViewController {
 
@@ -16,10 +17,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewSafeAreaInsetsDidChange()
-
         searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 56))
-        searchBar.barTintColor = .systemTeal
+        searchBar.barTintColor = .systemPink
+        searchBar.placeholder = "가수명을 입력하세요"
+        searchBar.searchTextField.backgroundColor = .white
         searchBar.delegate = self
 
         self.tv.register(ResultCell.self, forCellReuseIdentifier: "cell")
@@ -54,17 +55,26 @@ extension ViewController: UITableViewDataSource {
         return cell
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.searchBar.resignFirstResponder()
-    }
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
 }
 
 extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.searchBar.resignFirstResponder()
 
+        guard let previewURL = URL(string: tracks[indexPath.row].previewUrl) else { return }
+
+        let playerViewController = AVPlayerViewController()
+
+        let player = AVPlayer(url: previewURL)
+        player.play()
+        playerViewController.player = player
+
+        present(playerViewController, animated: true)
+    }
+    
 }
 
 extension ViewController: UISearchBarDelegate {
