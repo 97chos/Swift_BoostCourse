@@ -37,10 +37,11 @@ class MenuViewController: UIViewController {
             }
             .disposed(by: disposeBag)
 
-
         viewModel.itemsCount
             .map{"\($0)"}
-            .bind(to: itemCountLabel.rx.text)       // RxCocoa : subscribe를 대신할 축약 구문
+            .asDriver(onErrorJustReturn: "")
+            .drive(itemCountLabel.rx.text)
+//            .bind(to: itemCountLabel.rx.text)       // RxCocoa : subscribe를 대신할 축약 구문
 //            .subscribe(onNext: {
 //                self.itemCountLabel.text = $0
 //            })
@@ -84,12 +85,12 @@ class MenuViewController: UIViewController {
         // showAlert("Order Fail", "No Orders")
         // performSegue(withIdentifier: "OrderViewController", sender: nil)
 
-        viewModel.menuObservable.onNext([
-            Menu(id: 0, name: "changed", price: Int.random(in: 100...1000), count: Int.random(in: 1...5)),
-            Menu(id: 1, name: "changed", price: Int.random(in: 100...1000), count: Int.random(in: 1...5)),
-            Menu(id: 2, name: "changed", price: Int.random(in: 100...1000), count: Int.random(in: 1...5)),
-            Menu(id: 3, name: "changed", price: Int.random(in: 100...1000), count: Int.random(in: 1...5))
-        ])
+//        viewModel.menuObservable.onNext([
+//            Menu(id: 0, name: "changed", price: Int.random(in: 100...1000), count: Int.random(in: 1...5)),
+//            Menu(id: 1, name: "changed", price: Int.random(in: 100...1000), count: Int.random(in: 1...5)),
+//            Menu(id: 2, name: "changed", price: Int.random(in: 100...1000), count: Int.random(in: 1...5)),
+//            Menu(id: 3, name: "changed", price: Int.random(in: 100...1000), count: Int.random(in: 1...5))
+//        ])
     }
 
     func updateUI() {
