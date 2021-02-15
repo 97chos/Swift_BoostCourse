@@ -16,19 +16,28 @@ class SignUpViewConroller: UIViewController {
     let imageView = UIImageView(image: UIImage(named: "main"))
     return imageView
   }()
-  private let inputID: UITextField = {
+  private lazy var inputID: UITextField = {
     let textField = UITextField()
     textField.placeholder = "ID"
+    textField.spellCheckingType = .no
+    textField.delegate = self
+    textField.borderStyle = .roundedRect
     return textField
   }()
-  private let inputPW: UITextField = {
+  private lazy var inputPW: UITextField = {
     let textField = UITextField()
     textField.placeholder = "Password"
+    textField.isSecureTextEntry = true
+    textField.delegate = self
+    textField.borderStyle = .roundedRect
     return textField
   }()
-  private let inputPWCheck: UITextField = {
+  private lazy var inputPWCheck: UITextField = {
     let textField = UITextField()
     textField.placeholder = "Password Check"
+    textField.isSecureTextEntry = true
+    textField.delegate = self
+    textField.borderStyle = .roundedRect
     return textField
   }()
   private let textFieldContainer: UIView = {
@@ -65,6 +74,35 @@ class SignUpViewConroller: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.layout()
+    self.configure()
+  }
+
+  // MARK: Congifuration
+
+  private func configure() {
+    self.navigationConfigure()
+    self.ActionConfigure()
+  }
+
+  private func navigationConfigure() {
+    self.navigationItem.title = "Sign Up"
+  }
+
+  private func ActionConfigure() {
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectedImageView(_:)))
+    self.imageView.addGestureRecognizer(tapGesture)
+    self.imageView.isUserInteractionEnabled = true
+  }
+
+
+  // MARK: Action
+
+  @objc private func selectedImageView(_ sender: UITapGestureRecognizer) {
+    let imagePickerVC = UIImagePickerController()
+    imagePickerVC.allowsEditing = true
+    imagePickerVC.delegate = self
+
+    self.present(imagePickerVC, animated: true)
   }
 
   // MARK: Layout
@@ -97,12 +135,63 @@ class SignUpViewConroller: UIViewController {
 
     NSLayoutConstraint.activate([
       imageView.topAnchor.constraint(equalTo: margin.topAnchor, constant: 10),
-      imageView.leadingAnchor.constraint(equalTo: margin.leadingAnchor, constant: 10),
+      imageView.leadingAnchor.constraint(equalTo: margin.leadingAnchor, constant: 5),
       imageView.widthAnchor.constraint(equalTo: margin.widthAnchor, multiplier: 0.3),
-      imageView.heightAnchor.constraint(equalTo: self.imageView.widthAnchor)
+      imageView.heightAnchor.constraint(equalTo: self.imageView.widthAnchor),
 
+      textFieldContainer.topAnchor.constraint(equalTo: imageView.topAnchor),
+      textFieldContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 5),
+      textFieldContainer.trailingAnchor.constraint(equalTo: margin.trailingAnchor),
+      textFieldContainer.heightAnchor.constraint(equalTo: imageView.heightAnchor),
+
+      inputID.topAnchor.constraint(equalTo: self.textFieldContainer.topAnchor),
+      inputID.widthAnchor.constraint(equalTo: self.textFieldContainer.widthAnchor),
+
+      inputPW.centerYAnchor.constraint(equalTo: self.textFieldContainer.centerYAnchor),
+      inputPW.widthAnchor.constraint(equalTo: self.inputID.widthAnchor),
+
+      inputPWCheck.bottomAnchor.constraint(equalTo: self.textFieldContainer.bottomAnchor),
+      inputPWCheck.widthAnchor.constraint(equalTo: self.inputPW.widthAnchor),
+
+      inputInformation.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: 10),
+      inputInformation.widthAnchor.constraint(equalTo: margin.widthAnchor),
+      inputInformation.heightAnchor.constraint(equalTo: margin.heightAnchor, multiplier: 0.7),
+      inputInformation.centerXAnchor.constraint(equalTo: margin.centerXAnchor),
+
+      buttonContainer.topAnchor.constraint(equalTo: self.inputInformation.bottomAnchor, constant: 10),
+      buttonContainer.widthAnchor.constraint(equalTo: margin.widthAnchor),
+      buttonContainer.bottomAnchor.constraint(equalTo: margin.bottomAnchor),
+      buttonContainer.centerXAnchor.constraint(equalTo: margin.centerXAnchor),
+
+      cancelButton.leadingAnchor.constraint(equalTo: self.buttonContainer.leadingAnchor),
+      cancelButton.centerYAnchor.constraint(equalTo: self.buttonContainer.centerYAnchor),
+      cancelButton.widthAnchor.constraint(equalTo: self.buttonContainer.widthAnchor, multiplier: 0.5),
+
+      OkButton.trailingAnchor.constraint(equalTo: self.buttonContainer.trailingAnchor),
+      OkButton.centerYAnchor.constraint(equalTo: self.buttonContainer.centerYAnchor),
+      OkButton.widthAnchor.constraint(equalTo: self.buttonContainer.widthAnchor, multiplier: 0.5)
     ])
-    
+  }
+}
+
+extension SignUpViewConroller: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    self.dismiss(animated: true)
   }
 
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    let image = info[.editedImage] as? UIImage
+    self.imageView.image = image
+
+    self.dismiss(animated: true)
+  }
+
+}
+
+extension SignUpViewConroller: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
+  }
 }
