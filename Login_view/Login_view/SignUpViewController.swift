@@ -67,7 +67,7 @@ class SignUpViewConroller: UIViewController {
     button.setTitle("확인", for: .normal)
     button.setTitleColor(.systemBlue, for: .normal)
     button.setTitleColor(.systemGray, for: .disabled)
-    button.isEnabled = true
+    button.isEnabled = false
     return button
   }()
   private let buttonContainer: UIView = {
