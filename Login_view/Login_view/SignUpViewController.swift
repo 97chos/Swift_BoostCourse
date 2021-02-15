@@ -24,6 +24,8 @@ class SignUpViewConroller: UIViewController {
     textField.placeholder = "ID"
     textField.spellCheckingType = .no
     textField.autocorrectionType = .no
+    textField.keyboardType = .alphabet
+    textField.autocapitalizationType = .none
     textField.delegate = self
     textField.borderStyle = .roundedRect
     return textField

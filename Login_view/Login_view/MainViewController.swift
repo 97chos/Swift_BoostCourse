@@ -24,6 +24,9 @@ class MainViewController: UIViewController {
     let textField = UITextField()
     textField.placeholder = "ID"
     textField.borderStyle = .roundedRect
+    textField.autocorrectionType = .no
+    textField.keyboardType = .alphabet
+    textField.autocapitalizationType = .none
     return textField
   }()
   private let inputPW: UITextField = {
