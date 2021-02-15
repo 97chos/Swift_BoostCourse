@@ -29,10 +29,11 @@ class OptionalInforViewController: UIViewController {
     label.sizeToFit()
     return label
   }()
-  private let phoneNumberTextField: UITextField = {
+  private lazy var phoneNumberTextField: UITextField = {
     let textField = UITextField()
     textField.keyboardType = .numberPad
     textField.borderStyle = .roundedRect
+    textField.delegate = self
     return textField
   }()
   private let birthLabel: UILabel = {
@@ -196,4 +197,18 @@ class OptionalInforViewController: UIViewController {
   }
 }
 
+extension OptionalInforViewController: UITextFieldDelegate {
+  func textFieldDidChangeSelection(_ textField: UITextField) {
 
+    guard let numberString = self.phoneNumberTextField.text else {
+      self.joinButton.isEnabled = false
+      return
+    }
+
+    if !(numberString.isEmpty) {
+      self.joinButton.isEnabled = true
+    } else {
+      self.joinButton.isEnabled = false
+    }
+  }
+}
