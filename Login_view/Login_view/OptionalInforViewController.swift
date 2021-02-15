@@ -91,11 +91,28 @@ class OptionalInforViewController: UIViewController {
   private func configure() {
     self.viewConfigure()
     self.layout()
+    self.actionConfigure()
   }
 
   private func viewConfigure() {
     self.navigationItem.title = "Additional Information"
     self.view.backgroundColor = .systemBackground
+  }
+
+  private func actionConfigure() {
+    self.birthPicker.addTarget(self, action: #selector(self.pickerValueChanged(_:)), for: .valueChanged)
+  }
+
+
+  // MARK: Action
+
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.phoneNumberTextField.resignFirstResponder()
+  }
+
+  @objc private func pickerValueChanged(_ sender: UIDatePicker) {
+    let currentDate = self.dateFormatter.string(from: sender.date)
+    self.selectedBirthLabel.text = currentDate
   }
 
 
