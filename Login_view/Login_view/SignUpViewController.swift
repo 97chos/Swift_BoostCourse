@@ -85,11 +85,11 @@ class SignUpViewConroller: UIViewController {
   // MARK: Congifuration
 
   private func configure() {
-    self.navigationConfigure()
+    self.viewConfigure()
     self.ActionConfigure()
   }
 
-  private func navigationConfigure() {
+  private func viewConfigure() {
     self.navigationItem.title = "Sign Up"
   }
 
@@ -108,6 +108,10 @@ class SignUpViewConroller: UIViewController {
     imagePickerVC.delegate = self
 
     self.present(imagePickerVC, animated: true)
+  }
+
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.inputInformation.resignFirstResponder()
   }
 
   // MARK: Layout
@@ -200,7 +204,7 @@ extension SignUpViewConroller: UITextFieldDelegate {
   }
 
   func textFieldDidChangeSelection(_ textField: UITextField) {
-    if inputPW.text == inputPWCheck.text {
+    if inputPW.text == inputPWCheck.text && !(inputID.text?.isEmpty ?? true) {
       self.OkButton.isEnabled = true
     } else {
       self.OkButton.isEnabled = false
