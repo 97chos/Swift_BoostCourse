@@ -73,6 +73,7 @@ class OptionalInforViewController: UIViewController {
     let button = UIButton(type: .system)
     button.setTitle("가입", for: .normal)
     button.setTitleColor(.systemBlue, for: .normal)
+    button.setTitleColor(.systemGray, for: .disabled)
     button.isEnabled = false
     return button
   }()
@@ -101,6 +102,9 @@ class OptionalInforViewController: UIViewController {
 
   private func actionConfigure() {
     self.birthPicker.addTarget(self, action: #selector(self.pickerValueChanged(_:)), for: .valueChanged)
+    self.joinButton.addTarget(self, action: #selector(self.selectedButton(_:)), for: .touchUpInside)
+    self.cancelButton.addTarget(self, action: #selector(self.selectedButton(_:)), for: .touchUpInside)
+    self.previousButton.addTarget(self, action: #selector(self.selectedButton(_:)), for: .touchUpInside)
   }
 
 
@@ -113,6 +117,19 @@ class OptionalInforViewController: UIViewController {
   @objc private func pickerValueChanged(_ sender: UIDatePicker) {
     let currentDate = self.dateFormatter.string(from: sender.date)
     self.selectedBirthLabel.text = currentDate
+  }
+
+  @objc private func selectedButton(_ sender: UIButton) {
+    switch sender {
+    case cancelButton:
+      self.dismiss(animated: true)
+    case previousButton:
+      self.navigationController?.popViewController(animated: true)
+    case joinButton:
+      self.dismiss(animated: true)
+    default:
+      break
+    }
   }
 
 
@@ -177,7 +194,6 @@ class OptionalInforViewController: UIViewController {
       joinButton.trailingAnchor.constraint(equalTo: self.ButtonContainerView.trailingAnchor)
     ])
   }
-
-
 }
+
 
