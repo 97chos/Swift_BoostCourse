@@ -203,11 +203,19 @@ extension SignUpViewConroller: UITextFieldDelegate {
     return true
   }
 
-  func textFieldDidChangeSelection(_ textField: UITextField) {
-    if inputPW.text == inputPWCheck.text && !(inputID.text?.isEmpty ?? true) {
+  func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+
+    guard textField.text?.isEmpty == false else {
+      self.OkButton.isEnabled = false
+      return true
+    }
+
+    if self.inputPW.text == self.inputPWCheck.text && !(inputID.text?.isEmpty ?? true) {
       self.OkButton.isEnabled = true
     } else {
       self.OkButton.isEnabled = false
     }
+
+    return true
   }
 }
