@@ -20,6 +20,7 @@ class SignUpViewConroller: UIViewController {
     let textField = UITextField()
     textField.placeholder = "ID"
     textField.spellCheckingType = .no
+    textField.autocorrectionType = .no
     textField.delegate = self
     textField.borderStyle = .roundedRect
     return textField
@@ -28,6 +29,7 @@ class SignUpViewConroller: UIViewController {
     let textField = UITextField()
     textField.placeholder = "Password"
     textField.isSecureTextEntry = true
+    textField.textContentType = .oneTimeCode
     textField.delegate = self
     textField.borderStyle = .roundedRect
     return textField
@@ -36,6 +38,7 @@ class SignUpViewConroller: UIViewController {
     let textField = UITextField()
     textField.placeholder = "Password Check"
     textField.isSecureTextEntry = true
+    textField.textContentType = .oneTimeCode
     textField.delegate = self
     textField.borderStyle = .roundedRect
     return textField
@@ -60,6 +63,8 @@ class SignUpViewConroller: UIViewController {
     let button = UIButton(type: .system)
     button.setTitle("확인", for: .normal)
     button.setTitleColor(.systemBlue, for: .normal)
+    button.setTitleColor(.systemGray, for: .disabled)
+    button.isEnabled = false
     return button
   }()
   private let buttonContainer: UIView = {
@@ -186,12 +191,19 @@ extension SignUpViewConroller: UIImagePickerControllerDelegate, UINavigationCont
 
     self.dismiss(animated: true)
   }
-
 }
 
 extension SignUpViewConroller: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.resignFirstResponder()
     return true
+  }
+
+  func textFieldDidChangeSelection(_ textField: UITextField) {
+    if inputPW.text == inputPWCheck.text {
+      self.OkButton.isEnabled = true
+    } else {
+      self.OkButton.isEnabled = false
+    }
   }
 }
