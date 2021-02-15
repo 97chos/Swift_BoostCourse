@@ -12,6 +12,7 @@ class OptionalInforViewController: UIViewController {
 
   // MARK: Properties
 
+  private let userInformation = UserInformation.shared
   private var pickerDate: String?
   private let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -123,6 +124,7 @@ class OptionalInforViewController: UIViewController {
   @objc private func selectedButton(_ sender: UIButton) {
     switch sender {
     case cancelButton:
+      self.userInformation.ID = nil
       self.dismiss(animated: true)
     case previousButton:
       self.navigationController?.popViewController(animated: true)

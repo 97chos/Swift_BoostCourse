@@ -11,8 +11,7 @@ class MainViewController: UIViewController {
 
   // MARK: Properties
 
-  private var ID: String?
-  private var PW: String?
+  private let userInformation = UserInformation.shared
 
 
   // MARK: UI
@@ -62,6 +61,14 @@ class MainViewController: UIViewController {
     super.viewDidLoad()
     self.layout()
     self.setButtonsAction()
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    if let id = self.userInformation.ID {
+      self.inputID.text = id
+    } else {
+      self.inputID.text = ""
+    }
   }
 
   // MARK: Action

@@ -10,6 +10,9 @@ import UIKit
 
 class SignUpViewConroller: UIViewController {
 
+  // MARK: Properties
+  private let userInformation = UserInformation.shared
+
   // MARK: UI
 
   private let imageView: UIImageView = {
@@ -116,9 +119,11 @@ class SignUpViewConroller: UIViewController {
   @objc private func selectedButton(_ sender: UIButton) {
     switch sender {
     case self.OkButton:
+      self.userInformation.ID = self.inputID.text
       let optionalVC = OptionalInforViewController()
       self.navigationController?.pushViewController(optionalVC, animated: true)
     case self.cancelButton:
+      self.userInformation.ID = nil
       self.dismiss(animated: true)
     default:
       break
