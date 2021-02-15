@@ -226,7 +226,6 @@ extension SignUpViewConroller: UITextFieldDelegate {
   }
 
   func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-
     guard textField.text?.isEmpty == false else {
       self.OkButton.isEnabled = false
       return true

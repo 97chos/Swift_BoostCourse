@@ -20,20 +20,22 @@ class MainViewController: UIViewController {
     let imgView = UIImageView(image: UIImage(named: "main.png"))
     return imgView
   }()
-  private let inputID: UITextField = {
+  private lazy var inputID: UITextField = {
     let textField = UITextField()
     textField.placeholder = "ID"
     textField.borderStyle = .roundedRect
     textField.autocorrectionType = .no
     textField.keyboardType = .alphabet
     textField.autocapitalizationType = .none
+    textField.delegate = self
     return textField
   }()
-  private let inputPW: UITextField = {
+  private lazy var inputPW: UITextField = {
     let textField = UITextField()
     textField.placeholder = "Password"
     textField.isSecureTextEntry = true
     textField.borderStyle = .roundedRect
+    textField.delegate = self
     return textField
   }()
   private let signInButton: UIButton = {
@@ -135,6 +137,20 @@ class MainViewController: UIViewController {
       signUpButton.topAnchor.constraint(equalTo: self.buttonContainerView.topAnchor),
       signUpButton.trailingAnchor.constraint(equalTo: self.buttonContainerView.trailingAnchor)
     ])
+  }
+}
+
+extension MainViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    switch textField {
+    case inputID :
+      inputPW.becomeFirstResponder()
+    case inputPW :
+      inputPW.resignFirstResponder()
+    default:
+      break
+    }
+    return true
   }
 }
 
