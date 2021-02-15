@@ -9,8 +9,12 @@ import Foundation
 
 
 class UserInformation {
-  let shared = UserInformation()
+  static let shared = UserInformation()
   var ID: String?
   var PW: String?
   var Information: String?
+
+  private init() {
+    
+  }
 }
