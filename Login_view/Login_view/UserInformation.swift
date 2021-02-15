@@ -9,10 +9,11 @@ import Foundation
 
 
 class UserInformation {
+
+  // MARK: Properties
+
   static let shared = UserInformation()
   var ID: String?
-  var PW: String?
-  var Information: String?
 
   private init() {
     
