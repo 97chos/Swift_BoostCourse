@@ -97,6 +97,9 @@ class SignUpViewConroller: UIViewController {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectedImageView(_:)))
     self.imageView.addGestureRecognizer(tapGesture)
     self.imageView.isUserInteractionEnabled = true
+
+    self.OkButton.addTarget(self, action: #selector(self.selectedButton(_:)), for: .touchUpInside)
+    self.cancelButton.addTarget(self, action: #selector(self.selectedButton(_:)), for: .touchUpInside)
   }
 
 
@@ -108,6 +111,18 @@ class SignUpViewConroller: UIViewController {
     imagePickerVC.delegate = self
 
     self.present(imagePickerVC, animated: true)
+  }
+
+  @objc private func selectedButton(_ sender: UIButton) {
+    switch sender {
+    case self.OkButton:
+      let optionalVC = OptionalInforViewController()
+      self.navigationController?.pushViewController(optionalVC, animated: true)
+    case self.cancelButton:
+      self.dismiss(animated: true)
+    default:
+      break
+    }
   }
 
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
