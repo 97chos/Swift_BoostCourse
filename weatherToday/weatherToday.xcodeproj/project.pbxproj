@@ -13,7 +13,7 @@
 		FF5A2A7025DC2F3E0029A3DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF5A2A6F25DC2F3E0029A3DF /* Assets.xcassets */; };
 		FF5A2A8125DC434B0029A3DF /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2A8025DC434B0029A3DF /* CountryListViewController.swift */; };
 		FF5A2A8625DC46F40029A3DF /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2A8525DC46F40029A3DF /* CountryCell.swift */; };
-		FF5A2A8A25DC49EA0029A3DF /* CountriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2A8925DC49EA0029A3DF /* CountriesModel.swift */; };
+		FF5A2A8A25DC49EA0029A3DF /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2A8925DC49EA0029A3DF /* CountryModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		FF5A2A7425DC2F3E0029A3DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF5A2A8025DC434B0029A3DF /* CountryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
 		FF5A2A8525DC46F40029A3DF /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
-		FF5A2A8925DC49EA0029A3DF /* CountriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesModel.swift; sourceTree = "<group>"; };
+		FF5A2A8925DC49EA0029A3DF /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +102,7 @@
 		FF5A2A8825DC49D40029A3DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FF5A2A8925DC49EA0029A3DF /* CountriesModel.swift */,
+				FF5A2A8925DC49EA0029A3DF /* CountryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -222,7 +222,7 @@
 				FF5A2A8625DC46F40029A3DF /* CountryCell.swift in Sources */,
 				FF5A2A6725DC2F3D0029A3DF /* AppDelegate.swift in Sources */,
 				FF5A2A8125DC434B0029A3DF /* CountryListViewController.swift in Sources */,
-				FF5A2A8A25DC49EA0029A3DF /* CountriesModel.swift in Sources */,
+				FF5A2A8A25DC49EA0029A3DF /* CountryModel.swift in Sources */,
 				FF5A2A6925DC2F3D0029A3DF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
