@@ -3,17 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8888393EDAB29731493F0451 /* Pods_weatherToday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0CB2DE0E51E16886173B118 /* Pods_weatherToday.framework */; };
 		FF5A2A6725DC2F3D0029A3DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2A6625DC2F3D0029A3DF /* AppDelegate.swift */; };
 		FF5A2A6925DC2F3D0029A3DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2A6825DC2F3D0029A3DF /* SceneDelegate.swift */; };
-		FF5A2A6B25DC2F3D0029A3DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2A6A25DC2F3D0029A3DF /* ViewController.swift */; };
-		FF5A2A6E25DC2F3D0029A3DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF5A2A6C25DC2F3D0029A3DF /* Main.storyboard */; };
 		FF5A2A7025DC2F3E0029A3DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF5A2A6F25DC2F3E0029A3DF /* Assets.xcassets */; };
-		FF5A2A7325DC2F3E0029A3DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF5A2A7125DC2F3E0029A3DF /* LaunchScreen.storyboard */; };
+		FF5A2A8125DC434B0029A3DF /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2A8025DC434B0029A3DF /* CountryListViewController.swift */; };
+		FF5A2A8625DC46F40029A3DF /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2A8525DC46F40029A3DF /* CountryCell.swift */; };
+		FF5A2A8A25DC49EA0029A3DF /* CountriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2A8925DC49EA0029A3DF /* CountriesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,11 +23,11 @@
 		FF5A2A6325DC2F3D0029A3DF /* weatherToday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherToday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF5A2A6625DC2F3D0029A3DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF5A2A6825DC2F3D0029A3DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FF5A2A6A25DC2F3D0029A3DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FF5A2A6D25DC2F3D0029A3DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF5A2A6F25DC2F3E0029A3DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FF5A2A7225DC2F3E0029A3DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF5A2A7425DC2F3E0029A3DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF5A2A8025DC434B0029A3DF /* CountryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
+		FF5A2A8525DC46F40029A3DF /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
+		FF5A2A8925DC49EA0029A3DF /* CountriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +56,6 @@
 				4400E88D25F079F660AA6C5B /* Pods-weatherToday.debug.xcconfig */,
 				00F65AC34F6D96B4162AAD70 /* Pods-weatherToday.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -83,13 +82,29 @@
 			children = (
 				FF5A2A6625DC2F3D0029A3DF /* AppDelegate.swift */,
 				FF5A2A6825DC2F3D0029A3DF /* SceneDelegate.swift */,
-				FF5A2A6A25DC2F3D0029A3DF /* ViewController.swift */,
-				FF5A2A6C25DC2F3D0029A3DF /* Main.storyboard */,
+				FF5A2A8025DC434B0029A3DF /* CountryListViewController.swift */,
+				FF5A2A8425DC46D00029A3DF /* main */,
 				FF5A2A6F25DC2F3E0029A3DF /* Assets.xcassets */,
-				FF5A2A7125DC2F3E0029A3DF /* LaunchScreen.storyboard */,
 				FF5A2A7425DC2F3E0029A3DF /* Info.plist */,
 			);
 			path = weatherToday;
+			sourceTree = "<group>";
+		};
+		FF5A2A8425DC46D00029A3DF /* main */ = {
+			isa = PBXGroup;
+			children = (
+				FF5A2A8525DC46F40029A3DF /* CountryCell.swift */,
+				FF5A2A8825DC49D40029A3DF /* Model */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		FF5A2A8825DC49D40029A3DF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FF5A2A8925DC49EA0029A3DF /* CountriesModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,9 +166,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF5A2A7325DC2F3E0029A3DF /* LaunchScreen.storyboard in Resources */,
 				FF5A2A7025DC2F3E0029A3DF /* Assets.xcassets in Resources */,
-				FF5A2A6E25DC2F3D0029A3DF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,32 +219,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF5A2A6B25DC2F3D0029A3DF /* ViewController.swift in Sources */,
+				FF5A2A8625DC46F40029A3DF /* CountryCell.swift in Sources */,
 				FF5A2A6725DC2F3D0029A3DF /* AppDelegate.swift in Sources */,
+				FF5A2A8125DC434B0029A3DF /* CountryListViewController.swift in Sources */,
+				FF5A2A8A25DC49EA0029A3DF /* CountriesModel.swift in Sources */,
 				FF5A2A6925DC2F3D0029A3DF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		FF5A2A6C25DC2F3D0029A3DF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FF5A2A6D25DC2F3D0029A3DF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		FF5A2A7125DC2F3E0029A3DF /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FF5A2A7225DC2F3E0029A3DF /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FF5A2A7525DC2F3E0029A3DF /* Debug */ = {
