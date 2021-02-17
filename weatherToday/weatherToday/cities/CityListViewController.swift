@@ -11,10 +11,17 @@ import SnapKit
 
 class CityListViewController: UIViewController {
 
+  // MARK: Constants
+
+  private enum ReuseIdentifier {
+    static let cityCell = "cityCell"
+  }
+
 
   // MARK: Properties
 
   private var cityList: [City] = []
+  private var country: String!
 
   // MARK: UI
 
@@ -24,11 +31,40 @@ class CityListViewController: UIViewController {
   }()
 
 
-  // MARK: Initilaize
+  // MARK: Initilaizing
 
-  init(cityCode: String) {
+  init(cityCode: String, country: String) {
     super.init(nibName: nil, bundle: nil)
     self.decodeJsonData(cityCode)
+    self.country = country
+  }
+
+
+  // MARK: View Lifecycle
+
+  override func viewDidLoad() {
+    self.configure()
+    self.layout()
+  }
+
+
+  // MARK: Configuration
+
+  private func configure() {
+    self.viewConfigure()
+    self.tableViewConfigure()
+  }
+
+  private func viewConfigure() {
+    self.title = self.country
+    self.view.backgroundColor = .systemBackground
+  }
+
+  private func tableViewConfigure() {
+    self.tableView.register(CityCell.self, forCellReuseIdentifier: ReuseIdentifier.cityCell)
+    self.tableView.dataSource = self
+    self.tableView.delegate = self
+    self.tableView.tableFooterView = UIView()
   }
 
 
@@ -51,4 +87,39 @@ class CityListViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
+
+  // MARK: Layout
+
+  private func layout() {
+
+    self.view.addSubview(tableView)
+
+    self.tableView.snp.makeConstraints{
+      $0.edges.equalToSuperview()
+    }
+  }
 }
+
+extension CityListViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.cityList.count
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: ReuseIdentifier.cityCell, for: indexPath) as? CityCell else {
+      return UITableViewCell()
+    }
+
+    cell.set(city: self.cityList[indexPath.row])
+
+    return cell
+  }
+}
+
+extension CityListViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return self.view.frame.height / 8
+  }
+}
+
+
