@@ -12,31 +12,16 @@ class CityListViewModel {
 
   // MARK: Properties
 
+  private var apiService: CitiesListUpProtocol!
   var cityList: [City] = []
   var country: String!
 
 
   // MARK: Initializing
 
-  init(cityCode: String, country: String) {
-    self.decodeJsonData(cityCode)
-    self.country = country
+  init(apiService: CitiesListUpProtocol, country: Country) {
+    self.apiService = apiService
+    self.cityList = apiService.loadCities(countryCode: country.assetName) ?? []
+    self.country = country.countryName
   }
-
-
-  // MARK: Functions
-
-  private func decodeJsonData(_ cityCode: String) {
-    guard let dataAsset: NSDataAsset = NSDataAsset(name: "\(cityCode)") else {
-      return
-    }
-
-    let decoder = JSONDecoder()
-    do {
-      self.cityList = try decoder.decode([City].self, from: dataAsset.data)
-    } catch {
-      print(error.localizedDescription)
-    }
-  }
-
 }

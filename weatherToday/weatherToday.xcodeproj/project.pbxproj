@@ -22,6 +22,7 @@
 		FF5A2AB125DD4BBF0029A3DF /* CityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AB025DD4BBF0029A3DF /* CityListViewModel.swift */; };
 		FF5A2AB625DD4EE60029A3DF /* WeatherDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AB525DD4EE60029A3DF /* WeatherDetailViewModel.swift */; };
 		FF5A2ABA25DD548B0029A3DF /* CountriesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AB925DD548B0029A3DF /* CountriesAPIService.swift */; };
+		FF5A2AC125DD57B60029A3DF /* CitiesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AC025DD57B60029A3DF /* CitiesAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		FF5A2AB025DD4BBF0029A3DF /* CityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewModel.swift; sourceTree = "<group>"; };
 		FF5A2AB525DD4EE60029A3DF /* WeatherDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewModel.swift; sourceTree = "<group>"; };
 		FF5A2AB925DD548B0029A3DF /* CountriesAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesAPIService.swift; sourceTree = "<group>"; };
+		FF5A2AC025DD57B60029A3DF /* CitiesAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				FF5A2A9E25DCAB8C0029A3DF /* CityModel.swift */,
+				FF5A2AC025DD57B60029A3DF /* CitiesAPIService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				FF5A2AAB25DD09A30029A3DF /* CountryListViewModel.swift in Sources */,
 				FF5A2AA625DCCBC80029A3DF /* WeatherDetailViewController.swift in Sources */,
 				FF5A2A8125DC434B0029A3DF /* CountryListViewController.swift in Sources */,
+				FF5A2AC125DD57B60029A3DF /* CitiesAPIService.swift in Sources */,
 				FF5A2A8A25DC49EA0029A3DF /* CountryModel.swift in Sources */,
 				FF5A2A6925DC2F3D0029A3DF /* SceneDelegate.swift in Sources */,
 				FF5A2ABA25DD548B0029A3DF /* CountriesAPIService.swift in Sources */,
