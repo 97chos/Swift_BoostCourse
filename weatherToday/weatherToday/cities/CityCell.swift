@@ -73,7 +73,6 @@ class CityCell: UITableViewCell {
   // MARK: Layout
 
   private func layout() {
-
     self.contentView.addSubview(weatherImg)
     self.contentView.addSubview(countryLabel)
     self.contentView.addSubview(temperatureLabel)

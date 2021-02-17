@@ -51,7 +51,7 @@ class CountryListViewController: UIViewController {
   }
 
 
-  // MARK: Layout
+  // MARK: Configuration
 
   private func configure() {
     self.viewConfigure()
@@ -70,6 +70,9 @@ class CountryListViewController: UIViewController {
     self.tableView.dataSource = self
     self.tableView.tableFooterView = UIView()
   }
+
+
+  // MARK: Layout
 
   private func layout() {
     self.view.addSubview(tableView)
@@ -100,7 +103,7 @@ extension CountryListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
     let cell = self.viewModel.countriesList[indexPath.row]
-    let cityListViewController = CityListViewController(cityCode: cell.assetName, country: cell.countryName)
+    let cityListViewController = CityListViewController(viewModel: CityListViewModel(cityCode: cell.assetName, country: cell.countryName))
     self.navigationController?.pushViewController(cityListViewController, animated: true)
     tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
   }

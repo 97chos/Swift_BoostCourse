@@ -9,20 +9,18 @@ import Foundation
 import UIKit
 import SnapKit
 
+
+// MARK: Constants
+
+private enum ReuseIdentifier {
+  static let cityCell = "cityCell"
+}
+
 class CityListViewController: UIViewController {
-
-  // MARK: Constants
-
-  private enum ReuseIdentifier {
-    static let cityCell = "cityCell"
-  }
-
 
   // MARK: Properties
 
-  private var cityList: [City] = []
-  private var country: String!
-
+  private let viewModel: CityListViewModel!
   
   // MARK: UI
 
@@ -34,10 +32,13 @@ class CityListViewController: UIViewController {
 
   // MARK: Initilaizing
 
-  init(cityCode: String, country: String) {
+  init(viewModel: CityListViewModel) {
+    self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
-    self.decodeJsonData(cityCode)
-    self.country = country
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 
 
@@ -57,7 +58,7 @@ class CityListViewController: UIViewController {
   }
 
   private func viewConfigure() {
-    self.title = self.country
+    self.title = self.viewModel.country
     self.view.backgroundColor = .systemBackground
   }
 
@@ -69,30 +70,9 @@ class CityListViewController: UIViewController {
   }
 
 
-  // MARK: Functions
-
-  private func decodeJsonData(_ cityCode: String) {
-    guard let dataAsset: NSDataAsset = NSDataAsset(name: "\(cityCode)") else {
-      return
-    }
-
-    let decoder = JSONDecoder()
-    do {
-      self.cityList = try decoder.decode([City].self, from: dataAsset.data)
-    } catch {
-      print(error.localizedDescription)
-    }
-  }
-
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
-
   // MARK: Layout
 
   private func layout() {
-
     self.view.addSubview(tableView)
 
     self.tableView.snp.makeConstraints{
@@ -103,16 +83,14 @@ class CityListViewController: UIViewController {
 
 extension CityListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.cityList.count
+    return self.viewModel.cityList.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: ReuseIdentifier.cityCell, for: indexPath) as? CityCell else {
       return UITableViewCell()
     }
-
-    cell.set(city: self.cityList[indexPath.row])
-
+    cell.set(city: self.viewModel.cityList[indexPath.row])
     return cell
   }
 
@@ -123,11 +101,10 @@ extension CityListViewController: UITableViewDataSource {
 
 extension CityListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let detailViewController = WhetherDetailViewController(city: self.cityList[indexPath.row])
+    let detailViewController = WhetherDetailViewController(viewModel: WeatherDetailViewModel(city: self.viewModel.cityList[indexPath.row]))
     self.navigationController?.pushViewController(detailViewController, animated: true)
     tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
   }
-
 }
 
 

@@ -19,6 +19,8 @@
 		FF5A2AA225DCB2150029A3DF /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AA125DCB2150029A3DF /* CityCell.swift */; };
 		FF5A2AA625DCCBC80029A3DF /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AA525DCCBC80029A3DF /* WeatherDetailViewController.swift */; };
 		FF5A2AAB25DD09A30029A3DF /* CountryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AAA25DD09A30029A3DF /* CountryListViewModel.swift */; };
+		FF5A2AB125DD4BBF0029A3DF /* CityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AB025DD4BBF0029A3DF /* CityListViewModel.swift */; };
+		FF5A2AB625DD4EE60029A3DF /* WeatherDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AB525DD4EE60029A3DF /* WeatherDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		FF5A2AA125DCB2150029A3DF /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 		FF5A2AA525DCCBC80029A3DF /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
 		FF5A2AAA25DD09A30029A3DF /* CountryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewModel.swift; sourceTree = "<group>"; };
+		FF5A2AB025DD4BBF0029A3DF /* CityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewModel.swift; sourceTree = "<group>"; };
+		FF5A2AB525DD4EE60029A3DF /* WeatherDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +96,7 @@
 			children = (
 				FF5A2A6625DC2F3D0029A3DF /* AppDelegate.swift */,
 				FF5A2A6825DC2F3D0029A3DF /* SceneDelegate.swift */,
-				FF5A2AA425DCCB8B0029A3DF /* whether */,
+				FF5A2AA425DCCB8B0029A3DF /* Weather */,
 				FF5A2A9425DCAA0A0029A3DF /* cities */,
 				FF5A2A8425DC46D00029A3DF /* main */,
 				FF5A2A6F25DC2F3E0029A3DF /* Assets.xcassets */,
@@ -125,6 +129,7 @@
 			children = (
 				FF5A2A9525DCAA210029A3DF /* CityListViewController.swift */,
 				FF5A2AA125DCB2150029A3DF /* CityCell.swift */,
+				FF5A2AAE25DD4BA10029A3DF /* ViewModel */,
 				FF5A2A9D25DCAB840029A3DF /* Model */,
 			);
 			path = cities;
@@ -138,18 +143,35 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		FF5A2AA425DCCB8B0029A3DF /* whether */ = {
+		FF5A2AA425DCCB8B0029A3DF /* Weather */ = {
 			isa = PBXGroup;
 			children = (
 				FF5A2AA525DCCBC80029A3DF /* WeatherDetailViewController.swift */,
+				FF5A2AB425DD4ED30029A3DF /* ViewModel */,
 			);
-			path = whether;
+			path = Weather;
 			sourceTree = "<group>";
 		};
 		FF5A2AA925DD09520029A3DF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				FF5A2AAA25DD09A30029A3DF /* CountryListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FF5A2AAE25DD4BA10029A3DF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FF5A2AB025DD4BBF0029A3DF /* CityListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FF5A2AB425DD4ED30029A3DF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FF5A2AB525DD4EE60029A3DF /* WeatherDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -268,6 +290,7 @@
 			files = (
 				FF5A2A8625DC46F40029A3DF /* CountryCell.swift in Sources */,
 				FF5A2A6725DC2F3D0029A3DF /* AppDelegate.swift in Sources */,
+				FF5A2AB625DD4EE60029A3DF /* WeatherDetailViewModel.swift in Sources */,
 				FF5A2AA225DCB2150029A3DF /* CityCell.swift in Sources */,
 				FF5A2AAB25DD09A30029A3DF /* CountryListViewModel.swift in Sources */,
 				FF5A2AA625DCCBC80029A3DF /* WeatherDetailViewController.swift in Sources */,
@@ -275,6 +298,7 @@
 				FF5A2A8A25DC49EA0029A3DF /* CountryModel.swift in Sources */,
 				FF5A2A6925DC2F3D0029A3DF /* SceneDelegate.swift in Sources */,
 				FF5A2A9625DCAA210029A3DF /* CityListViewController.swift in Sources */,
+				FF5A2AB125DD4BBF0029A3DF /* CityListViewModel.swift in Sources */,
 				FF5A2A9F25DCAB8C0029A3DF /* CityModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

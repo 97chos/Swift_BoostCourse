@@ -13,7 +13,7 @@ class WhetherDetailViewController: UIViewController {
 
   // MARK: Properties
 
-  private let city: City!
+  private let viewModel: WeatherDetailViewModel!
 
 
   // MARK: UI
@@ -29,14 +29,14 @@ class WhetherDetailViewController: UIViewController {
   }()
   private lazy var temperatureLabel: UILabel = {
     let label = UILabel()
-    label.text = self.city.temperature
+    label.text = self.viewModel.city.temperature
     label.font = .systemFont(ofSize: 18)
     label.sizeToFit()
     return label
   }()
   private lazy var rainProbabilityLabel: UILabel = {
     let label = UILabel()
-    label.text = self.city.rainProbability
+    label.text = self.viewModel.city.rainProbability
     label.font = .systemFont(ofSize: 18)
     label.sizeToFit()
     return label
@@ -45,8 +45,8 @@ class WhetherDetailViewController: UIViewController {
 
   // MARK: Initializing
 
-  init(city: City) {
-    self.city = city
+  init(viewModel: WeatherDetailViewModel) {
+    self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -72,34 +72,18 @@ class WhetherDetailViewController: UIViewController {
 
   private func viewConfigure() {
     self.view.backgroundColor = .systemBackground
-    self.title = self.city.cityName
+    self.title = self.viewModel.city.cityName
   }
 
   private func setWeatherInformation() {
-    switch self.city.state {
-    case 10 :
-      self.imgView.image = UIImage(named: "sunny")
-      self.weatherLabel.text = "맑음"
-    case 11 :
-      self.imgView.image = UIImage(named: "cloudy")
-      self.weatherLabel.text = "흐림"
-    case 12 :
-      self.imgView.image = UIImage(named: "rainy")
-      self.weatherLabel.text = "비"
-    case 13 :
-      self.imgView.image = UIImage(named: "snowy")
-      self.weatherLabel.text = "눈"
-    default:
-      break
-    }
-    self.weatherLabel.sizeToFit()
+    self.imgView.image = UIImage(named: "\(self.viewModel.weatherInformation().0)")
+    self.weatherLabel.text = self.viewModel.weatherInformation().1
   }
 
 
   // MARK: Layout
 
   private func layout() {
-
     self.view.addSubview(imgView)
     self.view.addSubview(weatherLabel)
     self.view.addSubview(temperatureLabel)
