@@ -17,7 +17,7 @@
 		FF5A2A9625DCAA210029A3DF /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2A9525DCAA210029A3DF /* CityListViewController.swift */; };
 		FF5A2A9F25DCAB8C0029A3DF /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2A9E25DCAB8C0029A3DF /* CityModel.swift */; };
 		FF5A2AA225DCB2150029A3DF /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AA125DCB2150029A3DF /* CityCell.swift */; };
-		FF5A2AA625DCCBC80029A3DF /* weatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AA525DCCBC80029A3DF /* weatherDetailViewController.swift */; };
+		FF5A2AA625DCCBC80029A3DF /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AA525DCCBC80029A3DF /* WeatherDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		FF5A2A9525DCAA210029A3DF /* CityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
 		FF5A2A9E25DCAB8C0029A3DF /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
 		FF5A2AA125DCB2150029A3DF /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
-		FF5A2AA525DCCBC80029A3DF /* weatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherDetailViewController.swift; sourceTree = "<group>"; };
+		FF5A2AA525DCCBC80029A3DF /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +138,7 @@
 		FF5A2AA425DCCB8B0029A3DF /* whether */ = {
 			isa = PBXGroup;
 			children = (
-				FF5A2AA525DCCBC80029A3DF /* weatherDetailViewController.swift */,
+				FF5A2AA525DCCBC80029A3DF /* WeatherDetailViewController.swift */,
 			);
 			path = whether;
 			sourceTree = "<group>";
@@ -258,7 +258,7 @@
 				FF5A2A8625DC46F40029A3DF /* CountryCell.swift in Sources */,
 				FF5A2A6725DC2F3D0029A3DF /* AppDelegate.swift in Sources */,
 				FF5A2AA225DCB2150029A3DF /* CityCell.swift in Sources */,
-				FF5A2AA625DCCBC80029A3DF /* weatherDetailViewController.swift in Sources */,
+				FF5A2AA625DCCBC80029A3DF /* WeatherDetailViewController.swift in Sources */,
 				FF5A2A8125DC434B0029A3DF /* CountryListViewController.swift in Sources */,
 				FF5A2A8A25DC49EA0029A3DF /* CountryModel.swift in Sources */,
 				FF5A2A6925DC2F3D0029A3DF /* SceneDelegate.swift in Sources */,

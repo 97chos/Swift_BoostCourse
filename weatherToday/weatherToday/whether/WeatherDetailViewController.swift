@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-class whetherDetailViewController: UIViewController {
+class WhetherDetailViewController: UIViewController {
 
   // MARK: Properties
 
