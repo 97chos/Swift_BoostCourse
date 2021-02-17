@@ -49,6 +49,10 @@ class CityCell: UITableViewCell {
     self.temperatureLabel.text = city.temperature
     self.rainProbabilityLabel.text = city.rainProbability
 
+    self.countryLabel.sizeToFit()
+    self.temperatureLabel.sizeToFit()
+    self.rainProbabilityLabel.sizeToFit()
+
     switch city.state {
     case 10 :
       self.weatherImg.image = UIImage(named: "sunny")
@@ -64,4 +68,32 @@ class CityCell: UITableViewCell {
   }
 
 
+  // MARK: Layout
+
+  private func layout() {
+
+    self.contentView.addSubview(weatherImg)
+    self.contentView.addSubview(countryLabel)
+    self.contentView.addSubview(temperatureLabel)
+    self.contentView.addSubview(rainProbabilityLabel)
+
+    self.weatherImg.snp.makeConstraints{
+      $0.centerX.equalToSuperview()
+      $0.leading.equalToSuperview().inset(10)
+      $0.height.equalToSuperview().multipliedBy(0.8)
+      $0.width.equalTo(self.weatherImg.snp.height)
+    }
+    self.temperatureLabel.snp.makeConstraints{
+      $0.centerX.equalToSuperview()
+      $0.leading.equalTo(self.weatherImg.snp.trailing).inset(5)
+    }
+    self.countryLabel.snp.makeConstraints{
+      $0.bottom.equalTo(self.temperatureLabel.snp.top).offset(5)
+      $0.leading.equalTo(self.temperatureLabel)
+    }
+    self.rainProbabilityLabel.snp.makeConstraints{
+      $0.top.equalTo(self.temperatureLabel.snp.bottom).offset(5)
+      $0.leading.equalTo(self.weatherImg)
+    }
+  }
 }
