@@ -12,7 +12,7 @@ protocol CountriesListUpProtocol {
   func loadCountries() -> [Country]?
 }
 
-class APIService: CountriesListUpProtocol {
+class CountriesAPIService: CountriesListUpProtocol {
 
   func loadCountries() -> [Country]? {
     let decoder = JSONDecoder()

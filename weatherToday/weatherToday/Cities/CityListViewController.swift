@@ -21,7 +21,8 @@ class CityListViewController: UIViewController {
   // MARK: Properties
 
   private let viewModel: CityListViewModel!
-  
+
+
   // MARK: UI
 
   private let tableView: UITableView = {

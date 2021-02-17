@@ -21,7 +21,7 @@
 		FF5A2AAB25DD09A30029A3DF /* CountryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AAA25DD09A30029A3DF /* CountryListViewModel.swift */; };
 		FF5A2AB125DD4BBF0029A3DF /* CityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AB025DD4BBF0029A3DF /* CityListViewModel.swift */; };
 		FF5A2AB625DD4EE60029A3DF /* WeatherDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AB525DD4EE60029A3DF /* WeatherDetailViewModel.swift */; };
-		FF5A2ABA25DD548B0029A3DF /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AB925DD548B0029A3DF /* APIService.swift */; };
+		FF5A2ABA25DD548B0029A3DF /* CountriesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AB925DD548B0029A3DF /* CountriesAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +43,7 @@
 		FF5A2AAA25DD09A30029A3DF /* CountryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewModel.swift; sourceTree = "<group>"; };
 		FF5A2AB025DD4BBF0029A3DF /* CityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewModel.swift; sourceTree = "<group>"; };
 		FF5A2AB525DD4EE60029A3DF /* WeatherDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewModel.swift; sourceTree = "<group>"; };
-		FF5A2AB925DD548B0029A3DF /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		FF5A2AB925DD548B0029A3DF /* CountriesAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,15 +99,15 @@
 				FF5A2A6625DC2F3D0029A3DF /* AppDelegate.swift */,
 				FF5A2A6825DC2F3D0029A3DF /* SceneDelegate.swift */,
 				FF5A2AA425DCCB8B0029A3DF /* Weather */,
-				FF5A2A9425DCAA0A0029A3DF /* cities */,
-				FF5A2A8425DC46D00029A3DF /* main */,
+				FF5A2A9425DCAA0A0029A3DF /* Cities */,
+				FF5A2A8425DC46D00029A3DF /* Main */,
 				FF5A2A6F25DC2F3E0029A3DF /* Assets.xcassets */,
 				FF5A2A7425DC2F3E0029A3DF /* Info.plist */,
 			);
 			path = weatherToday;
 			sourceTree = "<group>";
 		};
-		FF5A2A8425DC46D00029A3DF /* main */ = {
+		FF5A2A8425DC46D00029A3DF /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				FF5A2A8025DC434B0029A3DF /* CountryListViewController.swift */,
@@ -115,19 +115,19 @@
 				FF5A2AA925DD09520029A3DF /* ViewModel */,
 				FF5A2A8825DC49D40029A3DF /* Model */,
 			);
-			path = main;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		FF5A2A8825DC49D40029A3DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				FF5A2A8925DC49EA0029A3DF /* CountryModel.swift */,
-				FF5A2AB925DD548B0029A3DF /* APIService.swift */,
+				FF5A2AB925DD548B0029A3DF /* CountriesAPIService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		FF5A2A9425DCAA0A0029A3DF /* cities */ = {
+		FF5A2A9425DCAA0A0029A3DF /* Cities */ = {
 			isa = PBXGroup;
 			children = (
 				FF5A2A9525DCAA210029A3DF /* CityListViewController.swift */,
@@ -135,7 +135,7 @@
 				FF5A2AAE25DD4BA10029A3DF /* ViewModel */,
 				FF5A2A9D25DCAB840029A3DF /* Model */,
 			);
-			path = cities;
+			path = Cities;
 			sourceTree = "<group>";
 		};
 		FF5A2A9D25DCAB840029A3DF /* Model */ = {
@@ -300,7 +300,7 @@
 				FF5A2A8125DC434B0029A3DF /* CountryListViewController.swift in Sources */,
 				FF5A2A8A25DC49EA0029A3DF /* CountryModel.swift in Sources */,
 				FF5A2A6925DC2F3D0029A3DF /* SceneDelegate.swift in Sources */,
-				FF5A2ABA25DD548B0029A3DF /* APIService.swift in Sources */,
+				FF5A2ABA25DD548B0029A3DF /* CountriesAPIService.swift in Sources */,
 				FF5A2A9625DCAA210029A3DF /* CityListViewController.swift in Sources */,
 				FF5A2AB125DD4BBF0029A3DF /* CityListViewModel.swift in Sources */,
 				FF5A2A9F25DCAB8C0029A3DF /* CityModel.swift in Sources */,
