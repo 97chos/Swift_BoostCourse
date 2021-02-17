@@ -14,22 +14,22 @@ class CityCell: UITableViewCell {
   // MARK: UI
 
   private let weatherImg: UIImageView = {
-    let imageView = UIImageView()
+    let imageView = UIImageView(frame: CGRect.zero)
     return imageView
   }()
   private let countryLabel: UILabel = {
     let label = UILabel()
-    label.font = .boldSystemFont(ofSize: 15)
+    label.font = .boldSystemFont(ofSize: 17)
     return label
   }()
   private let temperatureLabel: UILabel = {
     let label = UILabel()
-    label.font = .systemFont(ofSize: 13)
+    label.font = .systemFont(ofSize: 15)
     return label
   }()
   private let rainProbabilityLabel: UILabel = {
     let label = UILabel()
-    label.font = .systemFont(ofSize: 13)
+    label.font = .systemFont(ofSize: 15)
     return label
   }()
 
@@ -38,6 +38,8 @@ class CityCell: UITableViewCell {
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
+    self.accessoryType = .disclosureIndicator
+    self.layout()
   }
 
   required init?(coder: NSCoder) {
@@ -78,22 +80,22 @@ class CityCell: UITableViewCell {
     self.contentView.addSubview(rainProbabilityLabel)
 
     self.weatherImg.snp.makeConstraints{
-      $0.centerX.equalToSuperview()
+      $0.centerY.equalToSuperview()
       $0.leading.equalToSuperview().inset(10)
-      $0.height.equalToSuperview().multipliedBy(0.8)
-      $0.width.equalTo(self.weatherImg.snp.height)
+      $0.height.equalTo(self.contentView.snp.height).multipliedBy(0.8)
+      $0.width.equalTo(self.contentView.snp.height).multipliedBy(0.8)
     }
     self.temperatureLabel.snp.makeConstraints{
-      $0.centerX.equalToSuperview()
-      $0.leading.equalTo(self.weatherImg.snp.trailing).inset(5)
+      $0.centerY.equalToSuperview()
+      $0.leading.equalTo(self.weatherImg.snp.trailing).offset(10)
     }
     self.countryLabel.snp.makeConstraints{
-      $0.bottom.equalTo(self.temperatureLabel.snp.top).offset(5)
+      $0.bottom.equalTo(self.temperatureLabel.snp.top).offset(-10)
       $0.leading.equalTo(self.temperatureLabel)
     }
     self.rainProbabilityLabel.snp.makeConstraints{
-      $0.top.equalTo(self.temperatureLabel.snp.bottom).offset(5)
-      $0.leading.equalTo(self.weatherImg)
+      $0.top.equalTo(self.temperatureLabel.snp.bottom).offset(10)
+      $0.leading.equalTo(self.temperatureLabel)
     }
   }
 }
