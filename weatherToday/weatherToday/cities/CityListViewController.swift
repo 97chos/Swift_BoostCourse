@@ -23,6 +23,7 @@ class CityListViewController: UIViewController {
   private var cityList: [City] = []
   private var country: String!
 
+  
   // MARK: UI
 
   private let tableView: UITableView = {

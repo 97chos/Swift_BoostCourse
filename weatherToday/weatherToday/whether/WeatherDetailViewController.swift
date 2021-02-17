@@ -15,6 +15,7 @@ class WhetherDetailViewController: UIViewController {
 
   private let city: City!
 
+
   // MARK: UI
 
   private lazy var imgView: UIImageView = {
@@ -53,6 +54,7 @@ class WhetherDetailViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
+  
   // MARK: View LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()

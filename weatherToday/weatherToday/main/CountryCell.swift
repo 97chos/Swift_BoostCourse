@@ -11,7 +11,7 @@ import SnapKit
 
 class CountryCell: UITableViewCell {
 
-  // MARK: Initialize
+  // MARK: Initializing
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)

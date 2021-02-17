@@ -8,8 +8,14 @@
 import Foundation
 
 struct country: Codable {
+
+  // MARK: Json Keys
+
   let countryName: String
   let assetName: String
+
+
+  // MARK: Coding Keys
 
   enum CodingKeys: String, CodingKey {
     case countryName = "korean_name"
