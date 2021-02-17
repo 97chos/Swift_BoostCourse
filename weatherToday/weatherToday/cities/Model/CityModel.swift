@@ -13,6 +13,18 @@ struct City: Codable {
   let celsius: Int
   let rainfallProbability: Int
 
+  var fahrenheitTemp: Float {
+    return Float((self.state * 9/5) + 32)
+  }
+
+  var temperature: String {
+    return "섭씨 \(celsius)도 / 화씨 \(String(format: "%.2f", fahrenheitTemp))도"
+  }
+
+  var rainProbability: String {
+    return "강수 확률 \(rainfallProbability)%"
+  }
+
   enum CodingKeys: String, CodingKey {
     case cityName, state, celsius
     case rainfallProbability = "rainfall_probability"
