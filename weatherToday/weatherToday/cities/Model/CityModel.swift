@@ -14,7 +14,7 @@ struct City: Codable {
   let rainfallProbability: Int
 
   var fahrenheitTemp: Float {
-    return Float((self.state * 9/5) + 32)
+    return Float((self.celsius * 9/5) + 32)
   }
 
   var temperature: String {
