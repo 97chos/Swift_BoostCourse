@@ -121,7 +121,11 @@ extension CityListViewController: UITableViewDataSource {
 }
 
 extension CityListViewController: UITableViewDelegate {
-
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let detailViewController = WhetherDetailViewController(city: self.cityList[indexPath.row])
+    self.navigationController?.pushViewController(detailViewController, animated: true)
+    tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
+  }
 
 }
 
