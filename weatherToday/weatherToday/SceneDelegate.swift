@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let scene = (scene as? UIWindowScene) else { return }
 
     self.window = UIWindow(frame: UIScreen.main.bounds)
-    self.window?.rootViewController = UINavigationController(rootViewController: CountryListViewController(viewModel: CountryListViewModel()))
+    self.window?.rootViewController = UINavigationController(rootViewController: CountryListViewController(viewModel: CountryListViewModel(apiService: APIService())))
     self.window?.windowScene = scene
     self.window?.makeKeyAndVisible()
 
