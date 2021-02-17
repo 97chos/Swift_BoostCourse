@@ -114,12 +114,15 @@ extension CityListViewController: UITableViewDataSource {
 
     return cell
   }
-}
 
-extension CityListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return self.view.frame.height / 8
   }
+}
+
+extension CityListViewController: UITableViewDelegate {
+
+
 }
 
 
