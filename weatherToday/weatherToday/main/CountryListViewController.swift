@@ -102,6 +102,10 @@ extension CountryListViewController: UITableViewDataSource {
 
 extension CountryListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    let cell = self.countriesList[indexPath.row]
+    let cityListViewController = CityListViewController(cityCode: cell.assetName, country: cell.countryName)
+    self.navigationController?.pushViewController(cityListViewController, animated: true)
     tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
   }
 }
