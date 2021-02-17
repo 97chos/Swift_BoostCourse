@@ -10,7 +10,7 @@ import Foundation
 struct City: Codable {
   let cityName: String
   let state: Int
-  let celsius: Int
+  let celsius: Float
   let rainfallProbability: Int
 
   var fahrenheitTemp: Float {
@@ -26,7 +26,9 @@ struct City: Codable {
   }
 
   enum CodingKeys: String, CodingKey {
-    case cityName, state, celsius
+    case cityName = "city_name"
+    case state
+    case celsius
     case rainfallProbability = "rainfall_probability"
   }
 }
