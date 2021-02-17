@@ -19,7 +19,7 @@ class CountryListViewController: UIViewController {
 
   // MARK: Properties
 
-  private var countriesList: [country] = []
+  private var viewModel: CountryListViewModel!
 
 
   // MARK: UI
@@ -30,12 +30,24 @@ class CountryListViewController: UIViewController {
   }()
 
 
+  // MARK: Initializing
+
+  init(viewModel: CountryListViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+
   // MARK: View Lifecycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.configure()
-    self.decodeJson()
+    viewModel.decodeJson()
   }
 
 
@@ -66,27 +78,11 @@ class CountryListViewController: UIViewController {
       $0.edges.equalToSuperview()
     }
   }
-
-
-  // MARK: JsonDecode
-
-  func decodeJson() {
-    let decoder = JSONDecoder()
-    guard let dataAsset: NSDataAsset = NSDataAsset(name: "countries") else {
-      return
-    }
-
-    do {
-      self.countriesList = try decoder.decode([country].self, from: dataAsset.data)
-    } catch {
-      print(error.localizedDescription)
-    }
-  }
 }
 
 extension CountryListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.countriesList.count
+    return self.viewModel.countriesList.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -94,7 +90,7 @@ extension CountryListViewController: UITableViewDataSource {
       return UITableViewCell()
     }
 
-    cell.set(country: self.countriesList[indexPath.row])
+    cell.set(country: self.viewModel.countriesList[indexPath.row])
 
     return cell
   }
@@ -103,7 +99,7 @@ extension CountryListViewController: UITableViewDataSource {
 extension CountryListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-    let cell = self.countriesList[indexPath.row]
+    let cell = self.viewModel.countriesList[indexPath.row]
     let cityListViewController = CityListViewController(cityCode: cell.assetName, country: cell.countryName)
     self.navigationController?.pushViewController(cityListViewController, animated: true)
     tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)

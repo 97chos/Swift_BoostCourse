@@ -18,6 +18,7 @@
 		FF5A2A9F25DCAB8C0029A3DF /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2A9E25DCAB8C0029A3DF /* CityModel.swift */; };
 		FF5A2AA225DCB2150029A3DF /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AA125DCB2150029A3DF /* CityCell.swift */; };
 		FF5A2AA625DCCBC80029A3DF /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AA525DCCBC80029A3DF /* WeatherDetailViewController.swift */; };
+		FF5A2AAB25DD09A30029A3DF /* CountryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2AAA25DD09A30029A3DF /* CountryListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		FF5A2A9E25DCAB8C0029A3DF /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
 		FF5A2AA125DCB2150029A3DF /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 		FF5A2AA525DCCBC80029A3DF /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
+		FF5A2AAA25DD09A30029A3DF /* CountryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				FF5A2A8025DC434B0029A3DF /* CountryListViewController.swift */,
 				FF5A2A8525DC46F40029A3DF /* CountryCell.swift */,
+				FF5A2AA925DD09520029A3DF /* ViewModel */,
 				FF5A2A8825DC49D40029A3DF /* Model */,
 			);
 			path = main;
@@ -141,6 +144,14 @@
 				FF5A2AA525DCCBC80029A3DF /* WeatherDetailViewController.swift */,
 			);
 			path = whether;
+			sourceTree = "<group>";
+		};
+		FF5A2AA925DD09520029A3DF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FF5A2AAA25DD09A30029A3DF /* CountryListViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +269,7 @@
 				FF5A2A8625DC46F40029A3DF /* CountryCell.swift in Sources */,
 				FF5A2A6725DC2F3D0029A3DF /* AppDelegate.swift in Sources */,
 				FF5A2AA225DCB2150029A3DF /* CityCell.swift in Sources */,
+				FF5A2AAB25DD09A30029A3DF /* CountryListViewModel.swift in Sources */,
 				FF5A2AA625DCCBC80029A3DF /* WeatherDetailViewController.swift in Sources */,
 				FF5A2A8125DC434B0029A3DF /* CountryListViewController.swift in Sources */,
 				FF5A2A8A25DC49EA0029A3DF /* CountryModel.swift in Sources */,

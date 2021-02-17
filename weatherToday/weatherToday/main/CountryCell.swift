@@ -25,7 +25,7 @@ class CountryCell: UITableViewCell {
 
   // MARK: SetCell
 
-  func set(country: country) {
+  func set(country: Country) {
     self.imageView?.image = UIImage(named: "flag_\(country.assetName)")
     self.textLabel?.text = country.countryName
   }

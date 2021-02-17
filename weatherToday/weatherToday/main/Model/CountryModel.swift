@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct country: Codable {
+struct Country: Codable {
 
   // MARK: Json Keys
 
