@@ -10,8 +10,19 @@ import UIKit
 class ViewController: UIViewController {
 
   override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view.
+    self.configure()
+  }
+
+
+  // MARK: Configuration
+
+  private func configure() {
+    self.viewConfigure()
+  }
+
+  private func viewConfigure() {
+    self.title = "MyAlbum"
+    self.view.backgroundColor = .systemBackground
   }
 
 
