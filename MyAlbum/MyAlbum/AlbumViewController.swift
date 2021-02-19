@@ -26,13 +26,15 @@ class AlbumViewController: UIViewController {
     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout.init())
     collectionView.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
     collectionView.backgroundColor = .systemGray
+    collectionView.alwaysBounceVertical = true
     return collectionView
   }()
   private let collectionViewLayout: UICollectionViewFlowLayout = {
     let collectionViewLayout = UICollectionViewFlowLayout()
     collectionViewLayout.scrollDirection = .vertical
     collectionViewLayout.sectionInset = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
-    collectionViewLayout.minimumLineSpacing = 80
+    collectionViewLayout.minimumLineSpacing = 10
+    collectionViewLayout.minimumInteritemSpacing = 10
     return collectionViewLayout
   }()
 
@@ -98,8 +100,15 @@ extension AlbumViewController: UICollectionViewDelegate {
 extension AlbumViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-    let width: CGFloat = (self.collectionView.frame.width - 50) / 2
-    let height: CGFloat = width + 30
+    let inset = self.collectionViewLayout.sectionInset
+    let saftyAreaHeight: CGFloat = self.view.safeAreaLayoutGuide.layoutFrame.height
+
+    let itemsPerRow: CGFloat = 2
+    let widthPadding = inset.left * (itemsPerRow + 1)
+    let itemsPerColumn: CGFloat = 3
+    let heightPadding = inset.top * (itemsPerColumn + 1)
+    let width: CGFloat = (self.collectionView.frame.width - widthPadding) / itemsPerRow
+    let height: CGFloat = (saftyAreaHeight - heightPadding) / itemsPerColumn
 
     return CGSize(width: width, height: height)
   }

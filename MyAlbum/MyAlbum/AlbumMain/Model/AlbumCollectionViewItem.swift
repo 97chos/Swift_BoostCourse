@@ -45,6 +45,10 @@ class AlbumCollectionViewItem: UICollectionViewCell {
   // MARK: Layout
 
   private func layout() {
+
+    self.backgroundColor = .systemGray3
+
+
     self.contentView.addSubview(ImgView)
     self.contentView.addSubview(albumTitle)
     self.contentView.addSubview(albumCount)
