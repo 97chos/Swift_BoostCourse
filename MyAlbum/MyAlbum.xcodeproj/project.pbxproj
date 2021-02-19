@@ -3,14 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		187B7E6CE0E35D074CA10EF2 /* Pods_MyAlbum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E921E78185F3C6A2FA9A6CE /* Pods_MyAlbum.framework */; };
 		FF5A2B1225DEB6100029A3DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2B1125DEB6100029A3DF /* AppDelegate.swift */; };
 		FF5A2B1425DEB6100029A3DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2B1325DEB6100029A3DF /* SceneDelegate.swift */; };
-		FF5A2B1625DEB6100029A3DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2B1525DEB6100029A3DF /* ViewController.swift */; };
+		FF5A2B1625DEB6100029A3DF /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2B1525DEB6100029A3DF /* AlbumViewController.swift */; };
 		FF5A2B1B25DEB6110029A3DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF5A2B1A25DEB6110029A3DF /* Assets.xcassets */; };
 		FF5A2B1E25DEB6110029A3DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF5A2B1C25DEB6110029A3DF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -22,7 +22,7 @@
 		FF5A2B0E25DEB6100029A3DF /* MyAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF5A2B1125DEB6100029A3DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF5A2B1325DEB6100029A3DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FF5A2B1525DEB6100029A3DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FF5A2B1525DEB6100029A3DF /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		FF5A2B1A25DEB6110029A3DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF5A2B1D25DEB6110029A3DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF5A2B1F25DEB6110029A3DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,7 +54,6 @@
 				23CBC5B4894BEE17E6FEC3FE /* Pods-MyAlbum.debug.xcconfig */,
 				8842C6FF3070D16CAD12BC19 /* Pods-MyAlbum.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,7 +80,7 @@
 			children = (
 				FF5A2B1125DEB6100029A3DF /* AppDelegate.swift */,
 				FF5A2B1325DEB6100029A3DF /* SceneDelegate.swift */,
-				FF5A2B1525DEB6100029A3DF /* ViewController.swift */,
+				FF5A2B1525DEB6100029A3DF /* AlbumViewController.swift */,
 				FF5A2B1A25DEB6110029A3DF /* Assets.xcassets */,
 				FF5A2B1C25DEB6110029A3DF /* LaunchScreen.storyboard */,
 				FF5A2B1F25DEB6110029A3DF /* Info.plist */,
@@ -202,7 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF5A2B1625DEB6100029A3DF /* ViewController.swift in Sources */,
+				FF5A2B1625DEB6100029A3DF /* AlbumViewController.swift in Sources */,
 				FF5A2B1225DEB6100029A3DF /* AppDelegate.swift in Sources */,
 				FF5A2B1425DEB6100029A3DF /* SceneDelegate.swift in Sources */,
 			);
