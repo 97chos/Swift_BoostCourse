@@ -18,7 +18,6 @@ class AlbumViewController: UIViewController {
   // MARK: Properties
 
   private var resultAssetCollection: PHFetchResult<PHAssetCollection>!
-  private var resultAsset: PHFetchResult<PHAsset>!
   private let imageManager = PHCachingImageManager()
 
 
@@ -173,6 +172,10 @@ extension AlbumViewController: UICollectionViewDataSource {
 
 extension AlbumViewController: UICollectionViewDelegate {
 
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let imagesViewController = ImagesViewController(asset: self.resultAssetCollection[indexPath.item])
+    self.navigationController?.pushViewController(imagesViewController, animated: true)
+  }
 }
 
 extension AlbumViewController: UICollectionViewDelegateFlowLayout {

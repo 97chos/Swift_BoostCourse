@@ -15,6 +15,7 @@
 		FF5A2B1E25DEB6110029A3DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF5A2B1C25DEB6110029A3DF /* LaunchScreen.storyboard */; };
 		FF5A2B3B25DF8E700029A3DF /* AlbumCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2B3A25DF8E700029A3DF /* AlbumCollectionViewItem.swift */; };
 		FF5A2B4725E1581B0029A3DF /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2B4625E1581B0029A3DF /* ImagesViewController.swift */; };
+		FF5A2B4C25E15CB90029A3DF /* ImagesViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A2B4B25E15CB90029A3DF /* ImagesViewItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		FF5A2B1F25DEB6110029A3DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF5A2B3A25DF8E700029A3DF /* AlbumCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewItem.swift; sourceTree = "<group>"; };
 		FF5A2B4625E1581B0029A3DF /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
+		FF5A2B4B25E15CB90029A3DF /* ImagesViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,8 +116,17 @@
 			isa = PBXGroup;
 			children = (
 				FF5A2B4625E1581B0029A3DF /* ImagesViewController.swift */,
+				FF5A2B4A25E15C930029A3DF /* Model */,
 			);
 			path = ImagesView;
+			sourceTree = "<group>";
+		};
+		FF5A2B4A25E15C930029A3DF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FF5A2B4B25E15CB90029A3DF /* ImagesViewItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF5A2B4725E1581B0029A3DF /* ImagesViewController.swift in Sources */,
+				FF5A2B4C25E15CB90029A3DF /* ImagesViewItem.swift in Sources */,
 				FF5A2B1625DEB6100029A3DF /* AlbumViewController.swift in Sources */,
 				FF5A2B1225DEB6100029A3DF /* AppDelegate.swift in Sources */,
 				FF5A2B3B25DF8E700029A3DF /* AlbumCollectionViewItem.swift in Sources */,

@@ -15,7 +15,7 @@ class ImagesViewController: UIViewController {
   // MARK: Properties
 
   private let assets: PHAssetCollection!
-  private let fetchResult: PHFetchResult<PHAsset>?
+  private var fetchResult: PHFetchResult<PHAsset>?
 
 
   // MARK: UI
@@ -59,14 +59,23 @@ class ImagesViewController: UIViewController {
 
   private func configure() {
     self.viewConfigure()
+    self.fetchFromAssetCollection()
   }
 
   private func viewConfigure() {
     self.title = self.assets.localizedTitle
     self.view.backgroundColor = .systemBackground
+    self.navigationItem.largeTitleDisplayMode = .never
 
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
+  }
+
+  private func fetchFromAssetCollection() {
+    let fetchOptions = PHFetchOptions()
+    fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+
+    self.fetchResult = PHAsset.fetchAssets(in: self.assets, options: fetchOptions)
   }
 
 }
@@ -77,11 +86,13 @@ extension ImagesViewController: UICollectionViewDelegate {
 
 extension ImagesViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return self.assets.estimatedAssetCount
+    return self.fetchResult?.count ?? 0
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    <#code#>
+    let item = collectionView.dequeueReusableCell(withReuseIdentifier: ReusealbleIdentifier.collectionViewCell, for: indexPath)
+
+    return item
   }
 
 
