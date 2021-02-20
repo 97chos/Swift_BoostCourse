@@ -28,6 +28,7 @@ class AlbumCollectionViewItem: UICollectionViewCell {
     return label
   }()
 
+
   // MARK: Initializing
 
   override init(frame: CGRect) {
@@ -40,19 +41,16 @@ class AlbumCollectionViewItem: UICollectionViewCell {
   }
 
   func set(image: UIImage, title: String, count: Int) {
-
     self.ImgView.image = image
     self.albumTitle.text = title
     self.albumCount.text = "\(count)"
-
   }
+
 
   // MARK: Layout
 
   private func layout() {
-
     self.backgroundColor = .systemBackground
-
 
     self.ImgView.layer.cornerRadius = self.contentView.frame.width / 7
     self.ImgView.layer.borderWidth = 0
@@ -68,16 +66,13 @@ class AlbumCollectionViewItem: UICollectionViewCell {
       $0.width.equalToSuperview()
       $0.height.equalTo(self.ImgView.snp.width)
     }
-
     self.albumTitle.snp.makeConstraints{
       $0.top.equalTo(self.ImgView.snp.bottom).offset(5)
       $0.leading.equalToSuperview()
     }
-
     self.albumCount.snp.makeConstraints{
       $0.top.equalTo(self.albumTitle.snp.bottom).offset(5)
       $0.leading.equalToSuperview()
     }
-
   }
 }

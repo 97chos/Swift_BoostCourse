@@ -17,12 +17,9 @@ class AlbumViewController: UIViewController {
 
   // MARK: Properties
 
-
-  private let dummy:[String] = ["roll","favorite","음식","사람들","여행"]
   private var resultAssetCollection: PHFetchResult<PHAssetCollection>!
   private var resultAsset: PHFetchResult<PHAsset>!
   private let imageManager = PHCachingImageManager()
-
 
 
   // MARK: UI
@@ -120,13 +117,13 @@ class AlbumViewController: UIViewController {
     }
   }
 
+
   // MARK: Fetch Assets
 
   private func fetchAssetCollection() {
     let cameraRoll: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album,
                                                                                                subtype: .any,
                                                                                                options: nil)
-
     self.resultAssetCollection = cameraRoll
   }
 
