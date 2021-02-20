@@ -42,10 +42,17 @@ class ImagesViewController: UIViewController {
     toolBar.barTintColor = .systemGray
     return toolBar
   }()
-  private let alignButton: UIBarButtonItem = {
-    let barbutton = UIBarButtonItem()
-    barbutton.title = "최신순"
+  private lazy var alignButton: UIBarButtonItem = {
+    let barbutton = UIBarButtonItem(title: "최신순", style: .plain, target: self, action: #selector(self.chageAlign))
     return barbutton
+  }()
+  private let flexibleSpace1: UIBarButtonItem = {
+    let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+    return flexibleSpace
+  }()
+  private let flexibleSpace2: UIBarButtonItem = {
+    let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+    return flexibleSpace
   }()
 
 
@@ -64,6 +71,13 @@ class ImagesViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.configure()
+  }
+
+
+  // MARK: Actions
+
+  @objc private func chageAlign() {
+
   }
 
 
@@ -86,7 +100,7 @@ class ImagesViewController: UIViewController {
     self.collectionView.setCollectionViewLayout(self.collectionViewFlowLayout, animated: true)
     self.collectionView.register(ImagesViewItem.self, forCellWithReuseIdentifier: ReusealbleIdentifier.imagesViewCell)
 
-    self.toolBar.setItems([alignButton], animated: true)
+    self.toolBar.setItems([flexibleSpace1,alignButton,flexibleSpace2], animated: true)
   }
 
   private func fetchFromAssetCollection() {
