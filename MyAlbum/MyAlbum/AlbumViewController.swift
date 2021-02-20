@@ -59,6 +59,7 @@ class AlbumViewController: UIViewController {
   private func viewConfigure() {
     self.title = "MyAlbum"
     self.view.backgroundColor = .systemBackground
+    self.navigationController?.navigationBar.prefersLargeTitles = true
 
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
