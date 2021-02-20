@@ -11,7 +11,7 @@ import Photos
 
 enum ReusealbleIdentifier{
   static let albumViewCell = "albumViewCell"
-  static let imagesViewCel = "imagesViewCell"
+  static let imagesViewCell = "imagesViewCell"
 }
 
 class AlbumViewController: UIViewController {
@@ -57,7 +57,7 @@ class AlbumViewController: UIViewController {
   }
 
   private func viewConfigure() {
-    self.title = "MyAlbum"
+    self.title = "앨범"
     self.view.backgroundColor = .systemBackground
     self.navigationController?.navigationBar.prefersLargeTitles = true
 

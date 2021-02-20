@@ -37,6 +37,16 @@ class ImagesViewController: UIViewController {
     flowLayout.minimumInteritemSpacing = 10
     return flowLayout
   }()
+  private let toolBar: UIToolbar = {
+    let toolBar = UIToolbar(frame: CGRect.zero)
+    toolBar.barTintColor = .systemGray
+    return toolBar
+  }()
+  private let alignButton: UIBarButtonItem = {
+    let barbutton = UIBarButtonItem()
+    barbutton.title = "최신순"
+    return barbutton
+  }()
 
 
   init(asset: PHAssetCollection) {
@@ -74,7 +84,9 @@ class ImagesViewController: UIViewController {
     self.collectionView.dataSource = self
 
     self.collectionView.setCollectionViewLayout(self.collectionViewFlowLayout, animated: true)
-    self.collectionView.register(ImagesViewItem.self, forCellWithReuseIdentifier: ReusealbleIdentifier.imagesViewCel)
+    self.collectionView.register(ImagesViewItem.self, forCellWithReuseIdentifier: ReusealbleIdentifier.imagesViewCell)
+
+    self.toolBar.setItems([alignButton], animated: true)
   }
 
   private func fetchFromAssetCollection() {
@@ -86,6 +98,13 @@ class ImagesViewController: UIViewController {
 
   private func layout() {
     self.view.addSubview(self.collectionView)
+    self.view.addSubview(toolBar)
+
+    self.toolBar.snp.makeConstraints{
+      $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+      $0.width.equalToSuperview()
+      $0.leading.equalToSuperview()
+    }
   }
 
 }
@@ -100,7 +119,7 @@ extension ImagesViewController: UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: ReusealbleIdentifier.imagesViewCel, for: indexPath) as? ImagesViewItem else { return UICollectionViewCell() }
+    guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: ReusealbleIdentifier.imagesViewCell, for: indexPath) as? ImagesViewItem else { return UICollectionViewCell() }
 
     let asset = self.fetchResult?.object(at: indexPath.item) ?? PHAsset()
 
@@ -127,7 +146,6 @@ extension ImagesViewController: UICollectionViewDelegateFlowLayout {
 
     let itemPerRow: CGFloat = 3
     let widthPadding = inset.left * (itemPerRow + 1)
-    let itemPerColumn: CGFloat = 5
 
     let widthAndHeight: CGFloat = (self.collectionView.frame.width - widthPadding) / itemPerRow
 
