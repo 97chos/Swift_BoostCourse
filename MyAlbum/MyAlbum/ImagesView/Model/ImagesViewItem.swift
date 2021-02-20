@@ -11,16 +11,38 @@ import SnapKit
 
 class ImagesViewItem: UICollectionViewCell {
 
+  // MARK: UI
+
+  private let imgView: UIImageView = {
+    let imgView = UIImageView()
+    return imgView
+  }()
+
   // MARK: initializing
 
   override init(frame: CGRect) {
     super.init(frame: frame)
+    self.layout()
   }
 
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
+  func set(image: UIImage) {
+    self.imgView.image = image
+  }
 
-  // MARK:
+
+  // MARK: Layout
+
+  private func layout() {
+
+    self.contentView.addSubview(imgView)
+
+    self.imgView.snp.makeConstraints {
+      $0.edges.equalToSuperview()
+    }
+  }
+
 }
