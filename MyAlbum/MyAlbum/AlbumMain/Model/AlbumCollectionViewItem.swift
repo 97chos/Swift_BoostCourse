@@ -51,8 +51,12 @@ class AlbumCollectionViewItem: UICollectionViewCell {
 
   private func layout() {
 
-    self.backgroundColor = .systemGray3
+    self.backgroundColor = .systemBackground
 
+
+    self.ImgView.layer.cornerRadius = self.contentView.frame.width / 7
+    self.ImgView.layer.borderWidth = 0
+    self.ImgView.layer.masksToBounds = true
 
     self.contentView.addSubview(ImgView)
     self.contentView.addSubview(albumTitle)
@@ -74,6 +78,6 @@ class AlbumCollectionViewItem: UICollectionViewCell {
       $0.top.equalTo(self.albumTitle.snp.bottom).offset(5)
       $0.leading.equalToSuperview()
     }
-  }
 
+  }
 }

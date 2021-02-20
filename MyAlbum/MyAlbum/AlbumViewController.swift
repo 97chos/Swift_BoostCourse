@@ -21,6 +21,8 @@ class AlbumViewController: UIViewController {
   private let dummy:[String] = ["roll","favorite","음식","사람들","여행"]
   private var resultAssetCollection: PHFetchResult<PHAssetCollection>!
   private var resultAsset: PHFetchResult<PHAsset>!
+  private let imageManager = PHCachingImageManager()
+
 
 
   // MARK: UI
@@ -28,7 +30,7 @@ class AlbumViewController: UIViewController {
   private lazy var collectionView: UICollectionView = {
     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout.init())
     collectionView.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-    collectionView.backgroundColor = .systemGray
+    collectionView.backgroundColor = .systemBackground
     collectionView.alwaysBounceVertical = true
     return collectionView
   }()
@@ -118,6 +120,8 @@ class AlbumViewController: UIViewController {
     }
   }
 
+  // MARK: Fetch Assets
+
   private func fetchAssetCollection() {
     let cameraRoll: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album,
                                                                                                subtype: .any,
@@ -151,25 +155,22 @@ extension AlbumViewController: UICollectionViewDataSource {
     let assetCollection = self.resultAssetCollection[indexPath.item]
 
     let collectionTitle: String = assetCollection.localizedTitle ?? ""
+    let collectionCount: Int = assetCollection.estimatedAssetCount
     let asset = self.fetchAsset(AssetCollection: assetCollection)
 
-    let imageManager = PHCachingImageManager()
-
     imageManager.requestImage(for: asset,
-                                  targetSize: CGSize(width: 50, height: 50),
-                                  contentMode: .aspectFill,
-                                  options: nil,
-                                  resultHandler: { image, _ in
-                                    guard let image = image else {
-                                      return
-                                    }
-                                    item.set(image: image, title: collectionTitle, count: assetCollection.estimatedAssetCount)
-                                  })
+                              targetSize: CGSize(width: 20, height: 20),
+                              contentMode: .aspectFill,
+                              options: nil,
+                              resultHandler: { image, _ in
+                                guard let image = image else {
+                                  return
+                                }
+                                item.set(image: image, title: collectionTitle, count: collectionCount)
+                              })
 
     return item
   }
-
-
 }
 
 extension AlbumViewController: UICollectionViewDelegate {
