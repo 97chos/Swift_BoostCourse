@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Photos
+import SnapKit
 
 class ImagesViewController: UIViewController {
 
@@ -16,6 +17,7 @@ class ImagesViewController: UIViewController {
 
   private let assets: PHAssetCollection!
   private var fetchResult: PHFetchResult<PHAsset>?
+  private let imageManager: PHCachingImageManager = PHCachingImageManager()
 
 
   // MARK: UI
@@ -60,6 +62,7 @@ class ImagesViewController: UIViewController {
   private func configure() {
     self.viewConfigure()
     self.fetchFromAssetCollection()
+    self.layout()
   }
 
   private func viewConfigure() {
@@ -69,6 +72,9 @@ class ImagesViewController: UIViewController {
 
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
+
+    self.collectionView.setCollectionViewLayout(self.collectionViewFlowLayout, animated: true)
+    self.collectionView.register(ImagesViewItem.self, forCellWithReuseIdentifier: ReusealbleIdentifier.imagesViewCel)
   }
 
   private func fetchFromAssetCollection() {
@@ -76,6 +82,10 @@ class ImagesViewController: UIViewController {
     fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 
     self.fetchResult = PHAsset.fetchAssets(in: self.assets, options: fetchOptions)
+  }
+
+  private func layout() {
+    self.view.addSubview(self.collectionView)
   }
 
 }
@@ -90,10 +100,38 @@ extension ImagesViewController: UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let item = collectionView.dequeueReusableCell(withReuseIdentifier: ReusealbleIdentifier.collectionViewCell, for: indexPath)
+    guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: ReusealbleIdentifier.imagesViewCel, for: indexPath) as? ImagesViewItem else { return UICollectionViewCell() }
+
+    let asset = self.fetchResult?.object(at: indexPath.item) ?? PHAsset()
+
+    self.imageManager.requestImage(for: asset,
+                                   targetSize: CGSize(width: 10, height: 10),
+                                   contentMode: .aspectFill,
+                                   options: nil,
+                                   resultHandler: { image, _ in
+                                    guard let image = image else {
+                                      return
+                                    }
+                                    item.set(image: image)
+                                   })
 
     return item
   }
+}
 
+extension ImagesViewController: UICollectionViewDelegateFlowLayout {
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+    let inset = self.collectionViewFlowLayout.sectionInset
+
+    let itemPerRow: CGFloat = 3
+    let widthPadding = inset.left * (itemPerRow + 1)
+    let itemPerColumn: CGFloat = 5
+
+    let widthAndHeight: CGFloat = (self.collectionView.frame.width - widthPadding) / itemPerRow
+
+    return CGSize(width: widthAndHeight, height: widthAndHeight)
+  }
 }
 

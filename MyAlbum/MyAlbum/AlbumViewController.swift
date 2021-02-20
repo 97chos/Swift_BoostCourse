@@ -10,7 +10,8 @@ import UIKit
 import Photos
 
 enum ReusealbleIdentifier{
-  static let collectionViewCell = "CollectionViewCell"
+  static let albumViewCell = "albumViewCell"
+  static let imagesViewCel = "imagesViewCell"
 }
 
 class AlbumViewController: UIViewController {
@@ -64,7 +65,7 @@ class AlbumViewController: UIViewController {
     self.collectionView.dataSource = self
 
     self.collectionView.setCollectionViewLayout(self.collectionViewLayout, animated: true)
-    self.collectionView.register(AlbumCollectionViewItem.self, forCellWithReuseIdentifier: ReusealbleIdentifier.collectionViewCell)
+    self.collectionView.register(AlbumCollectionViewItem.self, forCellWithReuseIdentifier: ReusealbleIdentifier.albumViewCell)
   }
 
 
@@ -145,7 +146,7 @@ extension AlbumViewController: UICollectionViewDataSource {
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-    guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: ReusealbleIdentifier.collectionViewCell, for: indexPath) as? AlbumCollectionViewItem else {
+    guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: ReusealbleIdentifier.albumViewCell, for: indexPath) as? AlbumCollectionViewItem else {
       return UICollectionViewCell()
     }
 
