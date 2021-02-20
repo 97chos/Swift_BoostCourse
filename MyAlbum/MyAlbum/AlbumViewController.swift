@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import SnapKit
+import Photos
 
 enum ReusealbleIdentifier{
   static let collectionViewCell = "CollectionViewCell"
@@ -17,7 +17,10 @@ class AlbumViewController: UIViewController {
 
   // MARK: Properties
 
+
   private let dummy:[String] = ["roll","favorite","음식","사람들","여행"]
+  private var resultAssetCollection: PHFetchResult<PHAssetCollection>!
+  private var resultAsset: PHFetchResult<PHAsset>!
 
 
   // MARK: UI
@@ -40,7 +43,9 @@ class AlbumViewController: UIViewController {
 
 
   // MARK: View LifeCycle
+
   override func viewDidLoad() {
+    self.checkAuthorization()
     self.configure()
     self.layout()
   }
@@ -74,11 +79,67 @@ class AlbumViewController: UIViewController {
     }
   }
 
+
+  // MARK: Functions
+
+  private func checkAuthorization() {
+    let isAuthorized = PHPhotoLibrary.authorizationStatus()
+
+    switch isAuthorized {
+    case .authorized:
+      self.fetchAssetCollection()
+      DispatchQueue.main.async {
+        self.collectionView.reloadData()
+      }
+    case .denied:
+      print("접근 거부")
+    case .notDetermined:
+      PHPhotoLibrary.requestAuthorization{ status in
+        switch status {
+        case .authorized:
+          self.fetchAssetCollection()
+          DispatchQueue.main.async {
+            self.collectionView.reloadData()
+          }
+        case .denied:
+          print("거부됨")
+        default:
+          print("그외")
+        }
+      }
+    case .limited:
+      print("제한된 접근")
+
+    case .restricted:
+      print("접근 제한")
+
+    @unknown default:
+      print("미래를 위한 에러 처리")
+    }
+  }
+
+  private func fetchAssetCollection() {
+    let cameraRoll: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album,
+                                                                                               subtype: .any,
+                                                                                               options: nil)
+
+    self.resultAssetCollection = cameraRoll
+  }
+
+  private func fetchAsset(AssetCollection: PHAssetCollection) -> PHAsset {
+    let fetchOptions = PHFetchOptions()
+    fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+
+    let resultAsset = PHAsset.fetchAssets(in: AssetCollection, options: fetchOptions).firstObject ?? PHAsset()
+
+    return resultAsset
+  }
+
 }
 
 extension AlbumViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return self.dummy.count
+    return self.resultAssetCollection.count
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -86,6 +147,24 @@ extension AlbumViewController: UICollectionViewDataSource {
     guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: ReusealbleIdentifier.collectionViewCell, for: indexPath) as? AlbumCollectionViewItem else {
       return UICollectionViewCell()
     }
+
+    let assetCollection = self.resultAssetCollection[indexPath.item]
+
+    let collectionTitle: String = assetCollection.localizedTitle ?? ""
+    let asset = self.fetchAsset(AssetCollection: assetCollection)
+
+    let imageManager = PHCachingImageManager()
+
+    imageManager.requestImage(for: asset,
+                                  targetSize: CGSize(width: 50, height: 50),
+                                  contentMode: .aspectFill,
+                                  options: nil,
+                                  resultHandler: { image, _ in
+                                    guard let image = image else {
+                                      return
+                                    }
+                                    item.set(image: image, title: collectionTitle, count: assetCollection.estimatedAssetCount)
+                                  })
 
     return item
   }

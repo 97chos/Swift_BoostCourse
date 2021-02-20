@@ -15,19 +15,16 @@ class AlbumCollectionViewItem: UICollectionViewCell {
 
   private let ImgView: UIImageView = {
     let imageView = UIImageView()
-    imageView.image = UIImage(named: "album")
     return imageView
   }()
   private let albumTitle: UILabel = {
     let label = UILabel()
     label.font = .boldSystemFont(ofSize: 15)
-    label.text = "앨범1"
     return label
   }()
   private let albumCount: UILabel = {
     let label = UILabel()
     label.font = .systemFont(ofSize: 15)
-    label.text = "앨범2"
     return label
   }()
 
@@ -40,6 +37,14 @@ class AlbumCollectionViewItem: UICollectionViewCell {
 
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  func set(image: UIImage, title: String, count: Int) {
+
+    self.ImgView.image = image
+    self.albumTitle.text = title
+    self.albumCount.text = "\(count)"
+
   }
 
   // MARK: Layout
