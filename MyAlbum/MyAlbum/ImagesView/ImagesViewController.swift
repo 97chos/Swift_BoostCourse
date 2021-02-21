@@ -88,7 +88,7 @@ class ImagesViewController: UIViewController {
   @objc private func chageAlign() {
     self.descend = !descend
     self.fetchFromAssetCollection(descend: descend)
-    self.collectionView.reloadData()
+    self.collectionView.reloadSections(IndexSet(integer: 0))
   }
 
 
