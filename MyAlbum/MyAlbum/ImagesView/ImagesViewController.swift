@@ -21,9 +21,9 @@ class ImagesViewController: UIViewController {
   private var descend: Bool = false {
     didSet {
       if descend {
-        self.alignButton.title = "오래된순"
+        self.sortButton.title = "오래된순"
       } else {
-        self.alignButton.title = "최신순"
+        self.sortButton.title = "최신순"
       }
     }
   }
@@ -51,9 +51,19 @@ class ImagesViewController: UIViewController {
     toolBar.barTintColor = .systemGray
     return toolBar
   }()
-  private lazy var alignButton: UIBarButtonItem = {
+  private lazy var sortButton: UIBarButtonItem = {
     let barbutton = UIBarButtonItem(title: "최신순", style: .plain, target: self, action: #selector(self.chageAlign))
     return barbutton
+  }()
+  private lazy var shareButton: UIBarButtonItem = {
+    let button = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(self.share))
+    button.isEnabled = false
+    return button
+  }()
+  private lazy var trashButton: UIBarButtonItem = {
+    let button = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(self.trash))
+    button.isEnabled = false
+    return button
   }()
   private let flexibleSpace1: UIBarButtonItem = {
     let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -89,6 +99,14 @@ class ImagesViewController: UIViewController {
     self.descend = !descend
     self.fetchFromAssetCollection(descend: descend)
     self.collectionView.reloadSections(IndexSet(integer: 0))
+  }
+
+  @objc private func share() {
+
+  }
+
+  @objc private func trash() {
+
   }
 
 
@@ -129,9 +147,8 @@ class ImagesViewController: UIViewController {
       $0.leading.equalToSuperview()
     }
 
-    self.toolBar.setItems([flexibleSpace1,alignButton,flexibleSpace2], animated: true)
+    self.toolBar.setItems([shareButton,flexibleSpace1,sortButton,flexibleSpace2,trashButton], animated: true)
   }
-
 }
 
 extension ImagesViewController: UICollectionViewDelegate {
