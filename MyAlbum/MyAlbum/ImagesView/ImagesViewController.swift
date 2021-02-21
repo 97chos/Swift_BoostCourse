@@ -12,12 +12,22 @@ import SnapKit
 
 class ImagesViewController: UIViewController {
 
-
   // MARK: Properties
 
   private let assets: PHAssetCollection!
-  private var fetchResult: PHFetchResult<PHAsset>?
+  private var fetchResult: PHFetchResult<PHAsset>!
   private let imageManager: PHCachingImageManager = PHCachingImageManager()
+  private var selectedItems: [PHAsset] = [] {
+    didSet {
+      if self.selectedItems.count < 1 {
+        self.shareButton.isEnabled = false
+        self.trashButton.isEnabled = false
+      } else {
+        self.shareButton.isEnabled = true
+        self.trashButton.isEnabled = true
+      }
+    }
+  }
   private var descend: Bool = false {
     didSet {
       if descend {
@@ -80,6 +90,8 @@ class ImagesViewController: UIViewController {
   }()
 
 
+  // MARK: Initializing
+
   init(asset: PHAssetCollection) {
     self.assets = asset
     super.init(nibName: nil, bundle: nil)
@@ -109,6 +121,7 @@ class ImagesViewController: UIViewController {
     } else {
       self.collectionView.isEditing = true
       self.collectionView.allowsMultipleSelection = false
+      self.selectedItems = []
       self.selectButton.title = "선택"
     }
   }
@@ -158,7 +171,6 @@ class ImagesViewController: UIViewController {
   private func fetchFromAssetCollection(descend: Bool = false) {
     let fetchOptions = PHFetchOptions()
     fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: descend)]
-
     self.fetchResult = PHAsset.fetchAssets(in: self.assets, options: fetchOptions)
   }
 
@@ -182,7 +194,18 @@ class ImagesViewController: UIViewController {
 
 
 extension ImagesViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if !selectedItems.contains(self.fetchResult[indexPath.item]) {
+      self.selectedItems.append(self.fetchResult[indexPath.item])
+    }
+  }
 
+  func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    if selectedItems.contains(self.fetchResult[indexPath.item]) {
+      let index = self.selectedItems.firstIndex(of: self.fetchResult[indexPath.item])
+      self.selectedItems.remove(at: index ?? 0)
+    }
+  }
 }
 
 extension ImagesViewController: UICollectionViewDataSource {
