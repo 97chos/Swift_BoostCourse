@@ -18,7 +18,7 @@ class AlbumViewController: UIViewController {
 
   // MARK: Properties
 
-  private var resultAssetCollection: PHFetchResult<PHAssetCollection>!
+  private var resultAssetCollection: PHFetchResult<PHAssetCollection>?
   private let imageManager = PHCachingImageManager()
 
 
@@ -47,8 +47,8 @@ class AlbumViewController: UIViewController {
     self.checkAuthorization()
     self.configure()
     self.layout()
+    PHPhotoLibrary.shared().register(self)
   }
-
 
   // MARK: Configuration
 
@@ -143,7 +143,7 @@ class AlbumViewController: UIViewController {
 
 extension AlbumViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return self.resultAssetCollection.count
+    return self.resultAssetCollection?.count ?? 0
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -151,7 +151,9 @@ extension AlbumViewController: UICollectionViewDataSource {
       return UICollectionViewCell()
     }
 
-    let assetCollection = self.resultAssetCollection[indexPath.item]
+    guard let assetCollection = self.resultAssetCollection?[indexPath.item] else {
+      return UICollectionViewCell()
+    }
 
     let collectionTitle: String = assetCollection.localizedTitle ?? ""
     let collectionCount: Int = assetCollection.estimatedAssetCount
@@ -177,7 +179,7 @@ extension AlbumViewController: UICollectionViewDataSource {
 extension AlbumViewController: UICollectionViewDelegate {
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let imagesViewController = ImagesViewController(asset: self.resultAssetCollection[indexPath.item])
+    let imagesViewController = ImagesViewController(asset: self.resultAssetCollection?[indexPath.item] ?? PHAssetCollection())
     self.navigationController?.pushViewController(imagesViewController, animated: true)
   }
 }
@@ -203,4 +205,17 @@ extension AlbumViewController: UICollectionViewDelegateFlowLayout {
 }
 
 
+extension AlbumViewController: PHPhotoLibraryChangeObserver {
+  func photoLibraryDidChange(_ changeInstance: PHChange) {
+    guard let resultAssertCollection = self.resultAssetCollection,
+          let change = changeInstance.changeDetails(for: resultAssertCollection) else {
+      return
+    }
 
+    self.resultAssetCollection = change.fetchResultAfterChanges
+
+    DispatchQueue.main.async {
+      self.collectionView.reloadData()
+    }
+  }
+}

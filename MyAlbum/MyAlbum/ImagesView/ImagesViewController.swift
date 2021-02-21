@@ -152,7 +152,6 @@ class ImagesViewController: UIViewController {
   }
 
   @objc private func trash() {
-    
     PHPhotoLibrary.shared().performChanges({ PHAssetChangeRequest.deleteAssets(self.selectedItems as NSArray)}, completionHandler: nil)
   }
 
