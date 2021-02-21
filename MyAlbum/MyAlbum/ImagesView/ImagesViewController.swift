@@ -18,6 +18,15 @@ class ImagesViewController: UIViewController {
   private let assets: PHAssetCollection!
   private var fetchResult: PHFetchResult<PHAsset>?
   private let imageManager: PHCachingImageManager = PHCachingImageManager()
+  private var descend: Bool = false {
+    didSet {
+      if descend {
+        self.alignButton.title = "오래된순"
+      } else {
+        self.alignButton.title = "최신순"
+      }
+    }
+  }
 
 
   // MARK: UI
@@ -77,7 +86,9 @@ class ImagesViewController: UIViewController {
   // MARK: Actions
 
   @objc private func chageAlign() {
-
+    self.descend = !descend
+    self.fetchFromAssetCollection(descend: descend)
+    self.collectionView.reloadData()
   }
 
 
@@ -99,13 +110,11 @@ class ImagesViewController: UIViewController {
 
     self.collectionView.setCollectionViewLayout(self.collectionViewFlowLayout, animated: true)
     self.collectionView.register(ImagesViewItem.self, forCellWithReuseIdentifier: ReusealbleIdentifier.imagesViewCell)
-
-    self.toolBar.setItems([flexibleSpace1,alignButton,flexibleSpace2], animated: true)
   }
 
-  private func fetchFromAssetCollection() {
+  private func fetchFromAssetCollection(descend: Bool = false) {
     let fetchOptions = PHFetchOptions()
-    fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+    fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: descend)]
 
     self.fetchResult = PHAsset.fetchAssets(in: self.assets, options: fetchOptions)
   }
@@ -119,6 +128,8 @@ class ImagesViewController: UIViewController {
       $0.width.equalToSuperview()
       $0.leading.equalToSuperview()
     }
+
+    self.toolBar.setItems([flexibleSpace1,alignButton,flexibleSpace2], animated: true)
   }
 
 }
