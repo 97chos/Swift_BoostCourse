@@ -36,6 +36,7 @@ class ImagesViewController: UIViewController {
     collectionView.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
     collectionView.backgroundColor = .systemBackground
     collectionView.alwaysBounceVertical = true
+    collectionView.allowsMultipleSelectionDuringEditing = true
     return collectionView
   }()
   private let collectionViewFlowLayout: UICollectionViewFlowLayout = {
@@ -46,9 +47,13 @@ class ImagesViewController: UIViewController {
     flowLayout.minimumInteritemSpacing = 10
     return flowLayout
   }()
+  private lazy var selectButton: UIBarButtonItem = {
+    let button = UIBarButtonItem(title: "선택", style: .plain, target: self, action: #selector(self.edit))
+    return button
+  }()
   private lazy var toolBar: UIToolbar = {
     let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 56))
-    toolBar.barTintColor = .systemGray
+    toolBar.barTintColor = .systemGray5
     return toolBar
   }()
   private lazy var sortButton: UIBarButtonItem = {
@@ -95,6 +100,16 @@ class ImagesViewController: UIViewController {
 
   // MARK: Actions
 
+  @objc private func edit() {
+    if self.collectionView.isEditing {
+      self.collectionView.isEditing = false
+      self.selectButton.title = "선택"
+    } else {
+      self.collectionView.isEditing = true
+      self.selectButton.title = "취소"
+    }
+  }
+
   @objc private func chageAlign() {
     self.descend = !descend
     self.fetchFromAssetCollection(descend: descend)
@@ -114,6 +129,7 @@ class ImagesViewController: UIViewController {
 
   private func configure() {
     self.viewConfigure()
+    self.collectionViewConfigure()
     self.fetchFromAssetCollection()
     self.layout()
   }
@@ -122,7 +138,10 @@ class ImagesViewController: UIViewController {
     self.title = self.assets.localizedTitle
     self.view.backgroundColor = .systemBackground
     self.navigationItem.largeTitleDisplayMode = .never
+    self.navigationItem.rightBarButtonItem = self.selectButton
+  }
 
+  private func collectionViewConfigure() {
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
 
