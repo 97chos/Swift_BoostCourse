@@ -108,6 +108,7 @@ class ImagesViewController: UIViewController {
     print(self.collectionView.isEditing)
     super.viewDidLoad()
     self.configure()
+    PHPhotoLibrary.shared().register(self)
   }
 
 
@@ -151,7 +152,8 @@ class ImagesViewController: UIViewController {
   }
 
   @objc private func trash() {
-
+    
+    PHPhotoLibrary.shared().performChanges({ PHAssetChangeRequest.deleteAssets(self.selectedItems as NSArray)}, completionHandler: nil)
   }
 
 
@@ -247,7 +249,6 @@ extension ImagesViewController: UICollectionViewDataSource {
 }
 
 extension ImagesViewController: UICollectionViewDelegateFlowLayout {
-
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
     let inset = self.collectionViewFlowLayout.sectionInset
@@ -261,3 +262,16 @@ extension ImagesViewController: UICollectionViewDelegateFlowLayout {
   }
 }
 
+extension ImagesViewController: PHPhotoLibraryChangeObserver {
+  func photoLibraryDidChange(_ changeInstance: PHChange) {
+    guard let changes = changeInstance.changeDetails(for: fetchResult) else {
+      return
+    }
+
+    self.fetchResult = changes.fetchResultAfterChanges
+
+    DispatchQueue.main.async {
+      self.collectionView.reloadSections(IndexSet(arrayLiteral: 0))
+    }
+  }
+}
