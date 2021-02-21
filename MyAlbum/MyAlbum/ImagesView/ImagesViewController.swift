@@ -133,7 +133,21 @@ class ImagesViewController: UIViewController {
   }
 
   @objc private func share() {
-
+    var selectedImages: [UIImage] = []
+    self.selectedItems.forEach { asset in
+      self.imageManager.requestImage(for: asset,
+                                     targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight),
+                                     contentMode: .aspectFill,
+                                     options: nil,
+                                     resultHandler: { image, _ in
+                                      guard let image = image else {
+                                        return
+                                      }
+                                      selectedImages.append(image)
+                                     })
+    }
+    let activityVC = UIActivityViewController(activityItems: selectedImages, applicationActivities: nil)
+    self.present(activityVC, animated: true)
   }
 
   @objc private func trash() {
@@ -190,7 +204,6 @@ class ImagesViewController: UIViewController {
     self.toolBar.setItems([shareButton,flexibleSpace1,sortButton,flexibleSpace2,trashButton], animated: true)
   }
 }
-
 
 
 extension ImagesViewController: UICollectionViewDelegate {
