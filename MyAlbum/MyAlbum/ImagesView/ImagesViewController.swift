@@ -46,8 +46,8 @@ class ImagesViewController: UIViewController {
     flowLayout.minimumInteritemSpacing = 10
     return flowLayout
   }()
-  private let toolBar: UIToolbar = {
-    let toolBar = UIToolbar(frame: CGRect.zero)
+  private lazy var toolBar: UIToolbar = {
+    let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 56))
     toolBar.barTintColor = .systemGray
     return toolBar
   }()
