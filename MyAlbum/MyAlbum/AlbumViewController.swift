@@ -136,8 +136,10 @@ class AlbumViewController: UIViewController {
 
     return resultAsset
   }
-
 }
+
+
+// MARK: CollectionView DataSource
 
 extension AlbumViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -145,7 +147,6 @@ extension AlbumViewController: UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
     guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: ReusealbleIdentifier.albumViewCell, for: indexPath) as? AlbumCollectionViewItem else {
       return UICollectionViewCell()
     }
@@ -166,10 +167,12 @@ extension AlbumViewController: UICollectionViewDataSource {
                                 }
                                 item.set(image: image, title: collectionTitle, count: collectionCount)
                               })
-
     return item
   }
 }
+
+
+// MARK: CollectionView Delegate
 
 extension AlbumViewController: UICollectionViewDelegate {
 
@@ -178,6 +181,9 @@ extension AlbumViewController: UICollectionViewDelegate {
     self.navigationController?.pushViewController(imagesViewController, animated: true)
   }
 }
+
+
+// MARK: CollectionView Delegate Flow Layout
 
 extension AlbumViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -195,3 +201,6 @@ extension AlbumViewController: UICollectionViewDelegateFlowLayout {
     return CGSize(width: width, height: height)
   }
 }
+
+
+

@@ -234,7 +234,7 @@ extension ImagesViewController: UICollectionViewDataSource {
     let asset = self.fetchResult?.object(at: indexPath.item) ?? PHAsset()
 
     self.imageManager.requestImage(for: asset,
-                                   targetSize: CGSize(width: 10, height: 10),
+                                   targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight),
                                    contentMode: .aspectFill,
                                    options: nil,
                                    resultHandler: { image, _ in
