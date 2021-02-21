@@ -36,7 +36,7 @@ class ImagesViewController: UIViewController {
     collectionView.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
     collectionView.backgroundColor = .systemBackground
     collectionView.alwaysBounceVertical = true
-    collectionView.allowsMultipleSelectionDuringEditing = true
+    collectionView.isEditing = true
     return collectionView
   }()
   private let collectionViewFlowLayout: UICollectionViewFlowLayout = {
@@ -93,6 +93,7 @@ class ImagesViewController: UIViewController {
   // MARK: View LifeCycle
 
   override func viewDidLoad() {
+    print(self.collectionView.isEditing)
     super.viewDidLoad()
     self.configure()
   }
@@ -103,10 +104,12 @@ class ImagesViewController: UIViewController {
   @objc private func edit() {
     if self.collectionView.isEditing {
       self.collectionView.isEditing = false
-      self.selectButton.title = "선택"
+      self.collectionView.allowsMultipleSelection = true
+      self.selectButton.title = "취소"
     } else {
       self.collectionView.isEditing = true
-      self.selectButton.title = "취소"
+      self.collectionView.allowsMultipleSelection = false
+      self.selectButton.title = "선택"
     }
   }
 
@@ -149,12 +152,18 @@ class ImagesViewController: UIViewController {
     self.collectionView.register(ImagesViewItem.self, forCellWithReuseIdentifier: ReusealbleIdentifier.imagesViewCell)
   }
 
+
+  // MARK: Fetch Asset
+
   private func fetchFromAssetCollection(descend: Bool = false) {
     let fetchOptions = PHFetchOptions()
     fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: descend)]
 
     self.fetchResult = PHAsset.fetchAssets(in: self.assets, options: fetchOptions)
   }
+
+
+  // MARK: Layout
 
   private func layout() {
     self.view.addSubview(self.collectionView)
@@ -169,6 +178,8 @@ class ImagesViewController: UIViewController {
     self.toolBar.setItems([shareButton,flexibleSpace1,sortButton,flexibleSpace2,trashButton], animated: true)
   }
 }
+
+
 
 extension ImagesViewController: UICollectionViewDelegate {
 

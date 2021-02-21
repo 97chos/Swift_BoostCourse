@@ -33,6 +33,18 @@ class ImagesViewItem: UICollectionViewCell {
     self.imgView.image = image
   }
 
+  override var isSelected: Bool {
+    didSet{
+      if self.isSelected {
+        self.layer.borderWidth = 5
+        self.imgView.alpha = 0.6
+      } else {
+        self.layer.borderWidth = 0
+        self.imgView.alpha = 1
+      }
+    }
+  }
+
 
   // MARK: Layout
 
