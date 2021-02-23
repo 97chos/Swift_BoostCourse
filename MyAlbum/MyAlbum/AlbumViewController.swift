@@ -87,9 +87,9 @@ class AlbumViewController: UIViewController {
 
     switch isAuthorized {
     case .authorized:
-      self.fetchAssetCollection()
       DispatchQueue.main.async {
-        self.collectionView.reloadData()
+        self.fetchAssetCollection()
+        self.collectionView.reloadSections(IndexSet(arrayLiteral: 0))
       }
     case .denied:
       print("접근 거부")
@@ -158,6 +158,11 @@ extension AlbumViewController: UICollectionViewDataSource {
     let collectionTitle: String = assetCollection.localizedTitle ?? ""
     let collectionCount: Int = assetCollection.estimatedAssetCount
     let asset = self.fetchAsset(AssetCollection: assetCollection)
+
+    guard collectionCount != 0 else {
+      item.set(image: UIImage(named: "empty")!, title: collectionTitle, count: 0)
+      return item
+    }
 
     imageManager.requestImage(for: asset,
                               targetSize: CGSize(width: 20, height: 20),
