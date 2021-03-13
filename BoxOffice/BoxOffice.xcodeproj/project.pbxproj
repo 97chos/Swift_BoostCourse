@@ -3,16 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		DEEA3CA88762EED9C29D5DB6 /* Pods_BoxOffice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277DC16BFE588D40177F1A5C /* Pods_BoxOffice.framework */; };
 		FF999D3825FCA8340044C1F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF999D3725FCA8340044C1F1 /* AppDelegate.swift */; };
 		FF999D3A25FCA8340044C1F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF999D3925FCA8340044C1F1 /* SceneDelegate.swift */; };
-		FF999D3C25FCA8340044C1F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF999D3B25FCA8340044C1F1 /* ViewController.swift */; };
+		FF999D3C25FCA8340044C1F1 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF999D3B25FCA8340044C1F1 /* ListViewController.swift */; };
 		FF999D4125FCA8360044C1F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF999D4025FCA8360044C1F1 /* Assets.xcassets */; };
 		FF999D4425FCA8360044C1F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF999D4225FCA8360044C1F1 /* LaunchScreen.storyboard */; };
+		FF999D5325FCADCC0044C1F1 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF999D5225FCADCC0044C1F1 /* CollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,10 +23,11 @@
 		FF999D3425FCA8340044C1F1 /* BoxOffice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxOffice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF999D3725FCA8340044C1F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF999D3925FCA8340044C1F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FF999D3B25FCA8340044C1F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FF999D3B25FCA8340044C1F1 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		FF999D4025FCA8360044C1F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF999D4325FCA8360044C1F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF999D4525FCA8360044C1F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF999D5225FCADCC0044C1F1 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +56,6 @@
 				494ED5053DEE9A44DE434606 /* Pods-BoxOffice.debug.xcconfig */,
 				1FF2C13AF1CCF96D4F57090D /* Pods-BoxOffice.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,7 +82,8 @@
 			children = (
 				FF999D3725FCA8340044C1F1 /* AppDelegate.swift */,
 				FF999D3925FCA8340044C1F1 /* SceneDelegate.swift */,
-				FF999D3B25FCA8340044C1F1 /* ViewController.swift */,
+				FF999D3B25FCA8340044C1F1 /* ListViewController.swift */,
+				FF999D5225FCADCC0044C1F1 /* CollectionViewController.swift */,
 				FF999D4025FCA8360044C1F1 /* Assets.xcassets */,
 				FF999D4225FCA8360044C1F1 /* LaunchScreen.storyboard */,
 				FF999D4525FCA8360044C1F1 /* Info.plist */,
@@ -202,7 +204,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF999D3C25FCA8340044C1F1 /* ViewController.swift in Sources */,
+				FF999D5325FCADCC0044C1F1 /* CollectionViewController.swift in Sources */,
+				FF999D3C25FCA8340044C1F1 /* ListViewController.swift in Sources */,
 				FF999D3825FCA8340044C1F1 /* AppDelegate.swift in Sources */,
 				FF999D3A25FCA8340044C1F1 /* SceneDelegate.swift in Sources */,
 			);
