@@ -87,8 +87,8 @@ class AlbumViewController: UIViewController {
 
     switch isAuthorized {
     case .authorized:
+      self.fetchAssetCollection()
       DispatchQueue.main.async {
-        self.fetchAssetCollection()
         self.collectionView.reloadSections(IndexSet(arrayLiteral: 0))
       }
     case .denied:
@@ -132,7 +132,7 @@ class AlbumViewController: UIViewController {
     let fetchOptions = PHFetchOptions()
     fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 
-    let resultAsset = PHAsset.fetchAssets(in: AssetCollection, options: fetchOptions).firstObject ?? PHAsset()
+    let resultAsset = PHAsset.fetchAssets(in: AssetCollection, options: fetchOptions).lastObject ?? PHAsset()
 
     return resultAsset
   }

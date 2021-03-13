@@ -3,4 +3,54 @@
    uuid = "22AC88EB-F119-440D-9AE4-8BB647F4896F"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2B420AE-76BF-4A32-94A3-22E0C6C44FB8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyAlbum/AlbumViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "checkAuthorization()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F2B420AE-76BF-4A32-94A3-22E0C6C44FB8 - d5bf7fcaf83f31c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyAlbum.AlbumViewController.(checkAuthorization in _5768F74E6A2E2BB6CE38C3F2EF38A172)() -&gt; ()"
+                  moduleName = "MyAlbum"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanghocho/Desktop/Swift_ToyPR/MyAlbum/MyAlbum/AlbumViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "852">
+               </Location>
+               <Location
+                  uuid = "F2B420AE-76BF-4A32-94A3-22E0C6C44FB8 - 9b9a81399af204b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.PHAuthorizationStatus) -&gt; () in MyAlbum.AlbumViewController.(checkAuthorization in _5768F74E6A2E2BB6CE38C3F2EF38A172)() -&gt; ()"
+                  moduleName = "MyAlbum"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanghocho/Desktop/Swift_ToyPR/MyAlbum/MyAlbum/AlbumViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "220">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
