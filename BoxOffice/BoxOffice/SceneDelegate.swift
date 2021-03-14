@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     self.window?.windowScene = scene
 
     let tabBarController = UITabBarController()
-    let firstVC = UINavigationController(rootViewController: ListViewController())
+    let firstVC = UINavigationController(rootViewController: ListViewController(viewModel: ListViewModel()))
     let SecondVC = UINavigationController(rootViewController: CollectionViewController())
 
     firstVC.tabBarItem = UITabBarItem(title: "Table", image: UIImage(named: "ic_table"), tag: 0)
