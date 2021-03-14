@@ -9,7 +9,8 @@ import UIKit
 import SnapKit
 
 enum reuseIdentifier {
-  static let reuseCell = "ReusableCell"
+  static let reuseTableViewCell = "ReusableTableViewCell"
+  static let reuseCollectionViewCell = "ReusableCollectionViewCell"
 }
 
 class ListViewController: UIViewController {
@@ -17,6 +18,7 @@ class ListViewController: UIViewController {
   // MARK: Properties
 
   let viewModel: ListViewModel
+  let singleton = MovieListData.shared
 
 
   // MARK: UI
@@ -51,6 +53,11 @@ class ListViewController: UIViewController {
     self.loadMoviewData()
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    self.tableView.reloadData()
+    self.navigationItem.title = self.singleton.sort.rawValue
+  }
+
 
   // MARK: Configuration
 
@@ -63,11 +70,11 @@ class ListViewController: UIViewController {
   private func viewConfigure() {
     self.view.backgroundColor = .systemBackground
     self.navigationItem.rightBarButtonItem = self.setSortButton
-    self.title = viewModel.sort.rawValue
+    self.navigationItem.title = self.singleton.sort.rawValue
   }
 
   private func tableViewConfigure() {
-    self.tableView.register(ListViewCell.self, forCellReuseIdentifier: reuseIdentifier.reuseCell)
+    self.tableView.register(ListViewCell.self, forCellReuseIdentifier: reuseIdentifier.reuseTableViewCell)
     self.tableView.dataSource = self
     self.tableView.delegate = self
   }
@@ -76,7 +83,7 @@ class ListViewController: UIViewController {
     self.viewModel.loadMovies{ result in
       switch result {
       case .success(let movies):
-        self.viewModel.movieList = movies
+        self.singleton.movieList = movies
         DispatchQueue.main.async {
           self.tableView.reloadData()
         }
@@ -94,20 +101,20 @@ class ListViewController: UIViewController {
     let sheet = UIAlertController(title: "정렬 방식 선택", message: "영화를 어떤 순서로 정렬할까요?", preferredStyle: .actionSheet)
     sheet.addAction(UIAlertAction(title: "예매율", style: .default){ [weak self]_ in
       guard let self = self else { return }
-      self.viewModel.sort = .reservation
-      self.title = self.viewModel.sort.rawValue
+      self.singleton.sort = .reservation
+      self.navigationItem.title = self.singleton.sort.rawValue
       self.tableView.reloadData()
     })
     sheet.addAction(UIAlertAction(title: "큐레이션", style: .default){ [weak self] _ in
       guard let self = self else { return }
-      self.viewModel.sort = .curation
-      self.title = self.viewModel.sort.rawValue
+      self.singleton.sort = .curation
+      self.navigationItem.title = self.singleton.sort.rawValue
       self.tableView.reloadData()
     })
     sheet.addAction(UIAlertAction(title: "개봉일", style: .default){ [weak self] _ in
       guard let self = self else { return }
-      self.viewModel.sort = .release
-      self.title = self.viewModel.sort.rawValue
+      self.singleton.sort = .release
+      self.navigationItem.title = self.singleton.sort.rawValue
       self.tableView.reloadData()
     })
     sheet.addAction(UIAlertAction(title: "취소", style: .cancel))
@@ -129,15 +136,15 @@ class ListViewController: UIViewController {
 
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.viewModel.movieList.count
+    return self.singleton.movieList.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier.reuseCell) as? ListViewCell else {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier.reuseTableViewCell) as? ListViewCell else {
       return UITableViewCell()
     }
 
-    cell.set(movie: self.viewModel.movieList[indexPath.row])
+    cell.set(movie: self.singleton.movieList[indexPath.row])
 
     return cell
   }
