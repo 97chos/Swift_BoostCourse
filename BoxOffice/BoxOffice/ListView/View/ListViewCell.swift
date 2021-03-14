@@ -20,17 +20,17 @@ class ListViewCell: UITableViewCell {
   }()
   private let titleLabel: UILabel = {
     let label = UILabel()
-    label.font = .systemFont(ofSize: 15)
+    label.font = .systemFont(ofSize: 17)
     return label
   }()
   private let movieInforLabel: UILabel = {
     let label = UILabel()
-    label.font = .systemFont(ofSize: 12)
+    label.font = .systemFont(ofSize: 15)
     return label
   }()
   private let openDataLabel: UILabel = {
     let label = UILabel()
-    label.font = .systemFont(ofSize: 10)
+    label.font = .systemFont(ofSize: 12)
     return label
   }()
   private let gradeImgView: UIImageView = {
