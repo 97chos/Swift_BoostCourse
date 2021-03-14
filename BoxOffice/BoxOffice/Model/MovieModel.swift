@@ -27,7 +27,8 @@ struct Movie: Codable {
   let date: String
   let id: String
 
-  lazy var movieInformation: String = "평점: \(self.userRating) 예매순위: \(self.reservationRate) 예매율: \(reservationGrade)"
+  lazy var movieInformation: String = "평점: \(self.userRating) 예매순위: \(self.reservationGrade) 예매율: \(reservationRate)"
+  lazy var movieInformationCollection: String = "\(self.reservationGrade)위(\(self.userRating)) / \(self.reservationRate)%"
 
   enum CodingKeys: String, CodingKey {
     case grade
