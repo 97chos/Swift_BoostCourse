@@ -33,27 +33,8 @@ class ListViewModel {
 
   // MARK: Properties
 
-  var movieList: [Movie] = []
   let url: URL? = URL(string: "https://connect-boxoffice.run.goorm.io/movies")
-  var sort: SortType = .reservation {
-    didSet {
-      self.sortArray()
-    }
-  }
   
-
-  // MARK: Functions
-
-  func sortArray() {
-    switch self.sort {
-    case .curation:
-      self.movieList.sort(by: {$0.reservationRate > $1.reservationRate})
-    case .release:
-      self.movieList.sort(by: {$0.date > $1.date})
-    case .reservation:
-      self.movieList.sort(by: {$0.reservationGrade < $1.reservationGrade})
-    }
-  }
 
   // MARK: API Call
 
