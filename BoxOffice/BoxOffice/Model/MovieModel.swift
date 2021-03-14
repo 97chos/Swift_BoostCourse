@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct rawData: Codable {
   let orderType: Int
   let movies: [Movie]

@@ -14,6 +14,9 @@
 		FF999D4125FCA8360044C1F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF999D4025FCA8360044C1F1 /* Assets.xcassets */; };
 		FF999D4425FCA8360044C1F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF999D4225FCA8360044C1F1 /* LaunchScreen.storyboard */; };
 		FF999D5325FCADCC0044C1F1 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF999D5225FCADCC0044C1F1 /* CollectionViewController.swift */; };
+		FF999D6425FCB1C80044C1F1 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF999D6325FCB1C80044C1F1 /* MovieModel.swift */; };
+		FF999D6825FCB3520044C1F1 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF999D6725FCB3520044C1F1 /* ListViewModel.swift */; };
+		FF999D6C25FDAD8F0044C1F1 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF999D6B25FDAD8F0044C1F1 /* ListViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		FF999D4325FCA8360044C1F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF999D4525FCA8360044C1F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF999D5225FCADCC0044C1F1 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		FF999D6325FCB1C80044C1F1 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		FF999D6725FCB3520044C1F1 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		FF999D6B25FDAD8F0044C1F1 /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +89,47 @@
 				FF999D3725FCA8340044C1F1 /* AppDelegate.swift */,
 				FF999D3925FCA8340044C1F1 /* SceneDelegate.swift */,
 				FF999D3B25FCA8340044C1F1 /* ListViewController.swift */,
+				FF999D6725FCB3520044C1F1 /* ListViewModel.swift */,
+				FF999D5825FCB0C20044C1F1 /* ListView */,
 				FF999D5225FCADCC0044C1F1 /* CollectionViewController.swift */,
+				FF999D6125FCB11B0044C1F1 /* Model */,
 				FF999D4025FCA8360044C1F1 /* Assets.xcassets */,
 				FF999D4225FCA8360044C1F1 /* LaunchScreen.storyboard */,
 				FF999D4525FCA8360044C1F1 /* Info.plist */,
 			);
 			path = BoxOffice;
+			sourceTree = "<group>";
+		};
+		FF999D5825FCB0C20044C1F1 /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				FF999D6A25FDAD850044C1F1 /* View */,
+				FF999D5925FCB0CD0044C1F1 /* ViewModel */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		FF999D5925FCB0CD0044C1F1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FF999D6125FCB11B0044C1F1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FF999D6325FCB1C80044C1F1 /* MovieModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FF999D6A25FDAD850044C1F1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FF999D6B25FDAD8F0044C1F1 /* ListViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,9 +246,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF999D5325FCADCC0044C1F1 /* CollectionViewController.swift in Sources */,
+				FF999D6425FCB1C80044C1F1 /* MovieModel.swift in Sources */,
+				FF999D6825FCB3520044C1F1 /* ListViewModel.swift in Sources */,
 				FF999D3C25FCA8340044C1F1 /* ListViewController.swift in Sources */,
 				FF999D3825FCA8340044C1F1 /* AppDelegate.swift in Sources */,
 				FF999D3A25FCA8340044C1F1 /* SceneDelegate.swift in Sources */,
+				FF999D6C25FDAD8F0044C1F1 /* ListViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
