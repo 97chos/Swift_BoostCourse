@@ -64,29 +64,11 @@ class ListViewCell: UITableViewCell {
   }
 
   private func getPosterImage(_ movie: Movie) {
-    guard let url = URL(string: movie.thumb) else { return }
-    do {
-      let imageData = try Data(contentsOf: url)
-      let image = UIImage(data: imageData)
-      self.posterImgView.image = image
-    } catch(let error) {
-      print(error.localizedDescription)
-    }
+    self.posterImgView.image = GetImage.getThumbImage(movie)
   }
 
   private func getGradeImage(_ movie: Movie) {
-    switch movie.grade {
-    case 12:
-      self.gradeImgView.image = UIImage(named: "ic_12")
-    case 15:
-      self.gradeImgView.image = UIImage(named: "ic_15")
-    case 19:
-      self.gradeImgView.image = UIImage(named: "ic_19")
-    case 0:
-      self.gradeImgView.image = UIImage(named: "ic_allages")
-    default:
-      self.gradeImgView.image = nil
-    }
+    self.gradeImgView.image = GetImage.getGradeImage(movie)
   }
 
 
