@@ -11,6 +11,7 @@ import SnapKit
 enum reuseIdentifier {
   static let reuseTableViewCell = "ReusableTableViewCell"
   static let reuseCollectionViewCell = "ReusableCollectionViewCell"
+  static let reuseDetailViewInforCell = "reuseDetailViewInforCell"
 }
 
 class ListViewController: UIViewController {
@@ -151,6 +152,13 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 100
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let vc = DetailViewController(viewModel: DetailViewModel(movie: self.singleton.movieList[indexPath.row]))
+    self.navigationController?.pushViewController(vc, animated: true)
+
+    tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
   }
 }
 
