@@ -7,6 +7,17 @@
 
 import Foundation
 
+protocol MovieDataProtocol {
+  var thumb: String { get }
+  var title: String { get }
+  var grade: Int { get }
+  var reservationGrade: Int { get }
+  var reservationRate: Double { get }
+  var userRating: Double { get }
+  var date: String { get }
+  var id: String { get }
+}
+
 struct rawData: Codable {
   let orderType: Int
   let movies: [Movie]
@@ -17,7 +28,7 @@ struct rawData: Codable {
   }
 }
 
-struct Movie: Codable {
+struct Movie: Codable, MovieDataProtocol {
   let grade: Int
   let thumb: String
   let reservationGrade: Int
