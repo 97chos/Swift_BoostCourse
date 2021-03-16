@@ -11,7 +11,10 @@ import SnapKit
 enum reuseIdentifier {
   static let reuseTableViewCell = "ReusableTableViewCell"
   static let reuseCollectionViewCell = "ReusableCollectionViewCell"
-  static let reuseDetailViewInforCell = "reuseDetailViewInforCell"
+  static let reuseDetailViewInforCell = "ReuseDetailViewInforCell"
+  static let reuseDetailViewsynopsisCell = "ReuseDetailViewSynopsisCell"
+  static let reuseDetailViewCrewCell = "ReuseDetailViewCrewCell"
+  static let reuseDetailViewReviewCell = "ReuseDetailViewReviewCell"
 }
 
 class ListViewController: UIViewController {
@@ -155,7 +158,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let vc = DetailViewController(viewModel: DetailViewModel(movie: self.singleton.movieList[indexPath.row]))
+    let vc = DetailViewController(viewModel: DetailViewModel(movieId: self.singleton.movieList[indexPath.row].id))
     self.navigationController?.pushViewController(vc, animated: true)
 
     tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
