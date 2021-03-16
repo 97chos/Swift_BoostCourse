@@ -13,6 +13,7 @@ class MovieInfoCell: UITableViewCell {
 
   // MARK: Properties
 
+  let movieCell = [1,2,3]
   let urlString = "connect-boxoffice.run.goorm.io/movie?"
   var movie: MovieInfoModel?
 
@@ -93,38 +94,9 @@ class MovieInfoCell: UITableViewCell {
 
   // MARK: Set
 
-  func setData(id: String, completion: @escaping (Result<(),APIError>) -> Void) {
-    var components = URLComponents(string: self.urlString)
-    components?.scheme = "http"
-    components?.queryItems?.append(URLQueryItem(name: "id", value: id))
-    guard let componentsURL = components?.url else { return }
-
-    let request: URLRequest = URLRequest(url: componentsURL)
-
-    URLSession(configuration: .default).dataTask(with: request) { data, response, error in
-      guard error == nil else {
-        completion(.failure(.responseError))
-        return
-      }
-      guard let resultData = data else {
-        completion(.failure(.responseError))
-        return
-      }
-
-      do {
-        let result = try JSONDecoder().decode(MovieInfoModel.self, from: resultData)
-        DispatchQueue.main.async {
-          self.set(movie: result)
-        }
-      } catch {
-        completion(.failure(.parseError))
-        return
-      }
-    }.resume()
-  }
-
-  private func set(movie: MovieInfoModel) {
+  func set(movie: MovieInfoModel) {
     self.thumbnailView.image = GetImage.getThumbImage(movie)
+    self.thumbnailView.sizeToFit()
     self.gradeImageView.image = GetImage.getGradeImage(movie)
 
     self.titleLabel.text = movie.title
@@ -154,8 +126,8 @@ class MovieInfoCell: UITableViewCell {
     thumbnailView.snp.makeConstraints{
       $0.top.equalToSuperview().inset(5)
       $0.leading.equalToSuperview().inset(5)
-      $0.height.equalToSuperview().multipliedBy(0.6)
-      $0.width.equalToSuperview().multipliedBy(0.3)
+      $0.height.equalTo(225)
+      $0.width.equalTo(150)
     }
     etcInfoLabel.snp.makeConstraints{
       $0.bottom.equalTo(self.thumbnailView)
@@ -180,6 +152,7 @@ class MovieInfoCell: UITableViewCell {
     evaluationRate.snp.makeConstraints{
       $0.centerX.equalTo(self.evaluationRateLabel)
       $0.top.equalTo(self.evaluationRateLabel.snp.bottom).offset(10)
+      $0.bottom.equalToSuperview().offset(-10)
     }
     ticketingRateLabel.snp.makeConstraints{
       $0.top.equalTo(self.evaluationRateLabel)
@@ -187,7 +160,7 @@ class MovieInfoCell: UITableViewCell {
     }
     ticketingRate.snp.makeConstraints{
       $0.centerX.equalTo(self.ticketingRateLabel)
-      $0.top.equalTo(self.evaluationRate)
+      $0.bottom.equalTo(self.evaluationRate)
     }
     audienceLabel.snp.makeConstraints{
       $0.top.equalTo(self.evaluationRateLabel)
@@ -195,7 +168,7 @@ class MovieInfoCell: UITableViewCell {
     }
     audience.snp.makeConstraints{
       $0.centerX.equalTo(self.audienceLabel)
-      $0.top.equalTo(self.evaluationRate)
+      $0.bottom.equalTo(self.evaluationRate)
     }
   }
 
