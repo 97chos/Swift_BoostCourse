@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 import SnapKit
 
+
 class DetailViewController: UIViewController {
+
 
   // MARK: Properties
 
@@ -42,7 +44,6 @@ class DetailViewController: UIViewController {
     super.viewDidLoad()
     self.configure()
     self.layout()
-    self.configureTableView()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -53,8 +54,14 @@ class DetailViewController: UIViewController {
   // MARK: Configuration
 
   private func configure() {
+    self.configureView()
+    self.configureTableView()
+  }
+
+  private func configureView() {
     self.view.backgroundColor = .systemBackground
-    self.title = viewModel.movie.title
+    self.title = viewModel.movie.first?.title
+    self.viewModel.delegate = self
   }
 
   private func configureTableView() {
@@ -62,7 +69,10 @@ class DetailViewController: UIViewController {
     self.tableView.dataSource = self
 
     self.tableView.register(MovieInfoCell.self, forCellReuseIdentifier: reuseIdentifier.reuseDetailViewInforCell)
+    self.tableView.register(MovieSynopsisCell.self, forCellReuseIdentifier: reuseIdentifier.reuseDetailViewsynopsisCell)
+    self.tableView.register(MovieCrewCell.self, forCellReuseIdentifier: reuseIdentifier.reuseDetailViewCrewCell)
     self.tableView.estimatedSectionHeaderHeight = 80
+    self.tableView.estimatedRowHeight = 200
     self.tableView.rowHeight = UITableView.automaticDimension
   }
 
@@ -99,40 +109,64 @@ class DetailViewController: UIViewController {
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 3
+    return viewModel.sectionList.count
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
-  }
-
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if indexPath.section == 0 {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier.reuseDetailViewInforCell, for: indexPath) as? MovieInfoCell else {
-        return UITableViewCell()
-      }
-      cell.setData(id: self.viewModel.movie.id, completion: { self.completion(result: $0) })
-      return cell
-    } else if indexPath.section == 1 {
-      let cell = UITableViewCell()
-      cell.backgroundColor = .black
-      return cell
-    } else {
-      let cell = UITableViewCell()
-      cell.backgroundColor = .blue
-      return cell
+    switch section {
+    case 0,1,2:
+      return viewModel.movie.count
+    case 3:
+      return viewModel.moviewReviews.count+1
+    default:
+      return 0
     }
   }
 
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    if indexPath.section == 0 {
-      return 250
-    } else {
-      return 30
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+    switch indexPath.section {
+    case 0:
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier.reuseDetailViewInforCell, for: indexPath) as? MovieInfoCell else {
+        return UITableViewCell()
+      }
+      guard let movie = self.viewModel.movie.first else {
+        return UITableViewCell()
+      }
+      cell.set(movie: movie)
+      return cell
+    case 1:
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier.reuseDetailViewsynopsisCell, for: indexPath) as? MovieSynopsisCell else {
+        return UITableViewCell()
+      }
+      guard let movie = self.viewModel.movie.first else {
+        return UITableViewCell()
+      }
+      cell.set(movie: movie)
+      return cell
+    case 2:
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier.reuseDetailViewCrewCell, for: indexPath) as? MovieCrewCell else {
+        return UITableViewCell()
+      }
+      guard let movie = self.viewModel.movie.first else {
+        return UITableViewCell()
+      }
+      cell.set(movie: movie)
+      return cell
+    default:
+      return UITableViewCell()
     }
   }
 
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return CGFloat.leastNormalMagnitude
+  }
+}
+
+
+extension DetailViewController: layoutUpdateDelegate {
+  func layoutReload() {
+    self.tableView.reloadData()
+    self.title = viewModel.movie.first?.title
   }
 }
