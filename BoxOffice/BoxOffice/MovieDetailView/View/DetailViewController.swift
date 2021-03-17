@@ -21,7 +21,7 @@ class DetailViewController: UIViewController {
   // MARK: UI
 
   private let tableView: UITableView = {
-    let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+    let tableView = UITableView(frame: CGRect.zero, style: .insetGrouped)
     return tableView
   }()
 
@@ -161,6 +161,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier.reuseDetailViewReviewHeaderCell, for: indexPath) as? MoviewReviewHeaderCell else {
           return UITableViewCell()
         }
+        cell.delegate = self
         return cell
       } else {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier.reuseDetailViewReviewCell, for: indexPath) as? MovieReviewCell else {
@@ -180,10 +181,26 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
   }
 }
 
-
 extension DetailViewController: layoutUpdateDelegate {
   func layoutReload() {
     self.tableView.reloadData()
     self.title = viewModel.movie.first?.title
   }
 }
+
+extension DetailViewController: PushViewControllerDelegate {
+  func pushViewController() {
+    let vc = ReviewWriteViewController(viewModel: ReviewWriteViewModel(movie: self.viewModel.movie.first!))
+    vc.delegate = self
+    self.navigationController?.pushViewController(vc, animated: true)
+  }
+}
+
+extension DetailViewController: InputtedReviewDelegate {
+  func addReview(review: ReviewModel) {
+    let newReview = MoviewReviewModel(rating: review.rating, timeStamp: review.timeStamp, writer: review.writer, movieID: review.movieId, contents: review.contents, id: review.writer)
+    self.viewModel.moviewReviews.append(newReview)
+    self.tableView.reloadData()
+  }
+}
+
