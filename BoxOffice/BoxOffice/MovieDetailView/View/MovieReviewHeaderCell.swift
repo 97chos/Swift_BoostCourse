@@ -8,7 +8,16 @@
 import Foundation
 import UIKit
 
+protocol PushViewControllerDelegate: class {
+  func pushViewController()
+}
+
 class MoviewReviewHeaderCell: UITableViewCell {
+
+  // MARK: Properties
+
+  weak var delegate: PushViewControllerDelegate?
+
 
   // MARK: UI
 
@@ -18,9 +27,10 @@ class MoviewReviewHeaderCell: UITableViewCell {
     label.text = "한줄평"
     return label
   }()
-  private let button: UIButton = {
+  private lazy var button: UIButton = {
     let button = UIButton(type: .system)
     button.setImage(UIImage(named: "btn_compose"), for: .normal)
+    button.addTarget(self, action: #selector(clickBtn), for: .touchUpInside)
     return button
   }()
 
@@ -40,7 +50,7 @@ class MoviewReviewHeaderCell: UITableViewCell {
   // MARK: Set
 
   @objc private func clickBtn() {
-
+    self.delegate?.pushViewController()
   }
 
 
