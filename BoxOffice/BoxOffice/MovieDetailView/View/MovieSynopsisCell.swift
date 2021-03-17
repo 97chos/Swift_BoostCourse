@@ -62,7 +62,7 @@ class MovieSynopsisCell: UITableViewCell {
     self.synopsis.snp.makeConstraints{
       $0.top.equalTo(self.synopsisTitleLabel.snp.bottom)
       $0.leading.equalTo(self.synopsisTitleLabel)
-      $0.width.equalToSuperview()
+      $0.trailing.equalToSuperview().inset(5)
       $0.bottom.equalToSuperview().offset(-10)
     }
   }

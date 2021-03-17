@@ -39,6 +39,7 @@ class MovieCrewCell: UITableViewCell {
   private let actors: UILabel = {
     let label = UILabel()
     label.font = .systemFont(ofSize: 15)
+    label.numberOfLines = 2
     return label
   }()
 
@@ -93,6 +94,7 @@ class MovieCrewCell: UITableViewCell {
     self.actors.snp.makeConstraints{
       $0.top.equalTo(self.actorsTitle)
       $0.leading.equalTo(self.director)
+      $0.trailing.equalToSuperview().inset(10)
       $0.bottom.equalToSuperview().offset(-10)
     }
 
