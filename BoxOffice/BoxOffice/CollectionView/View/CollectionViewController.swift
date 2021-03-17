@@ -124,6 +124,11 @@ extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDa
 
     return cell
   }
+
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let vc = DetailViewController(viewModel: DetailViewModel(movieId: self.singleton.movieList[indexPath.row].id))
+    self.navigationController?.pushViewController(vc, animated: true)
+  }
 }
 
 extension CollectionViewController: UICollectionViewDelegateFlowLayout {
