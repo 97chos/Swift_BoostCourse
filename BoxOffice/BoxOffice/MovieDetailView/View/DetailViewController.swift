@@ -71,9 +71,12 @@ class DetailViewController: UIViewController {
     self.tableView.register(MovieInfoCell.self, forCellReuseIdentifier: reuseIdentifier.reuseDetailViewInforCell)
     self.tableView.register(MovieSynopsisCell.self, forCellReuseIdentifier: reuseIdentifier.reuseDetailViewsynopsisCell)
     self.tableView.register(MovieCrewCell.self, forCellReuseIdentifier: reuseIdentifier.reuseDetailViewCrewCell)
+    self.tableView.register(MoviewReviewHeaderCell.self, forCellReuseIdentifier: reuseIdentifier.reuseDetailViewReviewHeaderCell)
+    self.tableView.register(MovieReviewCell.self, forCellReuseIdentifier: reuseIdentifier.reuseDetailViewReviewCell)
     self.tableView.estimatedSectionHeaderHeight = 80
     self.tableView.estimatedRowHeight = 200
     self.tableView.rowHeight = UITableView.automaticDimension
+    self.tableView.allowsSelection = false
   }
 
 
@@ -153,6 +156,20 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
       }
       cell.set(movie: movie)
       return cell
+    case 3:
+      if indexPath.row == 0 {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier.reuseDetailViewReviewHeaderCell, for: indexPath) as? MoviewReviewHeaderCell else {
+          return UITableViewCell()
+        }
+        return cell
+      } else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier.reuseDetailViewReviewCell, for: indexPath) as? MovieReviewCell else {
+          return UITableViewCell()
+        }
+        let review = self.viewModel.moviewReviews[indexPath.row - 1] 
+        cell.set(review: review)
+        return cell
+      }
     default:
       return UITableViewCell()
     }

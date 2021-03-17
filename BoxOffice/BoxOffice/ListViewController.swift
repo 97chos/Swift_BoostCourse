@@ -14,7 +14,9 @@ enum reuseIdentifier {
   static let reuseDetailViewInforCell = "ReuseDetailViewInforCell"
   static let reuseDetailViewsynopsisCell = "ReuseDetailViewSynopsisCell"
   static let reuseDetailViewCrewCell = "ReuseDetailViewCrewCell"
+  static let reuseDetailViewReviewHeaderCell = "ReuseDetailViewReviewHeaderCell"
   static let reuseDetailViewReviewCell = "ReuseDetailViewReviewCell"
+
 }
 
 class ListViewController: UIViewController {
