@@ -62,6 +62,9 @@ class DetailViewModel {
       do {
         let result = try JSONDecoder().decode(MovieInfoModel.self, from: resultData)
         self.movie = [result]
+        DispatchQueue.main.async {
+          self.delegate?.layoutReload()
+        }
       } catch {
         return
       }
@@ -85,8 +88,8 @@ class DetailViewModel {
       }
 
       do {
-        let result = try JSONDecoder().decode([MoviewReviewModel].self, from: resultData)
-        self.moviewReviews = result
+        let result = try JSONDecoder().decode(RawReviewModel.self, from: resultData)
+        self.moviewReviews.append(contentsOf: result.comments)
         DispatchQueue.main.async {
           self.delegate?.layoutReload()
         }

@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct RawReviewModel: Codable {
+  let comments: [MoviewReviewModel]
+}
+
 struct MoviewReviewModel: Codable {
   let rating: Double
   let timeStamp: Double
