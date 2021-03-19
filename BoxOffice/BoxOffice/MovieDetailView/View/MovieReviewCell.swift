@@ -53,7 +53,7 @@ class MovieReviewCell: UITableViewCell {
 
   func set(review: MoviewReviewModel) {
     self.nickname.text = review.writer
-    self.date.text = "\(review.timeStamp)"
+    self.date.text = review.timeStamp.timeStamp()
     self.review.text = review.contents
   }
 

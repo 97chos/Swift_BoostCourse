@@ -215,7 +215,7 @@ extension DetailViewController: PushViewControllerDelegate {
 extension DetailViewController: InputtedReviewDelegate {
   func addReview(review: ReviewModel) {
     let newReview = MoviewReviewModel(rating: review.rating, timeStamp: review.timeStamp, writer: review.writer, movieID: review.movieId, contents: review.contents, id: review.writer)
-    self.viewModel.moviewReviews.append(newReview)
+    self.viewModel.moviewReviews.insert(newReview, at: 0)
     self.tableView.reloadData()
   }
 }
