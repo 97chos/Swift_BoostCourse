@@ -24,6 +24,12 @@ class DetailViewController: UIViewController {
     let tableView = UITableView(frame: CGRect.zero, style: .insetGrouped)
     return tableView
   }()
+  private let loadingView: UIActivityIndicatorView = {
+    let view = UIActivityIndicatorView(style: .large)
+    view.color = .darkGray
+    view.hidesWhenStopped = true
+    return view
+  }()
 
 
   // MARK: Initializing
@@ -62,6 +68,7 @@ class DetailViewController: UIViewController {
     self.view.backgroundColor = .systemBackground
     self.title = viewModel.movie.first?.title
     self.viewModel.delegate = self
+    self.loadingView.startAnimating()
   }
 
   private func configureTableView() {
@@ -102,9 +109,13 @@ class DetailViewController: UIViewController {
 
   private func layout() {
     self.view.addSubview(self.tableView)
+    self.view.addSubview(self.loadingView)
 
     self.tableView.snp.makeConstraints {
       $0.edges.equalTo(self.view.safeAreaLayoutGuide)
+    }
+    self.loadingView.snp.makeConstraints{
+      $0.centerX.centerY.equalToSuperview()
     }
   }
 }
@@ -182,9 +193,14 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension DetailViewController: layoutUpdateDelegate {
-  func layoutReload() {
-    self.tableView.reloadData()
-    self.title = viewModel.movie.first?.title
+  func layoutReload(sections: DetailViewSections) {
+    if sections == .review {
+      self.tableView.reloadSections(IndexSet(integer: 3), with: .automatic)
+    } else {
+      self.tableView.reloadSections(IndexSet(0...2), with: .automatic)
+      self.title = viewModel.movie.first?.title
+      self.loadingView.stopAnimating()
+    }
   }
 }
 
