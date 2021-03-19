@@ -108,7 +108,7 @@ class MovieInfoCell: UITableViewCell {
       self.etcInfoLabel.text = "\(movie.genre)/\(movie.duration)분"
       self.ticketingRate.text = "\(movie.reservationGrade)위 \(movie.reservationRate)%"
       self.evaluationRate.text = "\(movie.userRating)"
-      self.audience.text = "\(movie.audience)"
+      self.audience.text = movie.audience.cutDecimal()
     }
   }
 
