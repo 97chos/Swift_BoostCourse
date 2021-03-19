@@ -13,17 +13,19 @@ class MovieInfoCell: UITableViewCell {
 
   // MARK: Properties
 
-  let movieCell = [1,2,3]
-  let urlString = "connect-boxoffice.run.goorm.io/movie?"
-  var movie: MovieInfoModel?
+  private let movieCell = [1,2,3]
+  private let urlString = "connect-boxoffice.run.goorm.io/movie?"
+  private var movie: MovieInfoModel?
 
 
   // MARK: UI
 
   private let thumbnailView: UIImageView = {
     let imgView = UIImageView()
+    let img = UIImage(named: "img_placeholder")
+    img?.accessibilityIdentifier = AccessbilityIdentifier.imagePlaceholderIdentifier
     imgView.contentMode = .scaleAspectFit
-    imgView.image = UIImage(named: "img_placeholder")
+    imgView.image = img
     return imgView
   }()
   private let gradeImageView: UIImageView = {
@@ -95,16 +97,19 @@ class MovieInfoCell: UITableViewCell {
   // MARK: Set
 
   func set(movie: MovieInfoModel) {
-    self.thumbnailView.image = GetImage.getThumbImage(movie)
-    self.thumbnailView.sizeToFit()
-    self.gradeImageView.image = GetImage.getGradeImage(movie)
+    if self.thumbnailView.image?.accessibilityIdentifier == AccessbilityIdentifier.imagePlaceholderIdentifier {
+      self.thumbnailView.image = GetImage.getThumbImage(movie)
+      self.thumbnailView.sizeToFit()
 
-    self.titleLabel.text = movie.title
-    self.openDateLabel.text = "\(movie.date) 개봉"
-    self.etcInfoLabel.text = "\(movie.genre)/\(movie.duration)분"
-    self.ticketingRate.text = "\(movie.reservationGrade)위 \(movie.reservationRate)%"
-    self.evaluationRate.text = "\(movie.userRating)"
-    self.audience.text = "\(movie.audience)"
+      self.gradeImageView.image = GetImage.getGradeImage(movie)
+
+      self.titleLabel.text = movie.title
+      self.openDateLabel.text = "\(movie.date) 개봉"
+      self.etcInfoLabel.text = "\(movie.genre)/\(movie.duration)분"
+      self.ticketingRate.text = "\(movie.reservationGrade)위 \(movie.reservationRate)%"
+      self.evaluationRate.text = "\(movie.userRating)"
+      self.audience.text = "\(movie.audience)"
+    }
   }
 
 
