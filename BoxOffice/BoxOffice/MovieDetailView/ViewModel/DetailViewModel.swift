@@ -8,7 +8,7 @@
 import Foundation
 
 protocol layoutUpdateDelegate: class {
-  func layoutReload()
+  func layoutReload(sections: DetailViewSections)
 }
 
 enum DetailViewSections {
@@ -20,7 +20,6 @@ enum DetailViewSections {
 
 
 class DetailViewModel {
-
 
   // MARK: Properties
 
@@ -63,7 +62,7 @@ class DetailViewModel {
         let result = try JSONDecoder().decode(MovieInfoModel.self, from: resultData)
         self.movie = [result]
         DispatchQueue.main.async {
-          self.delegate?.layoutReload()
+          self.delegate?.layoutReload(sections: .movieInformation)
         }
       } catch {
         return
@@ -91,7 +90,7 @@ class DetailViewModel {
         let result = try JSONDecoder().decode(RawReviewModel.self, from: resultData)
         self.moviewReviews.append(contentsOf: result.comments)
         DispatchQueue.main.async {
-          self.delegate?.layoutReload()
+          self.delegate?.layoutReload(sections: .review)
         }
       } catch {
         return
