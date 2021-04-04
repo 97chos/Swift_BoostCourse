@@ -64,7 +64,7 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.searchBar.resignFirstResponder()
 
-        guard let previewURL = URL(string: tracks[indexPath.row].previewUrl) else { return }
+      guard let previewURL = URL(string: tracks[indexPath.row].previewUrl ?? "") else { return }
 
         let playerViewController = AVPlayerViewController()
 
@@ -131,6 +131,7 @@ extension ViewController {
             return trackList
         } catch {
             print("----> error:\(error.localizedDescription)")
+          debugPrint(error)
             return nil
         }
     }

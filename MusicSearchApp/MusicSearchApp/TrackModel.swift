@@ -18,7 +18,7 @@ struct Track: Codable {
     var title: String
     var artistName: String
     var thumbnail: String
-    let previewUrl: String
+    let previewUrl: String?
 
     enum CodingKeys: String, CodingKey {
         case title = "trackName"

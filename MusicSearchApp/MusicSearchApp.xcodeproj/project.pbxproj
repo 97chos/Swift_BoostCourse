@@ -16,6 +16,7 @@
 		FF387853258E6E1000CACC82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF387851258E6E1000CACC82 /* LaunchScreen.storyboard */; };
 		FF387860258E6F8900CACC82 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF38785F258E6F8900CACC82 /* ResultCell.swift */; };
 		FF387863258E6FC000CACC82 /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF387862258E6FC000CACC82 /* TrackModel.swift */; };
+		FFA9350C2619C55300CE1EAD /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = FFA9350B2619C55300CE1EAD /* GoogleService-Info (1).plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		FF387854258E6E1000CACC82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF38785F258E6F8900CACC82 /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		FF387862258E6FC000CACC82 /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
+		FFA9350B2619C55300CE1EAD /* GoogleService-Info (1).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (1).plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				FF38784F258E6E1000CACC82 /* Assets.xcassets */,
 				FF387851258E6E1000CACC82 /* LaunchScreen.storyboard */,
 				FF387854258E6E1000CACC82 /* Info.plist */,
+				FFA9350B2619C55300CE1EAD /* GoogleService-Info (1).plist */,
 			);
 			path = MusicSearchApp;
 			sourceTree = "<group>";
@@ -108,7 +111,7 @@
 				FF38783F258E6E0D00CACC82 /* Sources */,
 				FF387840258E6E0D00CACC82 /* Frameworks */,
 				FF387841258E6E0D00CACC82 /* Resources */,
-				AD2ADEA67107158A54EA5AA1 /* [CP] Embed Pods Frameworks */,
+				B9E7DC8688B5F45A3BAF937F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -159,6 +162,7 @@
 				FF387853258E6E1000CACC82 /* LaunchScreen.storyboard in Resources */,
 				FF387850258E6E1000CACC82 /* Assets.xcassets in Resources */,
 				FF38784E258E6E0D00CACC82 /* Main.storyboard in Resources */,
+				FFA9350C2619C55300CE1EAD /* GoogleService-Info (1).plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +191,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AD2ADEA67107158A54EA5AA1 /* [CP] Embed Pods Frameworks */ = {
+		B9E7DC8688B5F45A3BAF937F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
