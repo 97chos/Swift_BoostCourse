@@ -16,6 +16,10 @@
 		FF387860258E6F8900CACC82 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF38785F258E6F8900CACC82 /* ResultCell.swift */; };
 		FF387863258E6FC000CACC82 /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF387862258E6FC000CACC82 /* TrackModel.swift */; };
 		FFA9350C2619C55300CE1EAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFA9350B2619C55300CE1EAD /* GoogleService-Info.plist */; };
+		FFA9352F2619CDFD00CE1EAD /* TableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA9352E2619CDFD00CE1EAD /* TableSectionHeaderView.swift */; };
+		FFA935352619D0A200CE1EAD /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA935342619D0A200CE1EAD /* RecentViewController.swift */; };
+		FFA93538261A0E9200CE1EAD /* RecentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA93537261A0E9200CE1EAD /* RecentCell.swift */; };
+		FFA9353C261A141D00CE1EAD /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA9353B261A141D00CE1EAD /* FirebaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		FF38785F258E6F8900CACC82 /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		FF387862258E6FC000CACC82 /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
 		FFA9350B2619C55300CE1EAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FFA9352E2619CDFD00CE1EAD /* TableSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionHeaderView.swift; sourceTree = "<group>"; };
+		FFA935342619D0A200CE1EAD /* RecentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
+		FFA93537261A0E9200CE1EAD /* RecentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCell.swift; sourceTree = "<group>"; };
+		FFA9353B261A141D00CE1EAD /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,12 +97,48 @@
 				FF38784A258E6E0D00CACC82 /* ViewController.swift */,
 				FF387862258E6FC000CACC82 /* TrackModel.swift */,
 				FF38785F258E6F8900CACC82 /* ResultCell.swift */,
+				FFA9353A261A141000CE1EAD /* FirebaseManager */,
+				FFA935322619D07D00CE1EAD /* RecentView */,
+				FFA9352D2619CD8600CE1EAD /* View */,
 				FF38784F258E6E1000CACC82 /* Assets.xcassets */,
 				FF387851258E6E1000CACC82 /* LaunchScreen.storyboard */,
 				FF387854258E6E1000CACC82 /* Info.plist */,
 				FFA9350B2619C55300CE1EAD /* GoogleService-Info.plist */,
 			);
 			path = MusicSearchApp;
+			sourceTree = "<group>";
+		};
+		FFA9352D2619CD8600CE1EAD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FFA9352E2619CDFD00CE1EAD /* TableSectionHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FFA935322619D07D00CE1EAD /* RecentView */ = {
+			isa = PBXGroup;
+			children = (
+				FFA935332619D09600CE1EAD /* View */,
+			);
+			path = RecentView;
+			sourceTree = "<group>";
+		};
+		FFA935332619D09600CE1EAD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FFA935342619D0A200CE1EAD /* RecentViewController.swift */,
+				FFA93537261A0E9200CE1EAD /* RecentCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FFA9353A261A141000CE1EAD /* FirebaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				FFA9353B261A141D00CE1EAD /* FirebaseManager.swift */,
+			);
+			path = FirebaseManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,7 +256,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF38784B258E6E0D00CACC82 /* ViewController.swift in Sources */,
+				FFA935352619D0A200CE1EAD /* RecentViewController.swift in Sources */,
 				FF387847258E6E0D00CACC82 /* AppDelegate.swift in Sources */,
+				FFA9353C261A141D00CE1EAD /* FirebaseManager.swift in Sources */,
+				FFA9352F2619CDFD00CE1EAD /* TableSectionHeaderView.swift in Sources */,
+				FFA93538261A0E9200CE1EAD /* RecentCell.swift in Sources */,
 				FF387860258E6F8900CACC82 /* ResultCell.swift in Sources */,
 				FF387863258E6FC000CACC82 /* TrackModel.swift in Sources */,
 				FF387849258E6E0D00CACC82 /* SceneDelegate.swift in Sources */,
