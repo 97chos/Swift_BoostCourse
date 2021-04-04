@@ -31,12 +31,12 @@ class FirebaseManager {
   // MARK: Send Data To Server
 
   func addSearchHistory(keyword: String) {
-    self.searchHistory.insert(keyword, at: 0)
+    self.searchHistory.append(keyword)
     self.rootRef.child(FirebaseKey.search).setValue(self.searchHistory)
   }
 
   func addWatchHistory(track: Track) {
-    self.watchHistory.insert(track, at: 0)
+    self.watchHistory.append(track)
     let tracks: [[String: Any]] = self.watchHistory.map{ $0.toDictionary }
     self.rootRef.child(FirebaseKey.watch).setValue(tracks)
   }
@@ -45,9 +45,9 @@ class FirebaseManager {
   // MARK: Get Data From Server
 
   func fetchSearchHistory(completion: @escaping () -> Void) {
-    self.rootRef.child(FirebaseKey.search).queryLimited(toLast: 3).observeSingleEvent(of: .value) { snapShot in
+    self.rootRef.child(FirebaseKey.search).observeSingleEvent(of: .value) { snapShot in
       guard let searches = snapShot.value as? [String] else { return }
-      self.searchHistory = searches
+      self.searchHistory = Array(searches[searches.count-3...searches.count-1]).reversed()
 
       DispatchQueue.main.async {
         completion()
@@ -56,12 +56,12 @@ class FirebaseManager {
   }
 
   func fetchWatchHistory(completion: @escaping () -> Void) {
-    self.rootRef.child(FirebaseKey.watch).queryLimited(toLast: 3).observeSingleEvent(of: .value) { snapShot in
+    self.rootRef.child(FirebaseKey.watch).observeSingleEvent(of: .value) { snapShot in
       guard let watches = snapShot.value as? [[String : Any]] else { return }
       do {
         let data = try JSONSerialization.data(withJSONObject: watches, options: [])
         let tracks = try JSONDecoder().decode([Track].self, from: data)
-        self.watchHistory = tracks
+        self.watchHistory = Array(tracks[tracks.count-3...tracks.count-1]).reversed()
 
         DispatchQueue.main.async {
           completion()
