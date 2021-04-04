@@ -20,6 +20,10 @@ struct Track: Codable {
   var thumbnail: String
   let previewUrl: String?
 
+  var toDictionary: [String:Any] {
+    let dict: [String:Any] = ["trackName" : self.title, "artistName" : self.artistName, "artworkUrl30" : thumbnail, "previewUrl" : previewUrl ?? ""]
+    return dict
+  }
 
   enum CodingKeys: String, CodingKey {
     case title = "trackName"
