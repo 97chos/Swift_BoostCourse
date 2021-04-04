@@ -13,7 +13,8 @@ class ViewController: UIViewController {
 
   // MARK: Properties
 
-  var tracks = [Track]()
+  private var tracks = [Track]()
+  private let recentVC = RecentViewController()
 
 
   // MARK: UI
@@ -30,6 +31,10 @@ class ViewController: UIViewController {
     let tableView = UITableView()
     return tableView
   }()
+  private let containerView: UIView = {
+    let view = UIView()
+    return view
+  }()
 
 
   // MARK: View LifeCycle
@@ -38,6 +43,7 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     self.configureViews()
     self.layout()
+    self.addChildView()
   }
 
   override func viewDidLayoutSubviews() {
@@ -61,6 +67,15 @@ class ViewController: UIViewController {
 
 
   // MARK: Functions
+
+  private func addChildView() {
+    self.addChild(recentVC)
+
+    recentVC.didMove(toParent: self)
+    recentVC.view.frame = self.containerView.frame
+    recentVC.delegate = self
+    self.containerView.addSubview(recentVC.view)
+  }
 
   private func parse(data: Data) -> [Track]? {
     do {
@@ -124,10 +139,14 @@ class ViewController: UIViewController {
   private func layout() {
     self.view.addSubview(tableView)
     self.view.addSubview(searchBar)
+    self.view.addSubview(containerView)
 
     self.tableView.snp.makeConstraints{
       $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(self.searchBar.frame.height)
       $0.leading.trailing.bottom.equalToSuperview()
+    }
+    self.containerView.snp.makeConstraints{
+      $0.edges.equalTo(self.tableView)
     }
   }
 }
