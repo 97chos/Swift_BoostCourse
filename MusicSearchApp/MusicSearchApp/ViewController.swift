@@ -155,6 +155,7 @@ class ViewController: UIViewController {
 // MARK: Tableview DataSource & Delegate
 
 extension ViewController: UITableViewDataSource {
+
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.tracks.count
   }
@@ -177,8 +178,12 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     self.searchBar.resignFirstResponder()
+    tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
+
     let track = self.tracks[indexPath.row]
     self.play(track: track)
+    FirebaseManager.shared.addWatchHistory(track: track)
+    self.recentVC.tableView.reloadSections(IndexSet(arrayLiteral: 1), with: .none)
   }
 }
 
@@ -195,5 +200,32 @@ extension ViewController: UISearchBarDelegate {
 
     guard let searchText = searchBar.text, !(searchText.isEmpty) else { return }
     self.search(keyword: searchText)
+    FirebaseManager.shared.addSearchHistory(keyword: searchText)
+    self.recentVC.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .none)
+
+    if !searchText.isEmpty {
+      self.containerView.isHidden = true
+    }
+  }
+
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    if searchText == "" {
+      self.containerView.isHidden = false
+    }
+  }
+}
+
+
+// MARK: History Select Delegate
+
+extension ViewController: HistorySelectDelegate {
+  func searchHistroySelected(keyword: String) {
+    self.search(keyword: keyword)
+    self.searchBar.text = keyword
+    self.containerView.isHidden = true
+  }
+
+  func watchHistorySelected(track: Track) {
+    self.play(track: track)
   }
 }
