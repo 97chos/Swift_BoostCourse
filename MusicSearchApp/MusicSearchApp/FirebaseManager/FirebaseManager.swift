@@ -31,12 +31,12 @@ class FirebaseManager {
   // MARK: Send Data To Server
 
   func addSearchHistory(keyword: String) {
-    self.searchHistory.append(keyword)
+    self.searchHistory.insert(keyword, at: 0)
     self.rootRef.child(FirebaseKey.search).setValue(self.searchHistory)
   }
 
   func addWatchHistory(track: Track) {
-    self.watchHistory.append(track)
+    self.watchHistory.insert(track, at: 0)
     let tracks: [[String: Any]] = self.watchHistory.map{ $0.toDictionary }
     self.rootRef.child(FirebaseKey.watch).setValue(tracks)
   }
@@ -47,7 +47,7 @@ class FirebaseManager {
   func fetchSearchHistory(completion: @escaping () -> Void) {
     self.rootRef.child(FirebaseKey.search).observeSingleEvent(of: .value) { snapShot in
       guard let searches = snapShot.value as? [String] else { return }
-      self.searchHistory = Array(searches[searches.count-3...searches.count-1]).reversed()
+      self.searchHistory = Array(searches[0...2])
 
       DispatchQueue.main.async {
         completion()
@@ -61,7 +61,7 @@ class FirebaseManager {
       do {
         let data = try JSONSerialization.data(withJSONObject: watches, options: [])
         let tracks = try JSONDecoder().decode([Track].self, from: data)
-        self.watchHistory = Array(tracks[tracks.count-3...tracks.count-1]).reversed()
+        self.watchHistory = Array(tracks[0...2])
 
         DispatchQueue.main.async {
           completion()
