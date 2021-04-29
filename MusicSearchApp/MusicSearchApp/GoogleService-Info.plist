@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>561422165330-30h8ujfpovjiqldscdehoor33vnqrht1.apps.googleusercontent.com</string>
+	<string>454776019794-hm6geppg48jr92abnsimhbibsi2tveu3.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.561422165330-30h8ujfpovjiqldscdehoor33vnqrht1</string>
+	<string>com.googleusercontent.apps.454776019794-hm6geppg48jr92abnsimhbibsi2tveu3</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBPlaH_Prv9-FH86XyWOjkTtYaotVVHS6g</string>
+	<string>AIzaSyBAJVPJRmZKPT1yJyXLJtXDUzeew0cnGPs</string>
 	<key>GCM_SENDER_ID</key>
-	<string>561422165330</string>
+	<string>454776019794</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>selfProject.MusicSearchApp</string>
 	<key>PROJECT_ID</key>
-	<string>musicsearch-6a9c8</string>
+	<string>songsearch-e640b</string>
 	<key>STORAGE_BUCKET</key>
-	<string>musicsearch-6a9c8.appspot.com</string>
+	<string>songsearch-e640b.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:561422165330:ios:b5237c802c27692528868b</string>
-	<key>DATABASE_URL</key>
-	<string>https://musicsearch-6a9c8-default-rtdb.firebaseio.com</string>
+	<string>1:454776019794:ios:b4749f4a2a3ddda6c8788b</string>
 </dict>
 </plist>

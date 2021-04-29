@@ -11,13 +11,6 @@ import SnapKit
 
 class MovieInfoCell: UITableViewCell {
 
-  // MARK: Properties
-
-  private let movieCell = [1,2,3]
-  private let urlString = "connect-boxoffice.run.goorm.io/movie?"
-  private var movie: MovieInfoModel?
-
-
   // MARK: UI
 
   private let thumbnailView: UIImageView = {

@@ -8,14 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FE2AAF872EE633E539BAD752 /* Pods_MusicApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A79AC69197D8423C381523 /* Pods_MusicApp.framework */; };
-		FF387802258CA07200CACC82 /* Believer.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF3877FA258CA07100CACC82 /* Believer.mov */; };
-		FF387803258CA07200CACC82 /* 7 rings.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF3877FB258CA07100CACC82 /* 7 rings.mov */; };
-		FF387804258CA07200CACC82 /* Blue Birds.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF3877FC258CA07100CACC82 /* Blue Birds.mov */; };
-		FF387805258CA07200CACC82 /* thank u, next.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF3877FD258CA07100CACC82 /* thank u, next.mov */; };
-		FF387806258CA07200CACC82 /* Dip.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF3877FE258CA07100CACC82 /* Dip.mov */; };
-		FF387807258CA07200CACC82 /* The Harlem Barber Swing.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF3877FF258CA07100CACC82 /* The Harlem Barber Swing.mov */; };
-		FF387808258CA07200CACC82 /* Swish.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF387800258CA07100CACC82 /* Swish.mov */; };
-		FF387809258CA07200CACC82 /* Best Mistake.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF387801258CA07100CACC82 /* Best Mistake.mov */; };
 		FF59BD9A258C64E90047CC7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF59BD99258C64E90047CC7A /* AppDelegate.swift */; };
 		FF59BD9C258C64E90047CC7A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF59BD9B258C64E90047CC7A /* SceneDelegate.swift */; };
 		FF59BDA1258C64E90047CC7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF59BD9F258C64E90047CC7A /* Main.storyboard */; };
@@ -25,20 +17,20 @@
 		FF59BDB6258C65EC0047CC7A /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF59BDB5258C65EC0047CC7A /* TrackModel.swift */; };
 		FF59BDB9258C6B2B0047CC7A /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF59BDB8258C6B2B0047CC7A /* MusicCell.swift */; };
 		FF59BDC0258C7BAE0047CC7A /* PlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF59BDBF258C7BAE0047CC7A /* PlayerVC.swift */; };
+		FF9E4543263A5DC4002D7A75 /* Believer.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF9E453B263A5DC4002D7A75 /* Believer.mov */; };
+		FF9E4544263A5DC4002D7A75 /* 7 rings.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF9E453C263A5DC4002D7A75 /* 7 rings.mov */; };
+		FF9E4545263A5DC4002D7A75 /* Blue Birds.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF9E453D263A5DC4002D7A75 /* Blue Birds.mov */; };
+		FF9E4546263A5DC4002D7A75 /* thank u, next.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF9E453E263A5DC4002D7A75 /* thank u, next.mov */; };
+		FF9E4547263A5DC4002D7A75 /* Dip.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF9E453F263A5DC4002D7A75 /* Dip.mov */; };
+		FF9E4548263A5DC4002D7A75 /* The Harlem Barber Swing.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF9E4540263A5DC4002D7A75 /* The Harlem Barber Swing.mov */; };
+		FF9E4549263A5DC4002D7A75 /* Swish.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF9E4541263A5DC4002D7A75 /* Swish.mov */; };
+		FF9E454A263A5DC4002D7A75 /* Best Mistake.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF9E4542263A5DC4002D7A75 /* Best Mistake.mov */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		02375D89B79F5CCB8BC89160 /* Pods-MusicApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicApp.debug.xcconfig"; path = "Target Support Files/Pods-MusicApp/Pods-MusicApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D0A79AC69197D8423C381523 /* Pods_MusicApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E97F5CBAF6B28CCF2A7BBD85 /* Pods-MusicApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicApp.release.xcconfig"; path = "Target Support Files/Pods-MusicApp/Pods-MusicApp.release.xcconfig"; sourceTree = "<group>"; };
-		FF3877FA258CA07100CACC82 /* Believer.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Believer.mov; sourceTree = "<group>"; };
-		FF3877FB258CA07100CACC82 /* 7 rings.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "7 rings.mov"; sourceTree = "<group>"; };
-		FF3877FC258CA07100CACC82 /* Blue Birds.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Blue Birds.mov"; sourceTree = "<group>"; };
-		FF3877FD258CA07100CACC82 /* thank u, next.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "thank u, next.mov"; sourceTree = "<group>"; };
-		FF3877FE258CA07100CACC82 /* Dip.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Dip.mov; sourceTree = "<group>"; };
-		FF3877FF258CA07100CACC82 /* The Harlem Barber Swing.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "The Harlem Barber Swing.mov"; sourceTree = "<group>"; };
-		FF387800258CA07100CACC82 /* Swish.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Swish.mov; sourceTree = "<group>"; };
-		FF387801258CA07100CACC82 /* Best Mistake.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Best Mistake.mov"; sourceTree = "<group>"; };
 		FF59BD96258C64E90047CC7A /* MusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF59BD99258C64E90047CC7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF59BD9B258C64E90047CC7A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +42,14 @@
 		FF59BDB5258C65EC0047CC7A /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
 		FF59BDB8258C6B2B0047CC7A /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
 		FF59BDBF258C7BAE0047CC7A /* PlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVC.swift; sourceTree = "<group>"; };
+		FF9E453B263A5DC4002D7A75 /* Believer.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Believer.mov; sourceTree = "<group>"; };
+		FF9E453C263A5DC4002D7A75 /* 7 rings.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "7 rings.mov"; sourceTree = "<group>"; };
+		FF9E453D263A5DC4002D7A75 /* Blue Birds.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Blue Birds.mov"; sourceTree = "<group>"; };
+		FF9E453E263A5DC4002D7A75 /* thank u, next.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "thank u, next.mov"; sourceTree = "<group>"; };
+		FF9E453F263A5DC4002D7A75 /* Dip.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Dip.mov; sourceTree = "<group>"; };
+		FF9E4540263A5DC4002D7A75 /* The Harlem Barber Swing.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "The Harlem Barber Swing.mov"; sourceTree = "<group>"; };
+		FF9E4541263A5DC4002D7A75 /* Swish.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Swish.mov; sourceTree = "<group>"; };
+		FF9E4542263A5DC4002D7A75 /* Best Mistake.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Best Mistake.mov"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,22 +81,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FF3877F9258CA07100CACC82 /* musics */ = {
-			isa = PBXGroup;
-			children = (
-				FF3877FA258CA07100CACC82 /* Believer.mov */,
-				FF3877FB258CA07100CACC82 /* 7 rings.mov */,
-				FF3877FC258CA07100CACC82 /* Blue Birds.mov */,
-				FF3877FD258CA07100CACC82 /* thank u, next.mov */,
-				FF3877FE258CA07100CACC82 /* Dip.mov */,
-				FF3877FF258CA07100CACC82 /* The Harlem Barber Swing.mov */,
-				FF387800258CA07100CACC82 /* Swish.mov */,
-				FF387801258CA07100CACC82 /* Best Mistake.mov */,
-			);
-			name = musics;
-			path = "../../../../Downloads/모바일-앱-개발-올인원-패키지-강의자료/iOS_Basic/CH15_MusicApp/MyMusicApp/MyMusicApp/musics";
-			sourceTree = "<group>";
-		};
 		FF59BD8D258C64E90047CC7A = {
 			isa = PBXGroup;
 			children = (
@@ -125,12 +109,28 @@
 				FF59BDBF258C7BAE0047CC7A /* PlayerVC.swift */,
 				FF59BDB5258C65EC0047CC7A /* TrackModel.swift */,
 				FF59BD9F258C64E90047CC7A /* Main.storyboard */,
-				FF3877F9258CA07100CACC82 /* musics */,
 				FF59BDA2258C64EC0047CC7A /* Assets.xcassets */,
 				FF59BDA4258C64EC0047CC7A /* LaunchScreen.storyboard */,
+				FF9E453A263A5DC4002D7A75 /* musics */,
 				FF59BDA7258C64EC0047CC7A /* Info.plist */,
 			);
 			path = MusicApp;
+			sourceTree = "<group>";
+		};
+		FF9E453A263A5DC4002D7A75 /* musics */ = {
+			isa = PBXGroup;
+			children = (
+				FF9E453B263A5DC4002D7A75 /* Believer.mov */,
+				FF9E453C263A5DC4002D7A75 /* 7 rings.mov */,
+				FF9E453D263A5DC4002D7A75 /* Blue Birds.mov */,
+				FF9E453E263A5DC4002D7A75 /* thank u, next.mov */,
+				FF9E453F263A5DC4002D7A75 /* Dip.mov */,
+				FF9E4540263A5DC4002D7A75 /* The Harlem Barber Swing.mov */,
+				FF9E4541263A5DC4002D7A75 /* Swish.mov */,
+				FF9E4542263A5DC4002D7A75 /* Best Mistake.mov */,
+			);
+			name = musics;
+			path = "../../../../Downloads/모바일-앱-개발-올인원-패키지-강의자료 2/iOS_Basic 2/CH15_MusicApp/CH15_Resource/musics";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,17 +192,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF387804258CA07200CACC82 /* Blue Birds.mov in Resources */,
+				FF9E4545263A5DC4002D7A75 /* Blue Birds.mov in Resources */,
 				FF59BDA6258C64EC0047CC7A /* LaunchScreen.storyboard in Resources */,
-				FF387806258CA07200CACC82 /* Dip.mov in Resources */,
-				FF387809258CA07200CACC82 /* Best Mistake.mov in Resources */,
-				FF387802258CA07200CACC82 /* Believer.mov in Resources */,
-				FF387803258CA07200CACC82 /* 7 rings.mov in Resources */,
+				FF9E4548263A5DC4002D7A75 /* The Harlem Barber Swing.mov in Resources */,
+				FF9E4549263A5DC4002D7A75 /* Swish.mov in Resources */,
+				FF9E4544263A5DC4002D7A75 /* 7 rings.mov in Resources */,
+				FF9E454A263A5DC4002D7A75 /* Best Mistake.mov in Resources */,
 				FF59BDA3258C64EC0047CC7A /* Assets.xcassets in Resources */,
+				FF9E4547263A5DC4002D7A75 /* Dip.mov in Resources */,
+				FF9E4543263A5DC4002D7A75 /* Believer.mov in Resources */,
 				FF59BDA1258C64E90047CC7A /* Main.storyboard in Resources */,
-				FF387805258CA07200CACC82 /* thank u, next.mov in Resources */,
-				FF387807258CA07200CACC82 /* The Harlem Barber Swing.mov in Resources */,
-				FF387808258CA07200CACC82 /* Swish.mov in Resources */,
+				FF9E4546263A5DC4002D7A75 /* thank u, next.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
