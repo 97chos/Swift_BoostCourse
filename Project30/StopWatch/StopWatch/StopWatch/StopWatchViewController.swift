@@ -11,29 +11,30 @@ import SnapKit
 
 class StopWatchViewController: UIViewController {
 
-
   // MARK: UI
 
-  let currentTimer: UILabel = {
+  let mainTimer: UILabel = {
     let label = UILabel()
     label.font = .boldSystemFont(ofSize: 40)
     label.text = "00.00.00"
+    label.sizeToFit()
     return label
   }()
-  let checkTimer: UILabel = {
+  let lapTimer: UILabel = {
     let label = UILabel()
     label.font = .boldSystemFont(ofSize: 20)
     label.text = "00.00.00"
+    label.textAlignment = .right
     return label
   }()
-  let lapAndReset: UIButton = {
+  let lapAndResetButton: UIButton = {
     let button = UIButton(type: .system)
     button.setTitle("Reset", for: .normal)
     button.setTitleColor(.black, for: .normal)
     button.titleLabel?.font = .boldSystemFont(ofSize: 20)
     return button
   }()
-  let startAndStop: UIButton = {
+  let startAndStopButton: UIButton = {
     let button = UIButton(type: .system)
     button.setTitle("Start", for: .normal)
     button.setTitleColor(.systemGreen, for: .normal)
@@ -88,30 +89,32 @@ class StopWatchViewController: UIViewController {
   // MARK: Layout
 
   private func layout() {
-    self.view.addSubview(self.checkTimer)
-    self.view.addSubview(self.currentTimer)
-    self.view.addSubview(self.lapAndReset)
-    self.view.addSubview(self.startAndStop)
+    self.view.addSubview(self.lapTimer)
+    self.view.addSubview(self.mainTimer)
+    self.view.addSubview(self.lapAndResetButton)
+    self.view.addSubview(self.startAndStopButton)
     self.view.addSubview(self.tableView)
 
-    self.currentTimer.snp.makeConstraints{
-      $0.centerX.equalToSuperview()
+    self.mainTimer.snp.makeConstraints{
+      $0.leading.equalTo(self.view.frame.width/2).inset(self.mainTimer.frame.width/1.5)
       $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(100)
     }
-    self.checkTimer.snp.makeConstraints{
-      $0.trailing.equalTo(self.currentTimer.snp.trailing)
-      $0.bottom.equalTo(self.currentTimer.snp.top).offset(-10)
+    self.lapTimer.snp.makeConstraints{
+      $0.leading.equalTo(self.mainTimer.snp.leading)
+      $0.bottom.equalTo(self.mainTimer.snp.top).offset(-10)
     }
-    self.lapAndReset.snp.makeConstraints{
-      $0.top.equalTo(self.currentTimer.snp.bottom).offset(70)
+    self.lapAndResetButton.snp.makeConstraints{
+      $0.width.equalTo(70)
+      $0.top.equalTo(self.mainTimer.snp.bottom).offset(70)
       $0.centerX.equalToSuperview().offset(-50)
     }
-    self.startAndStop.snp.makeConstraints{
-      $0.top.equalTo(self.lapAndReset)
+    self.startAndStopButton.snp.makeConstraints{
+      $0.width.equalTo(70)
+      $0.top.equalTo(self.lapAndResetButton)
       $0.centerX.equalToSuperview().offset(50)
     }
     self.tableView.snp.makeConstraints{
-      $0.top.equalTo(self.lapAndReset.snp.bottom).offset(50)
+      $0.top.equalTo(self.lapAndResetButton.snp.bottom).offset(50)
       $0.leading.trailing.bottom.equalToSuperview()
     }
   }
