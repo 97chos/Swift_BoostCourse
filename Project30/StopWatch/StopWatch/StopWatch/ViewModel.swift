@@ -31,6 +31,15 @@ class StopWatchViewModel {
   }
 
 
+  // MARK: Update Timer
+
+  @objc private func updateMainTimer() {
+    self.updateTimer(self.mainTimer)
+  }
+
+  @objc private func updateLabTimer() {
+    self.updateTimer(self.lapTimer)
+  }
   private func updateTimer(_ stopwatch: Stopwatch) {
     stopwatch.counter += 0.035
 
