@@ -57,4 +57,21 @@ class StopWatchViewModel {
     self.delegate?.updateTimer(stopwatch: stopwatch, minutes+":"+seconds)
   }
 
+
+  // MARK: Reset Timer
+
+  private func resetMainTimer() {
+    self.resetTimer(self.mainTimer)
+    self.laps.removeAll()
+  }
+
+  private func resetLapTimer() {
+    self.resetTimer(self.lapTimer)
+  }
+
+  private func resetTimer(_ stopwatch: Stopwatch) {
+    stopwatch.timer.invalidate()
+    stopwatch.counter = 0.0
+  }
+
 }
