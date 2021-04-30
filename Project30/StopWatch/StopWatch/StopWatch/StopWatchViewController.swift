@@ -100,6 +100,36 @@ class StopWatchViewController: UIViewController {
     self.lapAndResetButton.addTarget(self, action: #selector(self.lapResetAction), for: .touchUpInside)
   }
 
+
+  // MARK: Functions
+
+  @objc private func runStopAction() {
+    self.viewModel.runAndStop {
+      switch self.viewModel.isRunning {
+      case .running:
+        self.changeButton(self.startAndStopButton, "Start", .systemGreen)
+        self.lapAndResetButton.setTitle("Reset", for: .normal)
+
+      case .stop:
+        self.changeButton(self.startAndStopButton, "Stop", .systemRed)
+        self.lapAndResetButton.setTitle("Lap", for: .normal)
+      }
+    }
+  }
+
+  @objc private func lapResetAction() {
+    self.viewModel.lapReset(mainTime: self.mainTimer.text, lapTime: self.lapTimer.text) {
+      if self.viewModel.isRunning == .stop {
+        self.mainTimer.text = "00:00:00"
+        self.lapTimer.text = "00:00:00"
+      }
+      self.tableView.reloadData()
+    }
+  }
+
+  private func changeButton(_ button: UIButton, _ title: String, _ color: UIColor) {
+    button.setTitle(title, for: .normal)
+    button.setTitleColor(color, for: .normal)
   }
 
 
