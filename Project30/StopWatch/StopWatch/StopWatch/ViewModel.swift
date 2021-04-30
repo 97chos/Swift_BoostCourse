@@ -31,5 +31,21 @@ class StopWatchViewModel {
   }
 
 
+  private func updateTimer(_ stopwatch: Stopwatch) {
+    stopwatch.counter += 0.035
+
+    var minutes: String = "\(Int(stopwatch.counter / 60))"
+    var seconds: String = String(format: "%.2f", stopwatch.counter.truncatingRemainder(dividingBy: 60))
+
+    if Int(stopwatch.counter / 60) < 10 {
+      minutes = "0\(Int(stopwatch.counter / 60))"
+    }
+
+    if stopwatch.counter.truncatingRemainder(dividingBy: 60) < 10 {
+      seconds = "0" + seconds
+    }
+
+    self.delegate?.updateTimer(stopwatch: stopwatch, minutes+":"+seconds)
+  }
 
 }
