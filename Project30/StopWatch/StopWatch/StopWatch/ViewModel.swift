@@ -16,7 +16,11 @@ class StopWatchViewModel {
 
   // MARK: Properties
 
-  private var state: State = .stop
+  var isRunning: State = .stop
+  var laps: [StopwatchTimeModel] = []
+  private var mainTimer: Stopwatch = Stopwatch(.main)
+  private var lapTimer: Stopwatch = Stopwatch(.lap)
+
   private var lapCount = 1
 
 
