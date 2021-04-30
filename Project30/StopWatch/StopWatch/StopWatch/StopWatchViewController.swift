@@ -71,8 +71,8 @@ class StopWatchViewController: UIViewController {
     super.viewDidLoad()
     self.configuration()
   }
-
   
+
   // MARK: Configuration
 
   private func configuration() {
@@ -163,6 +163,33 @@ class StopWatchViewController: UIViewController {
     self.tableView.snp.makeConstraints{
       $0.top.equalTo(self.lapAndResetButton.snp.bottom).offset(50)
       $0.leading.trailing.bottom.equalToSuperview()
+    }
+  }
+}
+
+extension StopWatchViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.viewModel.laps.count
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? LapTableViewCell else {
+      return UITableViewCell()
+    }
+
+    cell.set(lapCount: "Lap \(self.viewModel.laps.count - indexPath.row)", times: self.viewModel.laps[indexPath.row])
+
+    return cell
+  }
+}
+
+extension StopWatchViewController: UpdateTimerLabelDelegate {
+  func updateTimer(stopwatch: Stopwatch, _ text: String) {
+    switch stopwatch.watchType {
+    case .main:
+      self.mainTimer.text = text
+    case .lap:
+      self.lapTimer.text = text
     }
   }
 }
