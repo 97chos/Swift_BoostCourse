@@ -12,6 +12,10 @@ enum State {
   case stop
 }
 
+protocol UpdateTimerLabelDelegate: class {
+  func updateTimer(stopwatch: Stopwatch,_ text: String)
+}
+
 class StopWatchViewModel {
 
   // MARK: Properties
@@ -20,6 +24,8 @@ class StopWatchViewModel {
   var laps: [StopwatchTimeModel] = []
   private var mainTimer: Stopwatch = Stopwatch(.main)
   private var lapTimer: Stopwatch = Stopwatch(.lap)
+
+  weak var delegate: UpdateTimerLabelDelegate?
 
   private var lapCount = 1
 
@@ -74,6 +80,7 @@ class StopWatchViewModel {
   @objc private func updateLabTimer() {
     self.updateTimer(self.lapTimer)
   }
+
   private func updateTimer(_ stopwatch: Stopwatch) {
     stopwatch.counter += 0.035
 
