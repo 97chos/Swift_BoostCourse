@@ -14,6 +14,9 @@
 		FF9E456B263A709C002D7A75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF9E4569263A709C002D7A75 /* LaunchScreen.storyboard */; };
 		FF9E4580263A7318002D7A75 /* StopWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9E457F263A7318002D7A75 /* StopWatchViewController.swift */; };
 		FF9E4583263A788A002D7A75 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9E4582263A788A002D7A75 /* ViewModel.swift */; };
+		FF9E458C263A9565002D7A75 /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9E458B263A9565002D7A75 /* Stopwatch.swift */; };
+		FF9E4590263AEA4B002D7A75 /* LapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9E458F263AEA4B002D7A75 /* LapTableViewCell.swift */; };
+		FF9E4594263B4646002D7A75 /* StopwatchLapTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9E4593263B4646002D7A75 /* StopwatchLapTimeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		FF9E456C263A709C002D7A75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF9E457F263A7318002D7A75 /* StopWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchViewController.swift; sourceTree = "<group>"; };
 		FF9E4582263A788A002D7A75 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		FF9E458B263A9565002D7A75 /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
+		FF9E458F263AEA4B002D7A75 /* LapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapTableViewCell.swift; sourceTree = "<group>"; };
+		FF9E4593263B4646002D7A75 /* StopwatchLapTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchLapTimeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +101,27 @@
 			children = (
 				FF9E457F263A7318002D7A75 /* StopWatchViewController.swift */,
 				FF9E4582263A788A002D7A75 /* ViewModel.swift */,
+				FF9E458E263AEA3D002D7A75 /* View */,
+				FF9E458A263A955C002D7A75 /* Model */,
 			);
 			path = StopWatch;
+			sourceTree = "<group>";
+		};
+		FF9E458A263A955C002D7A75 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FF9E458B263A9565002D7A75 /* Stopwatch.swift */,
+				FF9E4593263B4646002D7A75 /* StopwatchLapTimeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FF9E458E263AEA3D002D7A75 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FF9E458F263AEA4B002D7A75 /* LapTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,7 +238,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF9E455F263A709B002D7A75 /* AppDelegate.swift in Sources */,
+				FF9E4590263AEA4B002D7A75 /* LapTableViewCell.swift in Sources */,
+				FF9E4594263B4646002D7A75 /* StopwatchLapTimeModel.swift in Sources */,
 				FF9E4580263A7318002D7A75 /* StopWatchViewController.swift in Sources */,
+				FF9E458C263A9565002D7A75 /* Stopwatch.swift in Sources */,
 				FF9E4583263A788A002D7A75 /* ViewModel.swift in Sources */,
 				FF9E4561263A709B002D7A75 /* SceneDelegate.swift in Sources */,
 			);
