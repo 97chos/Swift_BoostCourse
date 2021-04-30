@@ -78,11 +78,28 @@ class StopWatchViewController: UIViewController {
   private func configuration() {
     self.viewConfiguration()
     self.layout()
+    self.buttonConfiguration()
+    self.tableViewConfiguration()
   }
 
   private func viewConfiguration() {
     self.view.backgroundColor = .systemBackground
     self.navigationItem.title = "Stopwatch"
+
+    self.viewModel.delegate = self
+  }
+
+  private func tableViewConfiguration() {
+    self.tableView.dataSource = self
+    self.tableView.register(LapTableViewCell.self, forCellReuseIdentifier: "cell")
+    self.tableView.rowHeight = 40
+  }
+
+  private func buttonConfiguration() {
+    self.startAndStopButton.addTarget(self, action: #selector(self.runStopAction), for: .touchUpInside)
+    self.lapAndResetButton.addTarget(self, action: #selector(self.lapResetAction), for: .touchUpInside)
+  }
+
   }
 
 
