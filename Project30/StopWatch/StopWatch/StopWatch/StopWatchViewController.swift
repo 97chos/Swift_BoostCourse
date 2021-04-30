@@ -32,6 +32,7 @@ class StopWatchViewController: UIViewController {
     button.setTitle("Reset", for: .normal)
     button.setTitleColor(.black, for: .normal)
     button.titleLabel?.font = .boldSystemFont(ofSize: 20)
+    button.backgroundColor = .white
     return button
   }()
   let startAndStopButton: UIButton = {
@@ -39,6 +40,7 @@ class StopWatchViewController: UIViewController {
     button.setTitle("Start", for: .normal)
     button.setTitleColor(.systemGreen, for: .normal)
     button.titleLabel?.font = .boldSystemFont(ofSize: 20)
+    button.backgroundColor = .white
     return button
   }()
   let tableView: UITableView = {
@@ -71,6 +73,11 @@ class StopWatchViewController: UIViewController {
     super.viewDidLoad()
     self.configuration()
   }
+
+  override func viewDidLayoutSubviews() {
+    self.makeCircleButton(self.lapAndResetButton)
+    self.makeCircleButton(self.startAndStopButton)
+  }
   
 
   // MARK: Configuration
@@ -83,7 +90,7 @@ class StopWatchViewController: UIViewController {
   }
 
   private func viewConfiguration() {
-    self.view.backgroundColor = .systemBackground
+    self.view.backgroundColor = .systemGray4
     self.navigationItem.title = "Stopwatch"
 
     self.viewModel.delegate = self
@@ -132,6 +139,11 @@ class StopWatchViewController: UIViewController {
     button.setTitleColor(color, for: .normal)
   }
 
+  private func makeCircleButton(_ button: UIButton) {
+    button.layer.cornerRadius = button.frame.width / 2
+    button.layer.masksToBounds = true
+  }
+
 
   // MARK: Layout
 
@@ -151,14 +163,14 @@ class StopWatchViewController: UIViewController {
       $0.bottom.equalTo(self.mainTimer.snp.top).offset(-10)
     }
     self.lapAndResetButton.snp.makeConstraints{
-      $0.width.equalTo(70)
+      $0.width.height.equalTo(70)
       $0.top.equalTo(self.mainTimer.snp.bottom).offset(70)
-      $0.centerX.equalToSuperview().offset(-50)
+      $0.centerX.equalToSuperview().offset(-70)
     }
     self.startAndStopButton.snp.makeConstraints{
-      $0.width.equalTo(70)
+      $0.width.height.equalTo(70)
       $0.top.equalTo(self.lapAndResetButton)
-      $0.centerX.equalToSuperview().offset(50)
+      $0.centerX.equalToSuperview().offset(70)
     }
     self.tableView.snp.makeConstraints{
       $0.top.equalTo(self.lapAndResetButton.snp.bottom).offset(50)
