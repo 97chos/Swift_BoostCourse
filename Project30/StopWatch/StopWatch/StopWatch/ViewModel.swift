@@ -24,10 +24,44 @@ class StopWatchViewModel {
   private var lapCount = 1
 
 
-  // MARK: Functions
+  // MARK: Button Actions
 
-  @objc func changeState() {
-    
+  @objc func runAndStop(completion: () -> Void) {
+    switch self.isRunning {
+    case .stop:
+      self.mainTimer.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: #selector(self.updateMainTimer), userInfo: nil, repeats: true)
+      self.lapTimer.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: #selector(self.updateLabTimer), userInfo: nil, repeats: true)
+
+      RunLoop.current.add(self.mainTimer.timer, forMode: RunLoop.Mode.common)
+      RunLoop.current.add(self.lapTimer.timer, forMode: RunLoop.Mode.common)
+
+      completion()
+      self.isRunning = .running
+    case .running:
+      self.mainTimer.timer.invalidate()
+      self.lapTimer.timer.invalidate()
+
+      completion()
+      self.isRunning = .stop
+    }
+  }
+
+  @objc func lapReset(mainTime: String?, lapTime: String?, completion: () -> Void) {
+    switch self.isRunning {
+    case .running:
+      if let mainTime = mainTime, let lapTime = lapTime {
+        laps.insert(StopwatchTimeModel(lapTime: lapTime, mainTime: mainTime),at: 0)
+      }
+      completion()
+      resetLapTimer()
+      lapTimer.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: #selector(updateLabTimer), userInfo: nil, repeats: true)
+
+      RunLoop.current.add(self.lapTimer.timer, forMode: .common)
+    case .stop:
+      resetMainTimer()
+      resetLapTimer()
+      completion()
+    }
   }
 
 
