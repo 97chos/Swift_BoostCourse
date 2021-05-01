@@ -13,21 +13,20 @@ class StopWatchViewController: UIViewController {
 
   // MARK: UI
 
-  let mainTimer: UILabel = {
+  private let mainTimer: UILabel = {
     let label = UILabel()
     label.font = .boldSystemFont(ofSize: 40)
     label.text = "00.00.00"
     label.sizeToFit()
     return label
   }()
-  let lapTimer: UILabel = {
+  private let lapTimer: UILabel = {
     let label = UILabel()
     label.font = .boldSystemFont(ofSize: 20)
     label.text = "00.00.00"
-    label.textAlignment = .right
     return label
   }()
-  let lapAndResetButton: UIButton = {
+  private let lapAndResetButton: UIButton = {
     let button = UIButton(type: .system)
     button.setTitle("Reset", for: .normal)
     button.setTitleColor(.black, for: .normal)
@@ -35,7 +34,7 @@ class StopWatchViewController: UIViewController {
     button.backgroundColor = .white
     return button
   }()
-  let startAndStopButton: UIButton = {
+  private let startAndStopButton: UIButton = {
     let button = UIButton(type: .system)
     button.setTitle("Start", for: .normal)
     button.setTitleColor(.systemGreen, for: .normal)
@@ -43,7 +42,7 @@ class StopWatchViewController: UIViewController {
     button.backgroundColor = .white
     return button
   }()
-  let tableView: UITableView = {
+  private let tableView: UITableView = {
     let tableView = UITableView()
     tableView.allowsSelection = false
     return tableView
@@ -90,6 +89,7 @@ class StopWatchViewController: UIViewController {
   }
 
   private func viewConfiguration() {
+    super.viewDidLayoutSubviews()
     self.view.backgroundColor = .systemGray4
     self.navigationItem.title = "Stopwatch"
 
@@ -179,6 +179,9 @@ class StopWatchViewController: UIViewController {
   }
 }
 
+
+// MARK: Extension TableView DataSource
+
 extension StopWatchViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.viewModel.laps.count
@@ -194,6 +197,9 @@ extension StopWatchViewController: UITableViewDataSource {
     return cell
   }
 }
+
+
+// MARK: Extenssion Stopwatch Delegate
 
 extension StopWatchViewController: UpdateTimerLabelDelegate {
   func updateTimer(stopwatch: Stopwatch, _ text: String) {

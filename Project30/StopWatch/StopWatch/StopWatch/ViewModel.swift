@@ -113,6 +113,7 @@ class StopWatchViewModel {
   private func resetTimer(_ stopwatch: Stopwatch) {
     stopwatch.timer.invalidate()
     stopwatch.counter = 0.0
+    stopwatch.counter = 0
   }
 
 }
