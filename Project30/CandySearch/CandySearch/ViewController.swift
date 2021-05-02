@@ -47,9 +47,46 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
+    self.viewConfiguration()
   }
 
 
+  // MARK: Configuration
+
+  private func viewConfiguration() {
+    self.configureView()
+    self.configureTableView()
+    self.configutaionSearchController()
+    self.layout()
+  }
+
+  private func configureView() {
+    self.view.backgroundColor = .systemBackground
+  }
+
+  private func configureTableView() {
+    self.tableView.register(CandyCell.self, forCellReuseIdentifier: "candyCell")
+    self.tableView.delegate = self
+    self.tableView.dataSource = self
+  }
+
+  private func configutaionSearchController() {
+    self.searchController.searchBar.delegate = self
+    self.searchController.searchResultsUpdater = self
+    self.navigationItem.searchController = self.searchController
+  }
+
+
+  // MARK: Layout
+
+  private func layout() {
+    self.view.addSubview(self.tableView)
+
+    self.tableView.snp.makeConstraints{
+      $0.edges.equalTo(self.view.safeAreaInsets)
+    }
+  }
+
+}
 }
 
