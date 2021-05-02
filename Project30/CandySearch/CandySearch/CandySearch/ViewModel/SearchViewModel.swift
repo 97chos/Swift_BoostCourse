@@ -27,7 +27,8 @@ class SearchViewModel {
 
   // MARK: Functions
 
-  func filterContent(_ text: String, _ scope: String = "All") {
+  func filterContent(_ text: String?, _ scope: String = "All") {
+    guard let text = text else { return }
     self.filteredCandies = candies.filter {
       if $0.type.rawValue != scope && scope != "All" {
         return false

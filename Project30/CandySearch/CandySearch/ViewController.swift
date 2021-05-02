@@ -114,11 +114,11 @@ extension ViewController: UISearchBarDelegate, UISearchResultsUpdating  {
     let searchBar = searchController.searchBar
     guard let scopeList = searchBar.scopeButtonTitles else { return }
 
-    self.viewModel.filterContent(searchText, scopeList[searchBar.selectedScopeButtonIndex])
+    self.viewModel.filterContent(searchBar.text, scopeList[searchBar.selectedScopeButtonIndex])
     self.tableView.reloadData()
   }
+
   func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-    self.viewModel.filterContent(searchBar.text!, searchBar.scopeButtonTitles![selectedScope])
+    self.viewModel.filterContent(searchBar.text, searchBar.scopeButtonTitles![selectedScope])
   }
 }
-
