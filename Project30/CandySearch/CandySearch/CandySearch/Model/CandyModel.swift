@@ -7,8 +7,13 @@
 
 import Foundation
 
+enum CandyType: String {
+  case chocolate = "Chocolate"
+  case hard = "Hard"
+  case other = "Other"
+}
 
-struct CandyModel {
-  let type: String
-  let category: String
+struct Candy {
+  let type: CandyType
+  let name: String
 }
