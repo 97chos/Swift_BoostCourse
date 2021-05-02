@@ -24,6 +24,12 @@ class ViewController: UIViewController {
     searchController.searchBar.placeholder = "Search Candy"
     return searchController
   }()
+  private let navigationTitleView: UIView = {
+    let view = UIImageView()
+    view.image = UIImage(named: "Inline-Logo")
+    view.contentMode = .scaleAspectFit
+    return view
+  }()
   let statusBar: UIView = {
     return UIView()
   }()
