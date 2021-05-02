@@ -88,5 +88,37 @@ class ViewController: UIViewController {
   }
 
 }
+
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.viewModel.filteredCandies.count
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "candyCell", for: indexPath) as? CandyCell else {
+      return UITableViewCell(style: .subtitle, reuseIdentifier: "candyCell")
+    }
+
+    cell.set(candy: self.viewModel.filteredCandies[indexPath.row])
+
+    return cell
+  }
+
+
+}
+
+extension ViewController: UISearchBarDelegate, UISearchResultsUpdating  {
+  func updateSearchResults(for searchController: UISearchController) {
+    let searchBar = searchController.searchBar
+    guard let scopeList = searchBar.scopeButtonTitles else { return }
+
+    self.viewModel.filterContent(searchText, scopeList[searchBar.selectedScopeButtonIndex])
+    self.tableView.reloadData()
+  }
+  func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    self.viewModel.filterContent(searchBar.text!, searchBar.scopeButtonTitles![selectedScope])
+  }
 }
 
