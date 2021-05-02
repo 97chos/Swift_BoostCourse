@@ -23,6 +23,19 @@ class ViewController: UIViewController {
   }()
 
 
+
+  // MARK: Initializing
+
+  init(viewModel: SearchViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+
   // MARK: View LifeCycle
 
   override func viewDidLoad() {
