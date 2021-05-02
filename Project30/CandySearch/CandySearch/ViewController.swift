@@ -6,22 +6,29 @@
 //
 
 import UIKit
+import SnapKit
 
 class ViewController: UIViewController {
 
   // MARK: UI
 
-  let tableView: UITableView = {
+  private let tableView: UITableView = {
     let tableView = UITableView()
     return tableView
   }()
-  let searchController: UISearchController = {
+  private let searchController: UISearchController = {
     let searchController = UISearchController(searchResultsController: nil)
     searchController.searchBar.scopeButtonTitles = ["All", "Chocolate", "Hard", "Other"]
     searchController.obscuresBackgroundDuringPresentation = true
+    searchController.searchBar.showsScopeBar = true
+    searchController.searchBar.placeholder = "Search Candy"
     return searchController
   }()
 
+
+  // MARK: Properties
+
+  private var viewModel: SearchViewModel
 
 
   // MARK: Initializing
