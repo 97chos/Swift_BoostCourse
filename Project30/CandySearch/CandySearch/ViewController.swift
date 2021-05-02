@@ -24,11 +24,15 @@ class ViewController: UIViewController {
     searchController.searchBar.placeholder = "Search Candy"
     return searchController
   }()
+  let statusBar: UIView = {
+    return UIView()
+  }()
 
 
   // MARK: Properties
 
   private var viewModel: SearchViewModel
+  private lazy var statusFrame = self.view.window?.windowScene?.statusBarManager?.statusBarFrame
 
 
   // MARK: Initializing
@@ -50,6 +54,10 @@ class ViewController: UIViewController {
     self.viewConfiguration()
   }
 
+  override func viewDidLayoutSubviews() {
+    self.setColorStatusBar(color: .systemGreen)
+  }
+
 
   // MARK: Configuration
 
@@ -62,6 +70,8 @@ class ViewController: UIViewController {
 
   private func configureView() {
     self.view.backgroundColor = .systemBackground
+    self.navigationItem.titleView = self.navigationTitleView
+    self.navigationController?.navigationBar.backgroundColor = .systemGreen
   }
 
   private func configureTableView() {
@@ -76,6 +86,13 @@ class ViewController: UIViewController {
     self.navigationItem.searchController = self.searchController
   }
 
+  private func setColorStatusBar(color: UIColor) {
+    guard let frame = self.statusFrame else { return }
+    self.statusBar.frame = frame
+    self.statusBar.backgroundColor = color
+    self.view.addSubview(self.statusBar)
+  }
+
 
   // MARK: Layout
 
@@ -83,10 +100,10 @@ class ViewController: UIViewController {
     self.view.addSubview(self.tableView)
 
     self.tableView.snp.makeConstraints{
-      $0.edges.equalTo(self.view.safeAreaInsets)
+      $0.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+      $0.bottom.equalToSuperview()
     }
   }
-
 }
 
 
