@@ -89,6 +89,7 @@ class ViewController: UIViewController {
   private func configutaionSearchController() {
     self.searchController.searchBar.delegate = self
     self.searchController.searchResultsUpdater = self
+    definesPresentationContext = true
     self.navigationItem.searchController = self.searchController
   }
 
@@ -125,8 +126,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     cell.set(candy: self.viewModel.filteredCandies[indexPath.row])
-
     return cell
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
+    let detailViewController = DetailViewController(candy: self.viewModel.filteredCandies[indexPath.row])
+    self.navigationController?.pushViewController(detailViewController, animated: true)
   }
 
 
