@@ -137,6 +137,16 @@ class CalculatorViewController: UIViewController {
       }
     }
 
+    buttons.forEach{ buttons in
+      buttons.forEach {
+        if $0.tag != 0 {
+          $0.addTarget(self, action: #selector(self.numberPadAction(_:)), for: .touchUpInside)
+        } else {
+          $0.addTarget(self, action: #selector(self.functionPadAction(_:)), for: .touchUpInside)
+        }
+      }
+    }
+
     return buttons
   }
 
