@@ -70,13 +70,14 @@ class CalculatorViewController: UIViewController {
   //MARK: Configuration
 
   private func configuration() {
-
+    self.view.backgroundColor = .black
+    self.viewModel.delegate = self
   }
 
 
   //MARK: Functions
 
-  private func setButtonPads() -> UIStackView {
+  private func makeKeypadStackView() -> UIStackView {
     let allButtons: [[UIButton]] = self.addAllButton()
     self.allButtons = allButtons
 
