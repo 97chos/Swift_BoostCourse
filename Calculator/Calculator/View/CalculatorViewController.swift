@@ -179,5 +179,12 @@ class CalculatorViewController: UIViewController {
       $0.leading.trailing.equalToSuperview()
       $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
     }
+    inputNumberLabel.snp.makeConstraints {
+      $0.bottom.equalTo(keypadView.snp.top).offset(-20)
+      $0.trailing.equalToSuperview().inset(10)
+      $0.leading.equalToSuperview().inset(10)
+    }
+  }
+}
   }
 }
