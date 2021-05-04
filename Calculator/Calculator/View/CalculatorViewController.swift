@@ -33,6 +33,15 @@ class CalculatorViewController: UIViewController {
     let button = self.makeButton(element: function, color: .lightGray)
     return button
   }
+  private let inputNumberLabel: UILabel = {
+    let label = UILabel()
+    label.font = .boldSystemFont(ofSize: 60)
+    label.textColor = .white
+    label.textAlignment = .right
+    label.text = "0"
+    label.adjustsFontSizeToFitWidth = true
+    return label
+  }()
 
 
   //MARK: Initialzing
