@@ -171,9 +171,10 @@ class CalculatorViewController: UIViewController {
   // MARK: Layout
 
   private func layout() {
-    let keypadView = self.setButtonPads()
+    let keypadView = self.makeKeypadStackView()
 
     self.view.addSubview(keypadView)
+    self.view.addSubview(self.inputNumberLabel)
 
     keypadView.snp.makeConstraints {
       $0.leading.trailing.equalToSuperview()
@@ -186,5 +187,14 @@ class CalculatorViewController: UIViewController {
     }
   }
 }
+
+
+extension CalculatorViewController: TappedKeypadDelegate {
+  func tappedNumberKeypad(number: String) {
+    self.inputNumberLabel.text = number
+  }
+
+  func tappedFunctionKeypad(function: String) {
+
   }
 }
