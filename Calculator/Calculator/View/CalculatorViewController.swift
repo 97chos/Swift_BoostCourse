@@ -55,15 +55,6 @@ class CalculatorViewController: UIViewController {
   }
 
   override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-
-    self.allButtons.forEach {
-      $0.forEach{ button in
-        print(button.frame.width)
-        button.layer.borderWidth = button.layer.frame.width * 0.5
-        button.layer.masksToBounds = true
-      }
-    }
   }
 
 
