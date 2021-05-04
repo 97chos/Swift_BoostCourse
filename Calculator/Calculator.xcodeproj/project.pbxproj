@@ -14,6 +14,7 @@
 		FFABBFAD263FED080013BCDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFABBFAB263FED080013BCDB /* LaunchScreen.storyboard */; };
 		FFABBFC0263FEDA70013BCDB /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABBFBF263FEDA70013BCDB /* CalculatorViewController.swift */; };
 		FFABBFC6263FF30C0013BCDB /* chunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABBFC5263FF30C0013BCDB /* chunked.swift */; };
+		FFABBFCB264051060013BCDB /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABBFCA264051060013BCDB /* CalculatorViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		FFABBFAE263FED080013BCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFABBFBF263FEDA70013BCDB /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		FFABBFC5263FF30C0013BCDB /* chunked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chunked.swift; sourceTree = "<group>"; };
+		FFABBFCA264051060013BCDB /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,9 +86,10 @@
 				FFABBFA2263FED060013BCDB /* SceneDelegate.swift */,
 				FFABBFC3263FF2FA0013BCDB /* Extensions */,
 				FFABBFBE263FED9C0013BCDB /* View */,
-				FFABBFA9263FED080013BCDB /* Assets.xcassets */,
+				FFABBFC9264050E70013BCDB /* ViewModel */,
 				FFABBFAB263FED080013BCDB /* LaunchScreen.storyboard */,
 				FFABBFAE263FED080013BCDB /* Info.plist */,
+				FFABBFA9263FED080013BCDB /* Assets.xcassets */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -113,6 +116,14 @@
 				FFABBFC5263FF30C0013BCDB /* chunked.swift */,
 			);
 			path = Array;
+			sourceTree = "<group>";
+		};
+		FFABBFC9264050E70013BCDB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FFABBFCA264051060013BCDB /* CalculatorViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +243,7 @@
 				FFABBFC0263FEDA70013BCDB /* CalculatorViewController.swift in Sources */,
 				FFABBFC6263FF30C0013BCDB /* chunked.swift in Sources */,
 				FFABBFA3263FED060013BCDB /* SceneDelegate.swift in Sources */,
+				FFABBFCB264051060013BCDB /* CalculatorViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
