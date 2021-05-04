@@ -15,6 +15,7 @@ class CalculatorViewController: UIViewController {
   private let additionalFunctions: [String] = ["%","+/-","AC"]
   private let functions: [String] = ["÷","x","-","+","="]
   private var allButtons: [[UIButton]] = [[]]
+  private let viewModel: CalculatorViewModel
 
 
   //MARK: UI
@@ -31,6 +32,18 @@ class CalculatorViewController: UIViewController {
   private lazy var additionalFunctionbuttons: [UIButton] = self.additionalFunctions.map { function -> UIButton in
     let button = self.makeButton(element: function, color: .lightGray)
     return button
+  }
+
+
+  //MARK: Initialzing
+
+  init(viewModel: CalculatorViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 
 
