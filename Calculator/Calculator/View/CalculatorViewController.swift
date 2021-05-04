@@ -159,6 +159,14 @@ class CalculatorViewController: UIViewController {
     return button
   }
 
+  @objc private func numberPadAction(_ button: UIButton) {
+    self.viewModel.didTapNumberButton(button.tag)
+  }
+
+  @objc private func functionPadAction(_ button: UIButton) {
+    self.viewModel.didTapFunctionButton(button.titleLabel?.text ?? "")
+  }
+
 
   // MARK: Layout
 
