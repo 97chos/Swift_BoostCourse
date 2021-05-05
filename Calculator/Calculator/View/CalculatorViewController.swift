@@ -12,8 +12,8 @@ import SnapKit
 class CalculatorViewController: UIViewController {
 
   //MARK: Properties
-  private let additionalFunctions: [String] = ["%","+/-","AC"]
-  private let functions: [String] = ["÷","x","-","+","="]
+  private let functions: [String] = ["%","+/-","AC"]
+  private let fourRules: [String] = ["÷","x","-","+","="]
   private var allButtons: [[UIButton]] = [[]]
   private let viewModel: CalculatorViewModel
 
@@ -29,7 +29,7 @@ class CalculatorViewController: UIViewController {
     }
     return button
   }
-  private lazy var additionalFunctionbuttons: [UIButton] = self.additionalFunctions.map { function -> UIButton in
+  private lazy var functionButtons: [UIButton] = self.functions.map { function -> UIButton in
     let button = self.makeButton(element: function, color: .lightGray)
     return button
   }
@@ -125,15 +125,15 @@ class CalculatorViewController: UIViewController {
       .reversed() // 0~9 를 9~0 으로 변경
       .chunked(into: 3) // [9,8,7,6...3,2,1,0] 을 [[9,8,7],[6,5,4],[3,2,1],[0]] 으로 변경
 
-    buttons.insert(self.additionalFunctionbuttons, at: 0)
+    buttons.insert(self.functionButtons, at: 0)
 
     for i in 0..<buttons.count {
       buttons[i].reverse()  // [9,8,7] 을 [7,8,9] 로 변경
       if buttons[i] != buttons.last {
-        buttons[i].append(self.makeButton(element: self.functions[i], color: .systemYellow))
+        buttons[i].append(self.makeButton(element: self.fourRules[i], color: .systemYellow))
       } else {
         buttons[i].append(self.makeButton(element: ".", color: .darkGray))
-        buttons[i].append(self.makeButton(element: self.functions[i], color: .systemYellow))
+        buttons[i].append(self.makeButton(element: self.fourRules[i], color: .systemYellow))
       }
     }
 
