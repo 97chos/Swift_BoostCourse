@@ -193,8 +193,4 @@ extension CalculatorViewController: TappedKeypadDelegate {
   func tappedNumberKeypad(number: String) {
     self.inputNumberLabel.text = number
   }
-
-  func tappedFunctionKeypad(function: String) {
-
-  }
 }

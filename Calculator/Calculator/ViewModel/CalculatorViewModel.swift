@@ -9,7 +9,6 @@ import Foundation
 
 protocol TappedKeypadDelegate: class {
   func tappedNumberKeypad(number: String)
-  func tappedFunctionKeypad(function: String)
 }
 
 
