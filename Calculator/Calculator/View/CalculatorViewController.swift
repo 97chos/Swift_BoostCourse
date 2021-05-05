@@ -155,7 +155,7 @@ class CalculatorViewController: UIViewController {
     button.setTitle("\(element)", for: .normal)
     button.setTitleColor(.white, for: .normal)
     button.backgroundColor = color
-    button.titleLabel?.font = .systemFont(ofSize: 18)
+    button.titleLabel?.font = .systemFont(ofSize: 25)
     return button
   }
 
