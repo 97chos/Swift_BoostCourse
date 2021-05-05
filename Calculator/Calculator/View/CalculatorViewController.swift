@@ -63,9 +63,6 @@ class CalculatorViewController: UIViewController {
     self.layout()
   }
 
-  override func viewDidLayoutSubviews() {
-  }
-
 
   //MARK: Configuration
 
@@ -91,23 +88,12 @@ class CalculatorViewController: UIViewController {
       } else {
         horizontalStackView.distribution = .fillProportionally
       }
-      return horizontalStackView
-    }
 
-    allButtons.forEach {
-      $0.forEach { button in
-        if button.tag == 10 {
-          button.snp.makeConstraints {
-            $0.width.equalTo(button.snp.width).multipliedBy(2)
-            $0.height.equalTo(button.snp.width).multipliedBy(0.5)
-          }
-        } else {
-          button.snp.makeConstraints {
-            $0.width.equalToSuperview().multipliedBy(0.25)
-            $0.height.equalTo(button.snp.width)
-          }
-        }
+      horizontalStackView.snp.makeConstraints {
+        $0.width.equalTo(UIScreen.main.bounds.width)
       }
+
+      return horizontalStackView
     }
 
     let keyPadStackView = UIStackView(arrangedSubviews: horizontalStackViews)
@@ -156,6 +142,7 @@ class CalculatorViewController: UIViewController {
     button.setTitleColor(.white, for: .normal)
     button.backgroundColor = color
     button.titleLabel?.font = .systemFont(ofSize: 25)
+    
     return button
   }
 
@@ -185,7 +172,24 @@ class CalculatorViewController: UIViewController {
       $0.trailing.equalToSuperview().inset(10)
       $0.leading.equalToSuperview().inset(10)
     }
+
+    allButtons.forEach {
+      $0.forEach { button in
+        if button.tag == 10 {
+          button.snp.makeConstraints {
+            $0.width.equalToSuperview().multipliedBy(0.5)
+            $0.height.equalTo(button.snp.width).multipliedBy(0.5)
+          }
+        } else {
+          button.snp.makeConstraints {
+            $0.width.equalToSuperview().multipliedBy(0.25)
+            $0.height.equalTo(button.snp.width)
+          }
+        }
+      }
+    }
   }
+
 }
 
 
