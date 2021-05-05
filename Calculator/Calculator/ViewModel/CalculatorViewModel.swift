@@ -16,10 +16,10 @@ class CalculatorViewModel {
 
   // MARK: Properties
 
-  private var newNumber: Float = 0
-  private var oldNumber: Float = 0
-  private var displayedNumber: Float = 0
-  private var tempNumber: Float = 0
+  private var newValue: Float = 0
+  private var oldValue: Float = 0
+  private var displayedValue: Float = 0
+  private var tempValue: Float = 0
   private var currentState: Functions = .equal
 
   weak var delegate: TappedKeypadDelegate?
@@ -32,10 +32,10 @@ class CalculatorViewModel {
 
     guard -922337217429372928 < displayedNumber && displayedNumber < 922337203685477580 else { return }
 
-    if Float(Int(displayedNumber)) == displayedNumber {
-      self.delegate?.tappedNumberKeypad(number: "\(Int(displayedNumber))")
+    if Float(Int(displayedValue)) == displayedValue {
+      self.delegate?.tappedNumberKeypad(number: "\(Int(displayedValue))")
     } else {
-      self.delegate?.tappedNumberKeypad(number: "\(displayedNumber)")
+      self.delegate?.tappedNumberKeypad(number: "\(displayedValue)")
     }
   }
 
@@ -44,29 +44,29 @@ class CalculatorViewModel {
 
     self.functionPad(function)
 
-    guard -922337217429372928 < self.displayedNumber && self.displayedNumber < 922337203685477580 else { return }
+    guard -922337217429372928 < self.displayedValue && self.displayedValue < 922337203685477580 else { return }
 
-    if Float(Int(self.displayedNumber)) == self.displayedNumber {
-      self.delegate?.tappedNumberKeypad(number: "\(Int(self.displayedNumber))")
+    if Float(Int(self.displayedValue)) == self.displayedValue {
+      self.delegate?.tappedNumberKeypad(number: "\(Int(self.displayedValue))")
     } else {
-      self.delegate?.tappedNumberKeypad(number: "\(self.displayedNumber)")
+      self.delegate?.tappedNumberKeypad(number: "\(self.displayedValue)")
     }
 
     if self.currentState != .changePlusMinus {
-      self.displayedNumber = 0
+      self.displayedValue = 0
     }
   }
 
   private func numberPad(_ number: Int) -> Float {
-    if number == 10 && self.displayedNumber == 0 {
+    if number == 10 && self.displayedValue == 0 {
       return 0
-    } else if self.displayedNumber == 0 {
+    } else if self.displayedValue == 0 {
       return Float(number)
     } else {
       if number == 10 {
-        return Float("\(Int(self.displayedNumber))0") ?? 0
+        return Float("\(Int(self.displayedValue))0") ?? 0
       } else {
-        return Float("\(Int(self.displayedNumber))\(number)") ?? 0
+        return Float("\(Int(self.displayedValue))\(number)") ?? 0
       }
     }
   }
@@ -74,22 +74,22 @@ class CalculatorViewModel {
   private func functionPad(_ function: Functions) {
       switch function {
       case .AC:
-        self.newNumber = 0
-        self.oldNumber = 0
-        self.displayedNumber = 0
-        self.tempNumber = 0
+        self.newValue = 0
+        self.oldValue = 0
+        self.displayedValue = 0
+        self.tempValue = 0
 
       case .changePlusMinus:
-        if self.displayedNumber != 0 {
-          self.displayedNumber = -(self.displayedNumber)
+        if self.displayedValue != 0 {
+          self.displayedValue = -(self.displayedValue)
         }
       case .percent:
-        if oldNumber != 0 {
-          self.oldNumber = max(self.oldNumber + (self.newNumber / self.oldNumber * 100),0)
+        if oldValue != 0 {
+          self.oldValue = max(self.oldValue + (self.newValue / self.oldValue * 100),0)
         } else {
-          self.oldNumber = newNumber / 100
+          self.oldValue = newValue / 100
         }
-        self.oldNumber = newNumber
+        self.oldValue = newValue
       case .plus, .multiply, .minus, .divide:
         self.fourRulesPad(function)
         self.currentState = function
@@ -97,16 +97,16 @@ class CalculatorViewModel {
       case .equal:
         self.equalPad(self.currentState)
         self.currentState = .equal
-        self.tempNumber = 0
+        self.tempValue = 0
       }
       self.currentState = function
   }
 
   private func fourRulesPad(_ function: Functions) {
-    self.oldNumber = self.newNumber
-    self.newNumber = self.displayedNumber
+    self.oldValue = self.newValue
+    self.newValue = self.displayedValue
 
-    if self.oldNumber != 0 && self.newNumber != 0 {
+    if self.oldValue != 0 && self.newValue != 0 {
       self.calculate(function)
     }
   }
@@ -121,13 +121,13 @@ class CalculatorViewModel {
 
     switch function {
     case .plus:
-      self.displayedNumber = self.oldNumber + self.newNumber
+      self.displayedValue = self.oldValue + self.newValue
     case .minus:
-      self.displayedNumber = self.oldNumber - self.newNumber
+      self.displayedValue = self.oldValue - self.newValue
     case .divide:
-      self.displayedNumber = self.oldNumber / self.newNumber
+      self.displayedValue = self.oldValue / self.newValue
     case .multiply:
-      self.displayedNumber = self.oldNumber * self.newNumber
+      self.displayedValue = self.oldValue * self.newValue
     default:
       return
     }
