@@ -52,6 +52,9 @@ class CalculatorViewModel {
     } else {
       self.delegate?.tappedNumberKeypad(number: "\(self.displayedNumber)")
     }
+
+    if self.currentState != .changePlusMinus {
+      self.displayedNumber = 0
     }
   }
 
@@ -73,15 +76,13 @@ class CalculatorViewModel {
       switch function {
       case .AC:
         self.newNumber = 0
-        self.resultNumber = 0
-        self.currentState = .equal
+        self.oldNumber = 0
+        self.displayedNumber = 0
+        self.tempNumber = 0
+
       case .changePlusMinus:
-        if self.newNumber != 0 {
-          if self.resultNumber == 0 {
-            self.resultNumber = self.newNumber
-          }
-          self.newNumber = -(self.resultNumber)
-          self.resultNumber = newNumber
+        if self.displayedNumber != 0 {
+          self.displayedNumber = -(self.displayedNumber)
         }
       case .percent:
         if oldNumber != 0 {
@@ -91,34 +92,46 @@ class CalculatorViewModel {
         }
         self.oldNumber = newNumber
       case .plus, .multiply, .minus, .divide:
-        guard self.currentState != function else { return }
+        self.fourRulesPad(function)
         self.currentState = function
 
-        if resultNumber == 0 {
-          resultNumber = newNumber
-        }
-        newNumber = 0
       case .equal:
-        self.fourRulesPad(self.currentState)
+        self.equalPad(self.currentState)
         self.currentState = .equal
+        self.tempNumber = 0
       }
       self.currentState = function
   }
 
   private func fourRulesPad(_ function: Functions) {
+    self.oldNumber = self.newNumber
+    self.newNumber = self.displayedNumber
+
+    if self.oldNumber != 0 && self.newNumber != 0 {
+      self.calculate(function)
+    }
+  }
+
+  private func equalPad(_ function: Functions) {
+    self.calculate(function)
+  }
+
+  private func calculate(_ function: Functions) {
+    self.oldNumber = self.newNumber
+    self.newNumber = self.displayedNumber
+
     switch function {
     case .plus:
-      self.resultNumber += self.newNumber
+      self.displayedNumber = self.oldNumber + self.newNumber
     case .minus:
-      self.resultNumber -= self.newNumber
+      self.displayedNumber = self.oldNumber - self.newNumber
     case .divide:
-      self.resultNumber /= self.newNumber
+      self.displayedNumber = self.oldNumber / self.newNumber
     case .multiply:
-      self.resultNumber *= self.newNumber
+      self.displayedNumber = self.oldNumber * self.newNumber
     default:
       return
     }
-    self.newNumber = 0
   }
 
 }
