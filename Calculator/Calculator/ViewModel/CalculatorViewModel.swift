@@ -29,37 +29,42 @@ class CalculatorViewModel {
   // MARK: Functions
 
   @objc func didTapNumberButton(_ tag: Int) {
-    self.newNumber = self.numberPad(tag)
-    guard -922337217429372928 < newNumber && newNumber < 922337203685477580 else { return }
-    if Float(Int(newNumber)) == newNumber {
-      self.delegate?.tappedNumberKeypad(number: "\(Int(newNumber))")
+    self.displayedNumber = self.numberPad(tag)
+
+    guard -922337217429372928 < displayedNumber && displayedNumber < 922337203685477580 else { return }
+
+    if Float(Int(displayedNumber)) == displayedNumber {
+      self.delegate?.tappedNumberKeypad(number: "\(Int(displayedNumber))")
     } else {
-      self.delegate?.tappedNumberKeypad(number: "\(newNumber)")
+      self.delegate?.tappedNumberKeypad(number: "\(displayedNumber)")
     }
   }
 
   @objc func didTapFunctionButton(_ rawValue: Functions.RawValue) {
     guard let function = Functions(rawValue: rawValue) else { return }
-    self.functionPad(function)
-    guard -922337217429372928 < resultNumber && resultNumber < 922337203685477580 else { return }
 
-    if Float(Int(resultNumber)) == resultNumber {
-      self.delegate?.tappedNumberKeypad(number: "\(Int(resultNumber))")
+    self.functionPad(function)
+
+    guard -922337217429372928 < self.displayedNumber && self.displayedNumber < 922337203685477580 else { return }
+
+    if Float(Int(self.displayedNumber)) == self.displayedNumber {
+      self.delegate?.tappedNumberKeypad(number: "\(Int(self.displayedNumber))")
     } else {
-      self.delegate?.tappedNumberKeypad(number: "\(resultNumber)")
+      self.delegate?.tappedNumberKeypad(number: "\(self.displayedNumber)")
+    }
     }
   }
 
   private func numberPad(_ number: Int) -> Float {
-    if number == 10 && self.newNumber == 0 {
+    if number == 10 && self.displayedNumber == 0 {
       return 0
-    } else if self.newNumber == 0 {
+    } else if self.displayedNumber == 0 {
       return Float(number)
     } else {
       if number == 10 {
-        return Float("\(Int(self.newNumber))0") ?? 0
+        return Float("\(Int(self.displayedNumber))0") ?? 0
       } else {
-        return Float("\(Int(self.newNumber))\(number)") ?? 0
+        return Float("\(Int(self.displayedNumber))\(number)") ?? 0
       }
     }
   }
@@ -79,12 +84,12 @@ class CalculatorViewModel {
           self.resultNumber = newNumber
         }
       case .percent:
-        if resultNumber != 0 {
-          self.resultNumber = max(self.resultNumber + (self.newNumber / self.resultNumber * 100),0)
+        if oldNumber != 0 {
+          self.oldNumber = max(self.oldNumber + (self.newNumber / self.oldNumber * 100),0)
         } else {
-          self.resultNumber = newNumber / 100
+          self.oldNumber = newNumber / 100
         }
-        self.resultNumber = newNumber
+        self.oldNumber = newNumber
       case .plus, .multiply, .minus, .divide:
         guard self.currentState != function else { return }
         self.currentState = function
