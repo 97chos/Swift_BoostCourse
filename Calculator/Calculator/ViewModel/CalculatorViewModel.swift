@@ -18,7 +18,9 @@ class CalculatorViewModel {
   // MARK: Properties
 
   private var newNumber: Float = 0
-  private var resultNumber: Float = 0
+  private var oldNumber: Float = 0
+  private var displayedNumber: Float = 0
+  private var tempNumber: Float = 0
   private var currentState: Functions = .equal
 
   weak var delegate: TappedKeypadDelegate?
