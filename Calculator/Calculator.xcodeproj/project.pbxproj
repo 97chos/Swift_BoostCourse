@@ -15,6 +15,7 @@
 		FFABBFC0263FEDA70013BCDB /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABBFBF263FEDA70013BCDB /* CalculatorViewController.swift */; };
 		FFABBFC6263FF30C0013BCDB /* chunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABBFC5263FF30C0013BCDB /* chunked.swift */; };
 		FFABBFCB264051060013BCDB /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABBFCA264051060013BCDB /* CalculatorViewModel.swift */; };
+		FFABBFD32642E3D90013BCDB /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABBFD22642E3D90013BCDB /* Functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		FFABBFBF263FEDA70013BCDB /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		FFABBFC5263FF30C0013BCDB /* chunked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chunked.swift; sourceTree = "<group>"; };
 		FFABBFCA264051060013BCDB /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
+		FFABBFD22642E3D90013BCDB /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				FFABBFC3263FF2FA0013BCDB /* Extensions */,
 				FFABBFBE263FED9C0013BCDB /* View */,
 				FFABBFC9264050E70013BCDB /* ViewModel */,
+				FFABBFD12642E3C70013BCDB /* Model */,
 				FFABBFAB263FED080013BCDB /* LaunchScreen.storyboard */,
 				FFABBFAE263FED080013BCDB /* Info.plist */,
 				FFABBFA9263FED080013BCDB /* Assets.xcassets */,
@@ -124,6 +127,14 @@
 				FFABBFCA264051060013BCDB /* CalculatorViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FFABBFD12642E3C70013BCDB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FFABBFD22642E3D90013BCDB /* Functions.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +255,7 @@
 				FFABBFC6263FF30C0013BCDB /* chunked.swift in Sources */,
 				FFABBFA3263FED060013BCDB /* SceneDelegate.swift in Sources */,
 				FFABBFCB264051060013BCDB /* CalculatorViewModel.swift in Sources */,
+				FFABBFD32642E3D90013BCDB /* Functions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
