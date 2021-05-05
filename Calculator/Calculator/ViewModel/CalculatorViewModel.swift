@@ -22,15 +22,26 @@ class CalculatorViewModel {
   private var tempValue: Float = 0
   private var currentState: Functions = .equal
 
+  private var isInputting: Bool = true
+
   weak var delegate: TappedKeypadDelegate?
 
 
   // MARK: Functions
 
   @objc func didTapNumberButton(_ tag: Int) {
-    self.displayedNumber = self.numberPad(tag)
 
-    guard -922337217429372928 < displayedNumber && displayedNumber < 922337203685477580 else { return }
+    if !self.isInputting {
+      self.oldValue = self.newValue
+      self.newValue = self.tempValue
+      self.tempValue = 0
+    }
+
+    self.isInputting = true
+
+    self.displayedValue = self.numberPad(tag)
+
+    guard -922337217429372928 < displayedValue && displayedValue < 922337203685477580 else { return }
 
     if Float(Int(displayedValue)) == displayedValue {
       self.delegate?.tappedNumberKeypad(number: "\(Int(displayedValue))")
@@ -50,6 +61,12 @@ class CalculatorViewModel {
       self.delegate?.tappedNumberKeypad(number: "\(Int(self.displayedValue))")
     } else {
       self.delegate?.tappedNumberKeypad(number: "\(self.displayedValue)")
+    }
+
+    self.tempValue = displayedValue
+
+    if self.oldValue != 0 {
+      self.isInputting = false
     }
 
     if self.currentState != .changePlusMinus {
@@ -91,6 +108,9 @@ class CalculatorViewModel {
         }
         self.oldValue = newValue
       case .plus, .multiply, .minus, .divide:
+        if displayedValue == 0 {
+          self.displayedValue = self.tempValue
+        }
         self.fourRulesPad(function)
         self.currentState = function
 
@@ -112,13 +132,12 @@ class CalculatorViewModel {
   }
 
   private func equalPad(_ function: Functions) {
+    self.oldValue = self.newValue
+    self.newValue = self.displayedValue
     self.calculate(function)
   }
 
   private func calculate(_ function: Functions) {
-    self.oldNumber = self.newNumber
-    self.newNumber = self.displayedNumber
-
     switch function {
     case .plus:
       self.displayedValue = self.oldValue + self.newValue
