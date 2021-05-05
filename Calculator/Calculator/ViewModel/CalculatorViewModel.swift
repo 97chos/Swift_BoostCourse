@@ -12,16 +12,6 @@ protocol TappedKeypadDelegate: class {
   func tappedFunctionKeypad(function: String)
 }
 
-enum Functions: String {
-  case AC = "AC"
-  case changePlusMinus = "+/-"
-  case percent = "%"
-  case plus = "+"
-  case multiply = "x"
-  case minus = "-"
-  case divide = "÷"
-  case equal = "="
-}
 
 class CalculatorViewModel {
 
