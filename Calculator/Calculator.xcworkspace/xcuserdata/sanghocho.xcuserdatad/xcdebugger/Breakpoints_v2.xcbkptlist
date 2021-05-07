@@ -7,32 +7,51 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "21367F8E-E9C9-45F4-9041-E5E30644B239"
+            uuid = "5557FAE8-EAB0-4FC8-94BA-902EAA15E2CA"
             shouldBeEnabled = "Yes"
+            condition = "print(self.oldValue, self.newValue, self.displayedValue); return true"
             ignoreCount = "0"
-            continueAfterRunningActions = "No"
+            continueAfterRunningActions = "Yes"
             filePath = "Calculator/ViewModel/CalculatorViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "functionPad(_:)"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "fourRulesPad(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8D97EDB8-FD26-41C4-91FC-237B4FBA499D"
+            uuid = "ECA7EB73-0458-4E03-97EA-1A5B229550E5"
             shouldBeEnabled = "Yes"
+            condition = "print(&quot;&#xc22b;&#xc790; &#xbc84;&#xd2bc; &#xd0ed; : \(self.oldValue) \(self.newValue) \(self.displayedValue)&quot;); return true"
             ignoreCount = "0"
-            continueAfterRunningActions = "No"
+            continueAfterRunningActions = "Yes"
             filePath = "Calculator/ViewModel/CalculatorViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "functionPad(_:)"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "didTapNumberButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9376276A-3AD5-4A9D-BAC0-BC937124D3B2"
+            shouldBeEnabled = "Yes"
+            condition = "print(&quot;&#xae30;&#xb2a5; &#xbc84;&#xd2bc; &#xd0ed;: \(self.oldValue) \(self.newValue) \(self.displayedValue)&quot;); return true"
+            ignoreCount = "0"
+            continueAfterRunningActions = "Yes"
+            filePath = "Calculator/ViewModel/CalculatorViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "didTapFunctionButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

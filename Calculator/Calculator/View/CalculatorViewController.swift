@@ -12,8 +12,8 @@ import SnapKit
 class CalculatorViewController: UIViewController {
 
   //MARK: Properties
-  private let additionalFunctions: [String] = ["%","+/-","AC"]
-  private let functions: [String] = ["÷","x","-","+","="]
+  private let functions: [String] = ["%","+/-","AC"]
+  private let fourRules: [String] = ["÷","x","-","+","="]
   private var allButtons: [[UIButton]] = [[]]
   private let viewModel: CalculatorViewModel
 
@@ -29,7 +29,7 @@ class CalculatorViewController: UIViewController {
     }
     return button
   }
-  private lazy var additionalFunctionbuttons: [UIButton] = self.additionalFunctions.map { function -> UIButton in
+  private lazy var functionButtons: [UIButton] = self.functions.map { function -> UIButton in
     let button = self.makeButton(element: function, color: .lightGray)
     return button
   }
@@ -63,9 +63,6 @@ class CalculatorViewController: UIViewController {
     self.layout()
   }
 
-  override func viewDidLayoutSubviews() {
-  }
-
 
   //MARK: Configuration
 
@@ -91,23 +88,12 @@ class CalculatorViewController: UIViewController {
       } else {
         horizontalStackView.distribution = .fillProportionally
       }
-      return horizontalStackView
-    }
 
-    allButtons.forEach {
-      $0.forEach { button in
-        if button.tag == 10 {
-          button.snp.makeConstraints {
-            $0.width.equalTo(button.snp.width).multipliedBy(2)
-            $0.height.equalTo(button.snp.width).multipliedBy(0.5)
-          }
-        } else {
-          button.snp.makeConstraints {
-            $0.width.equalToSuperview().multipliedBy(0.25)
-            $0.height.equalTo(button.snp.width)
-          }
-        }
+      horizontalStackView.snp.makeConstraints {
+        $0.width.equalTo(UIScreen.main.bounds.width)
       }
+
+      return horizontalStackView
     }
 
     let keyPadStackView = UIStackView(arrangedSubviews: horizontalStackViews)
@@ -125,15 +111,15 @@ class CalculatorViewController: UIViewController {
       .reversed() // 0~9 를 9~0 으로 변경
       .chunked(into: 3) // [9,8,7,6...3,2,1,0] 을 [[9,8,7],[6,5,4],[3,2,1],[0]] 으로 변경
 
-    buttons.insert(self.additionalFunctionbuttons, at: 0)
+    buttons.insert(self.functionButtons, at: 0)
 
     for i in 0..<buttons.count {
       buttons[i].reverse()  // [9,8,7] 을 [7,8,9] 로 변경
       if buttons[i] != buttons.last {
-        buttons[i].append(self.makeButton(element: self.functions[i], color: .systemYellow))
+        buttons[i].append(self.makeButton(element: self.fourRules[i], color: .systemYellow))
       } else {
         buttons[i].append(self.makeButton(element: ".", color: .darkGray))
-        buttons[i].append(self.makeButton(element: self.functions[i], color: .systemYellow))
+        buttons[i].append(self.makeButton(element: self.fourRules[i], color: .systemYellow))
       }
     }
 
@@ -155,7 +141,8 @@ class CalculatorViewController: UIViewController {
     button.setTitle("\(element)", for: .normal)
     button.setTitleColor(.white, for: .normal)
     button.backgroundColor = color
-    button.titleLabel?.font = .systemFont(ofSize: 18)
+    button.titleLabel?.font = .systemFont(ofSize: 25)
+    
     return button
   }
 
@@ -185,16 +172,29 @@ class CalculatorViewController: UIViewController {
       $0.trailing.equalToSuperview().inset(10)
       $0.leading.equalToSuperview().inset(10)
     }
+
+    allButtons.forEach {
+      $0.forEach { button in
+        if button.tag == 10 {
+          button.snp.makeConstraints {
+            $0.width.equalToSuperview().multipliedBy(0.5)
+            $0.height.equalTo(button.snp.width).multipliedBy(0.5)
+          }
+        } else {
+          button.snp.makeConstraints {
+            $0.width.equalToSuperview().multipliedBy(0.25)
+            $0.height.equalTo(button.snp.width)
+          }
+        }
+      }
+    }
   }
+
 }
 
 
 extension CalculatorViewController: TappedKeypadDelegate {
   func tappedNumberKeypad(number: String) {
     self.inputNumberLabel.text = number
-  }
-
-  func tappedFunctionKeypad(function: String) {
-
   }
 }
