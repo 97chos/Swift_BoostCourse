@@ -41,7 +41,7 @@ class CalculatorViewModel {
 
     self.displayedValue = self.numberPad(tag)
 
-    guard -922337217429372928 < displayedValue && displayedValue < 922337203685477580 else { return }
+    guard Float.leastNonzeroMagnitude < displayedValue && displayedValue < Float.greatestFiniteMagnitude else { return }
 
     if Float(Int(displayedValue)) == displayedValue {
       self.delegate?.tappedNumberKeypad(number: "\(Int(displayedValue))")
@@ -55,7 +55,7 @@ class CalculatorViewModel {
 
     self.functionPad(function)
 
-    guard -922337217429372928 < self.displayedValue && self.displayedValue < 922337203685477580 else { return }
+    guard Float.leastNonzeroMagnitude < self.displayedValue && self.displayedValue < Float.greatestFiniteMagnitude else { return }
 
     if Float(Int(self.displayedValue)) == self.displayedValue {
       self.delegate?.tappedNumberKeypad(number: "\(Int(self.displayedValue))")

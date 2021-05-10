@@ -36,13 +36,14 @@ class StopWatchViewModel {
     switch self.isRunning {
     case .stop:
       self.mainTimer.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: #selector(self.updateMainTimer), userInfo: nil, repeats: true)
-      self.lapTimer.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: #selector(self.updateLabTimer), userInfo: nil, repeats: true)
+      self.lapTimer.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: #selector(self.updateLapTimer), userInfo: nil, repeats: true)
 
       RunLoop.current.add(self.mainTimer.timer, forMode: RunLoop.Mode.common)
       RunLoop.current.add(self.lapTimer.timer, forMode: RunLoop.Mode.common)
 
       completion()
       self.isRunning = .running
+
     case .running:
       self.mainTimer.timer.invalidate()
       self.lapTimer.timer.invalidate()
@@ -60,9 +61,10 @@ class StopWatchViewModel {
       }
       completion()
       resetLapTimer()
-      lapTimer.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: #selector(updateLabTimer), userInfo: nil, repeats: true)
+      lapTimer.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: #selector(updateLapTimer), userInfo: nil, repeats: true)
 
       RunLoop.current.add(self.lapTimer.timer, forMode: .common)
+
     case .stop:
       resetMainTimer()
       resetLapTimer()
@@ -77,7 +79,7 @@ class StopWatchViewModel {
     self.updateTimer(self.mainTimer)
   }
 
-  @objc private func updateLabTimer() {
+  @objc private func updateLapTimer() {
     self.updateTimer(self.lapTimer)
   }
 
@@ -112,7 +114,6 @@ class StopWatchViewModel {
 
   private func resetTimer(_ stopwatch: Stopwatch) {
     stopwatch.timer.invalidate()
-    stopwatch.counter = 0.0
     stopwatch.counter = 0
   }
 

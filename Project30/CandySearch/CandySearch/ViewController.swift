@@ -4,150 +4,64 @@
 //
 //  Created by sangho Cho on 2021/05/01.
 //
-
 import UIKit
 import SnapKit
 
 class ViewController: UIViewController {
 
-  // MARK: UI
-
-  private let tableView: UITableView = {
-    let tableView = UITableView()
-    return tableView
-  }()
-  private let searchController: UISearchController = {
-    let searchController = UISearchController(searchResultsController: nil)
-    searchController.searchBar.scopeButtonTitles = ["All", "Chocolate", "Hard", "Other"]
-    searchController.obscuresBackgroundDuringPresentation = true
-    searchController.searchBar.showsScopeBar = true
-    searchController.searchBar.placeholder = "Search Candy"
-    return searchController
-  }()
-  private let navigationTitleView: UIView = {
-    let view = UIImageView()
-    view.image = UIImage(named: "Inline-Logo")
-    view.contentMode = .scaleAspectFit
+  let scrollView = UIScrollView()
+  let contentView = UIView()
+  let view1: UIView = {
+    let view = UIView()
+    view.backgroundColor = .blue
     return view
   }()
-  let statusBar: UIView = {
-    return UIView()
+  let label1: UILabel = {
+    let label = UILabel()
+    label.numberOfLines = 0
+    label.text = "sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds"
+    return label
+  }()
+  let label2: UILabel = {
+    let label2 = UILabel()
+    label2.numberOfLines = 0
+    label2.text = "sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds sdlkfj lksjdf lksjd flksdjf slkd jfdslkjf kldsjf lksdj fklsdjf lkdsjf lkjsdlk fjsdlkf jsdlkj flksdjflksdjf lksdj flkjsdlk fjsldkjf lkdjflksjdlksjf lkdsj flkdsjf lkds"
+    return label2
   }()
 
-
-  // MARK: Properties
-
-  private var viewModel: SearchViewModel
-  private lazy var statusFrame = self.view.window?.windowScene?.statusBarManager?.statusBarFrame
-
-
-  // MARK: Initializing
-
-  init(viewModel: SearchViewModel) {
-    self.viewModel = viewModel
-    super.init(nibName: nil, bundle: nil)
-  }
-
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
-
-  // MARK: View LifeCycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.viewConfiguration()
-  }
+    view.backgroundColor = .systemBackground
 
-  override func viewDidLayoutSubviews() {
-    self.setColorStatusBar(color: .systemGreen)
-  }
+    view.addSubview(scrollView)
+    contentView.addSubview(view1)
+    contentView.addSubview(label1)
+    contentView.addSubview(label2)
+    scrollView.addSubview(contentView)
 
-
-  // MARK: Configuration
-
-  private func viewConfiguration() {
-    self.configureView()
-    self.configureTableView()
-    self.configutaionSearchController()
-    self.layout()
-  }
-
-  private func configureView() {
-    self.view.backgroundColor = .systemBackground
-    self.navigationItem.titleView = self.navigationTitleView
-    self.navigationController?.navigationBar.backgroundColor = .systemGreen
-  }
-
-  private func configureTableView() {
-    self.tableView.register(CandyCell.self, forCellReuseIdentifier: "candyCell")
-    self.tableView.delegate = self
-    self.tableView.dataSource = self
-  }
-
-  private func configutaionSearchController() {
-    self.searchController.searchBar.delegate = self
-    self.searchController.searchResultsUpdater = self
-    definesPresentationContext = true
-    self.navigationItem.searchController = self.searchController
-  }
-
-  private func setColorStatusBar(color: UIColor) {
-    guard let frame = self.statusFrame else { return }
-    self.statusBar.frame = frame
-    self.statusBar.backgroundColor = color
-    self.view.addSubview(self.statusBar)
-  }
-
-
-  // MARK: Layout
-
-  private func layout() {
-    self.view.addSubview(self.tableView)
-
-    self.tableView.snp.makeConstraints{
-      $0.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
-      $0.bottom.equalToSuperview()
-    }
-  }
-}
-
-
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.viewModel.filteredCandies.count
-  }
-
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "candyCell", for: indexPath) as? CandyCell else {
-      return UITableViewCell(style: .subtitle, reuseIdentifier: "candyCell")
+    scrollView.snp.makeConstraints {
+      $0.edges.equalToSuperview()
     }
 
-    cell.set(candy: self.viewModel.filteredCandies[indexPath.row])
-    return cell
-  }
-
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
-    let detailViewController = DetailViewController(candy: self.viewModel.filteredCandies[indexPath.row])
-    self.navigationController?.pushViewController(detailViewController, animated: true)
-  }
-
-
-}
-
-extension ViewController: UISearchBarDelegate, UISearchResultsUpdating  {
-  func updateSearchResults(for searchController: UISearchController) {
-    let searchBar = searchController.searchBar
-    guard let scopeList = searchBar.scopeButtonTitles else { return }
-
-    self.viewModel.filterContent(searchBar.text, scopeList[searchBar.selectedScopeButtonIndex])
-    self.tableView.reloadData()
-  }
-
-  func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-    self.viewModel.filterContent(searchBar.text, searchBar.scopeButtonTitles![selectedScope])
+    contentView.snp.makeConstraints  {
+      $0.top.bottom.equalTo(scrollView)
+      $0.left.right.equalTo(view) // => IMPORTANT: this makes the width of the contentview static (= size of the screen), while the contentview will stretch vertically
+    }
+    view1.snp.makeConstraints {
+      $0.centerX.equalToSuperview()
+      $0.top.equalToSuperview().inset(30)
+      $0.width.equalToSuperview()
+      $0.height.equalTo(300)
+    }
+    label1.snp.makeConstraints  {
+      $0.left.right.equalTo(contentView).inset(20) // left/right padding 20pt
+      $0.top.equalTo(contentView).offset(20) // attached to the top of the contentview with padding 20pt
+    }
+    label2.snp.makeConstraints  {
+      $0.left.right.equalTo(contentView).inset(20) // left/right padding 20pt
+      $0.top.equalTo(label1.snp.bottom).offset(20) // below label1 with margin 20pt
+      $0.bottom.equalTo(contentView).offset(-20) // attached to the bottom of the contentview with padding 20pt
+    }
   }
 }
