@@ -11,11 +11,12 @@
 		FF529B1226497D5800C3807F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529B1126497D5800C3807F /* AppDelegate.swift */; };
 		FF529B1426497D5800C3807F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529B1326497D5800C3807F /* SceneDelegate.swift */; };
 		FF529B1626497D5800C3807F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529B1526497D5800C3807F /* ViewController.swift */; };
-		FF529B1926497D5800C3807F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529B1726497D5800C3807F /* Main.storyboard */; };
 		FF529B1B26497D5900C3807F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF529B1A26497D5900C3807F /* Assets.xcassets */; };
 		FF529B1E26497D5900C3807F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529B1C26497D5900C3807F /* LaunchScreen.storyboard */; };
 		FF529B2A2649828900C3807F /* RSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529B292649828900C3807F /* RSSParser.swift */; };
 		FF529B33264A3CD300C3807F /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529B32264A3CD300C3807F /* TableViewCell.swift */; };
+		FF529B3F264AC25800C3807F /* RSSItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529B3E264AC25800C3807F /* RSSItem.swift */; };
+		FF529B43264AD7DA00C3807F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529B42264AD7DA00C3807F /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,12 +27,13 @@
 		FF529B1126497D5800C3807F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF529B1326497D5800C3807F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FF529B1526497D5800C3807F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FF529B1826497D5800C3807F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF529B1A26497D5900C3807F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF529B1D26497D5900C3807F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF529B1F26497D5900C3807F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF529B292649828900C3807F /* RSSParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSParser.swift; sourceTree = "<group>"; };
 		FF529B32264A3CD300C3807F /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		FF529B3E264AC25800C3807F /* RSSItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSItem.swift; sourceTree = "<group>"; };
+		FF529B42264AD7DA00C3807F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,10 +88,10 @@
 			children = (
 				FF529B1126497D5800C3807F /* AppDelegate.swift */,
 				FF529B1326497D5800C3807F /* SceneDelegate.swift */,
-				FF529B1526497D5800C3807F /* ViewController.swift */,
-				FF529B292649828900C3807F /* RSSParser.swift */,
+				FF529B48264ADA6E00C3807F /* ParseService */,
+				FF529B41264AD7D000C3807F /* ViewModel */,
+				FF529B3D264AC24A00C3807F /* Model */,
 				FF529B31264A3CC300C3807F /* View */,
-				FF529B1726497D5800C3807F /* Main.storyboard */,
 				FF529B1A26497D5900C3807F /* Assets.xcassets */,
 				FF529B1C26497D5900C3807F /* LaunchScreen.storyboard */,
 				FF529B1F26497D5900C3807F /* Info.plist */,
@@ -100,9 +102,34 @@
 		FF529B31264A3CC300C3807F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FF529B1526497D5800C3807F /* ViewController.swift */,
 				FF529B32264A3CD300C3807F /* TableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		FF529B3D264AC24A00C3807F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FF529B3E264AC25800C3807F /* RSSItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FF529B41264AD7D000C3807F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FF529B42264AD7DA00C3807F /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FF529B48264ADA6E00C3807F /* ParseService */ = {
+			isa = PBXGroup;
+			children = (
+				FF529B292649828900C3807F /* RSSParser.swift */,
+			);
+			path = ParseService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,7 +193,6 @@
 			files = (
 				FF529B1E26497D5900C3807F /* LaunchScreen.storyboard in Resources */,
 				FF529B1B26497D5900C3807F /* Assets.xcassets in Resources */,
-				FF529B1926497D5800C3807F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,22 +248,16 @@
 				FF529B33264A3CD300C3807F /* TableViewCell.swift in Sources */,
 				FF529B1626497D5800C3807F /* ViewController.swift in Sources */,
 				FF529B1226497D5800C3807F /* AppDelegate.swift in Sources */,
+				FF529B3F264AC25800C3807F /* RSSItem.swift in Sources */,
 				FF529B2A2649828900C3807F /* RSSParser.swift in Sources */,
 				FF529B1426497D5800C3807F /* SceneDelegate.swift in Sources */,
+				FF529B43264AD7DA00C3807F /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FF529B1726497D5800C3807F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FF529B1826497D5800C3807F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FF529B1C26497D5900C3807F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
