@@ -15,6 +15,7 @@
 		FF529B1B26497D5900C3807F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF529B1A26497D5900C3807F /* Assets.xcassets */; };
 		FF529B1E26497D5900C3807F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529B1C26497D5900C3807F /* LaunchScreen.storyboard */; };
 		FF529B2A2649828900C3807F /* RSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529B292649828900C3807F /* RSSParser.swift */; };
+		FF529B33264A3CD300C3807F /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529B32264A3CD300C3807F /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		FF529B1D26497D5900C3807F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF529B1F26497D5900C3807F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF529B292649828900C3807F /* RSSParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSParser.swift; sourceTree = "<group>"; };
+		FF529B32264A3CD300C3807F /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,12 +88,21 @@
 				FF529B1326497D5800C3807F /* SceneDelegate.swift */,
 				FF529B1526497D5800C3807F /* ViewController.swift */,
 				FF529B292649828900C3807F /* RSSParser.swift */,
+				FF529B31264A3CC300C3807F /* View */,
 				FF529B1726497D5800C3807F /* Main.storyboard */,
 				FF529B1A26497D5900C3807F /* Assets.xcassets */,
 				FF529B1C26497D5900C3807F /* LaunchScreen.storyboard */,
 				FF529B1F26497D5900C3807F /* Info.plist */,
 			);
 			path = SimpleRSSReader;
+			sourceTree = "<group>";
+		};
+		FF529B31264A3CC300C3807F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FF529B32264A3CD300C3807F /* TableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF529B33264A3CD300C3807F /* TableViewCell.swift in Sources */,
 				FF529B1626497D5800C3807F /* ViewController.swift in Sources */,
 				FF529B1226497D5800C3807F /* AppDelegate.swift in Sources */,
 				FF529B2A2649828900C3807F /* RSSParser.swift in Sources */,
