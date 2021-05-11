@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		202873D2F134EAFE4E5271B5 /* Pods_Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEA6968CF4B13EEB41FBEB8 /* Pods_Calculator.framework */; };
+		FF529ADA2648539A00C3807F /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529AD92648539A00C3807F /* CircleButton.swift */; };
 		FFABBFA1263FED060013BCDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABBFA0263FED060013BCDB /* AppDelegate.swift */; };
 		FFABBFA3263FED060013BCDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABBFA2263FED060013BCDB /* SceneDelegate.swift */; };
 		FFABBFAA263FED080013BCDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFABBFA9263FED080013BCDB /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 		2EEA6968CF4B13EEB41FBEB8 /* Pods_Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41CE2A67A58469C7FB594786 /* Pods-Calculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator.release.xcconfig"; path = "Target Support Files/Pods-Calculator/Pods-Calculator.release.xcconfig"; sourceTree = "<group>"; };
 		A9AE7BAB08D4865F392B5034 /* Pods-Calculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator.debug.xcconfig"; path = "Target Support Files/Pods-Calculator/Pods-Calculator.debug.xcconfig"; sourceTree = "<group>"; };
+		FF529AD92648539A00C3807F /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		FFABBF9D263FED060013BCDB /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFABBFA0263FED060013BCDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFABBFA2263FED060013BCDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				FFABBFBF263FEDA70013BCDB /* CalculatorViewController.swift */,
+				FF529AD92648539A00C3807F /* CircleButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF529ADA2648539A00C3807F /* CircleButton.swift in Sources */,
 				FFABBFA1263FED060013BCDB /* AppDelegate.swift in Sources */,
 				FFABBFC0263FEDA70013BCDB /* CalculatorViewController.swift in Sources */,
 				FFABBFC6263FF30C0013BCDB /* chunked.swift in Sources */,

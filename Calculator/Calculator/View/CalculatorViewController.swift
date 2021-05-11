@@ -84,9 +84,9 @@ class CalculatorViewController: UIViewController {
       horizontalStackView.alignment = .fill
 
       if buttons.count == 4 {
-        horizontalStackView.distribution = .fillEqually
+        horizontalStackView.distribution = .fill
       } else {
-        horizontalStackView.distribution = .fillProportionally
+        horizontalStackView.distribution = .fill
       }
 
       horizontalStackView.snp.makeConstraints {
@@ -137,7 +137,7 @@ class CalculatorViewController: UIViewController {
   }
 
   private func makeButton<T: Equatable>(element: T, color: UIColor) -> UIButton {
-    let button = UIButton(type: .system)
+    let button = CircleButton(type: .system)
     button.setTitle("\(element)", for: .normal)
     button.setTitleColor(.white, for: .normal)
     button.backgroundColor = color
