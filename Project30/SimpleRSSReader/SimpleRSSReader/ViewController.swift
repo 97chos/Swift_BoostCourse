@@ -64,6 +64,20 @@ class ViewController: UIViewController {
   }
 
 
+  // MARK: Parse RSS
+
+  private func parseRSS() {
+    self.feedParser.parseFeed(feedURL: self.feedURL) { [weak self] rssItems in
+      guard let self = self else { return }
+      self.rssItems = rssItems
+      self.cellStates = Array(repeating: .collapsed, count: rssItems.count)
+
+      DispatchQueue.main.async {
+        self.tableView.reloadSections(IndexSet(integer: 0), with: .none)
+      }
+    }
+  }
+
 
 }
 
