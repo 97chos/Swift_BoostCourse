@@ -8,10 +8,6 @@
 import UIKit
 import SnapKit
 
-enum CellState {
-  case expanded
-  case collapsed
-}
 
 class ViewController: UIViewController {
 
