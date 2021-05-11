@@ -79,5 +79,50 @@ class ViewController: UIViewController {
   }
 
 
+  // MARK: Layout
+
+  private func layout() {
+    self.view.addSubview(self.tableView)
+
+    self.tableView.snp.makeConstraints {
+      $0.edges.equalToSuperview()
+    }
+  }
+}
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    guard let rssItems = rssItems else { return 0 }
+    return rssItems.count
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? NewsTableViewCell else {
+      return UITableViewCell()
+    }
+
+    if let rssItem = self.rssItems?[indexPath.row] {
+      cell.set(rss: rssItem)
+
+      if let cellState = cellStates?[indexPath.row] {
+        cell.changeLines(cellState: cellState)
+      }
+    }
+
+    return cell
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    tableView.deselectRow(at: indexPath, animated: true)
+
+    guard let cell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell else { return }
+
+    tableView.beginUpdates()
+    cell.newsDescriptionLabel.numberOfLines == 4 ? cell.changeLines(cellState: .expanded) : cell.changeLines(cellState: .collapsed)
+    self.cellStates?[indexPath.row] = cell.newsDescriptionLabel.numberOfLines == 4 ? .expanded : .collapsed
+    tableView.endUpdates()
+  }
+
 }
 
