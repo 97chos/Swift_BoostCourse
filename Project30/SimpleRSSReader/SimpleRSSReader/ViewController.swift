@@ -23,11 +23,45 @@ class ViewController: UIViewController {
   }()
 
 
+  // MARK: Properties
+
+  private let feedURL = "http://www.apple.com/main/rss/hotnews/hotnews.rss"
+  private let feedParser = RSSParser()
+  private var cellStates: [CellState]?
+  private var rssItems: [RSSItem]?
+
+
+  // MARK: View LifeCycle
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
+
+    self.configuration()
+    self.parseRSS()
+    self.layout()
   }
 
+
+  // MARK: Configuration
+
+  private func configuration() {
+    self.configureView()
+    self.configureTableView()
+  }
+
+  private func configureView() {
+    self.view.backgroundColor = .systemBackground
+  }
+
+  private func configureTableView() {
+    self.tableView.delegate = self
+    self.tableView.dataSource = self
+
+    self.tableView.estimatedRowHeight = 140
+    self.tableView.rowHeight = UITableView.automaticDimension
+
+    self.tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "cell")
+  }
 
 
 
