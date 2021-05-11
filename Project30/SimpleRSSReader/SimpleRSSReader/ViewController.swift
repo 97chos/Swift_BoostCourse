@@ -21,10 +21,19 @@ class ViewController: UIViewController {
 
   // MARK: Properties
 
-  private let feedURL = "http://www.apple.com/main/rss/hotnews/hotnews.rss"
-  private let feedParser = RSSParser()
-  private var cellStates: [CellState]?
-  private var rssItems: [RSSItem]?
+  let viewModel: ViewModel
+
+
+  // MARK: Initializing
+
+  init(viewModel: ViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
 
   // MARK: View LifeCycle
@@ -62,15 +71,10 @@ class ViewController: UIViewController {
 
   // MARK: Parse RSS
 
-  private func parseRSS() {
-    self.feedParser.parseFeed(feedURL: self.feedURL) { [weak self] rssItems in
-      guard let self = self else { return }
-      self.rssItems = rssItems
-      self.cellStates = Array(repeating: .collapsed, count: rssItems.count)
 
-      DispatchQueue.main.async {
-        self.tableView.reloadSections(IndexSet(integer: 0), with: .none)
-      }
+  private func parseRSS() {
+    self.viewModel.parseRSS {
+      self.tableView.reloadSections(IndexSet(integer: 0), with: .none)
     }
   }
 
@@ -88,7 +92,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    guard let rssItems = rssItems else { return 0 }
+    guard let rssItems = self.viewModel.rssItems else { return 0 }
     return rssItems.count
   }
 
@@ -97,12 +101,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
       return UITableViewCell()
     }
 
-    if let rssItem = self.rssItems?[indexPath.row] {
+    if let rssItem = self.viewModel.rssItems?[indexPath.row] {
       cell.set(rss: rssItem)
-
-      if let cellState = cellStates?[indexPath.row] {
-        cell.changeLines(cellState: cellState)
-      }
     }
 
     return cell
@@ -116,7 +116,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     tableView.beginUpdates()
     cell.newsDescriptionLabel.numberOfLines == 4 ? cell.changeLines(cellState: .expanded) : cell.changeLines(cellState: .collapsed)
-    self.cellStates?[indexPath.row] = cell.newsDescriptionLabel.numberOfLines == 4 ? .expanded : .collapsed
+    self.viewModel.rssItems?[indexPath.row].cellState = cell.newsDescriptionLabel.numberOfLines == 4 ? .expanded : .collapsed
     tableView.endUpdates()
   }
 
