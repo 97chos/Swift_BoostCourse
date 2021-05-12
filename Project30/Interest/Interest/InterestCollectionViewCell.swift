@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ViewController: UIViewController {
+class InterestCollcetionViewCell: UICollectionViewCell {
 
   // MARK: UI
 
@@ -22,10 +22,8 @@ class ViewController: UIViewController {
     return label
   }()
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view.
-  }
+
+  // MARK:
 
 
 }
