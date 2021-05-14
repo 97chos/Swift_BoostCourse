@@ -64,7 +64,10 @@ class HomeViewController: UIViewController {
     self.collectionView.snp.makeConstraints{
       $0.edges.equalTo(self.view.safeAreaLayoutGuide)
     }
+  }
 
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
 }
 
