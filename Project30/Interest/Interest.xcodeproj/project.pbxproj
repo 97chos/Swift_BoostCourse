@@ -15,6 +15,8 @@
 		FF529B64264BC07400C3807F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529B62264BC07400C3807F /* LaunchScreen.storyboard */; };
 		FF529B77264C2BC800C3807F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529B76264C2BC800C3807F /* HomeViewController.swift */; };
 		FF529B7F264C361000C3807F /* UIImage+applyBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529B7E264C361000C3807F /* UIImage+applyBlur.swift */; };
+		FFBAFC9E264FF516005032B4 /* Interest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBAFC9D264FF516005032B4 /* Interest.swift */; };
+		FFBAFCA2264FF6A4005032B4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBAFCA1264FF6A4005032B4 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		FF529B65264BC07400C3807F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF529B76264C2BC800C3807F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FF529B7E264C361000C3807F /* UIImage+applyBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+applyBlur.swift"; sourceTree = "<group>"; };
+		FFBAFC9D264FF516005032B4 /* Interest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interest.swift; sourceTree = "<group>"; };
+		FFBAFCA1264FF6A4005032B4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 				FF529B5B264BC07200C3807F /* InterestCollectionViewCell.swift */,
 				FF529B7C264C35FA00C3807F /* Extension */,
 				FF529B75264C2BAC00C3807F /* View */,
+				FFBAFC9C264FF506005032B4 /* Model */,
+				FFBAFCA0264FF686005032B4 /* ViewModel */,
 				FF529B60264BC07400C3807F /* Assets.xcassets */,
 				FF529B62264BC07400C3807F /* LaunchScreen.storyboard */,
 				FF529B65264BC07400C3807F /* Info.plist */,
@@ -116,6 +122,22 @@
 				FF529B7E264C361000C3807F /* UIImage+applyBlur.swift */,
 			);
 			path = UIImage;
+			sourceTree = "<group>";
+		};
+		FFBAFC9C264FF506005032B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FFBAFC9D264FF516005032B4 /* Interest.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FFBAFCA0264FF686005032B4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FFBAFCA1264FF6A4005032B4 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +255,9 @@
 			files = (
 				FF529B7F264C361000C3807F /* UIImage+applyBlur.swift in Sources */,
 				FF529B5C264BC07200C3807F /* InterestCollectionViewCell.swift in Sources */,
+				FFBAFCA2264FF6A4005032B4 /* HomeViewModel.swift in Sources */,
 				FF529B58264BC07200C3807F /* AppDelegate.swift in Sources */,
+				FFBAFC9E264FF516005032B4 /* Interest.swift in Sources */,
 				FF529B5A264BC07200C3807F /* SceneDelegate.swift in Sources */,
 				FF529B77264C2BC800C3807F /* HomeViewController.swift in Sources */,
 			);
