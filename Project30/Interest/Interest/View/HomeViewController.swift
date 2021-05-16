@@ -98,10 +98,18 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    <#code#>
+    return self.viewModel.interests.count
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    <#code#>
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? InterestCollcetionViewCell else {
+      return UICollectionViewCell()
+    }
+
+    cell.set(interest: self.viewModel.interests[indexPath.row])
+
+    return cell
+  }
+}
   }
 }
