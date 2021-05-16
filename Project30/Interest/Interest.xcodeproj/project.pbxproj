@@ -88,7 +88,6 @@
 			children = (
 				FF529B57264BC07200C3807F /* AppDelegate.swift */,
 				FF529B59264BC07200C3807F /* SceneDelegate.swift */,
-				FF529B5B264BC07200C3807F /* InterestCollectionViewCell.swift */,
 				FF529B7C264C35FA00C3807F /* Extension */,
 				FF529B75264C2BAC00C3807F /* View */,
 				FFBAFC9C264FF506005032B4 /* Model */,
@@ -104,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				FF529B76264C2BC800C3807F /* HomeViewController.swift */,
+				FF529B5B264BC07200C3807F /* InterestCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
