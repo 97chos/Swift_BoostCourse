@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
   }()
   private var collectionView: UICollectionView = {
     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
+    collectionView.decelerationRate = .fast
     return collectionView
   }()
   private let collectionViewFlowLayout: UICollectionViewFlowLayout = {
@@ -69,6 +70,15 @@ class HomeViewController: UIViewController {
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
     self.collectionView.backgroundColor = .none
+  }
+
+  private func carousel() {
+    let inset = self.collectionViewFlowLayout.sectionInset
+
+    let itemsPerRow: CGFloat = 1.5
+    let widthPadding = inset.left * (itemsPerRow + 1)
+
+    self.collectionView.contentInset = UIEdgeInsets(top: 0, left: widthPadding, bottom: 0, right: widthPadding)
   }
 
 
