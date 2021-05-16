@@ -14,7 +14,8 @@ class InterestCollcetionViewCell: UICollectionViewCell {
 
   private let imageView: UIImageView = {
     let imageView = UIImageView()
-    imageView.contentMode = .scaleAspectFit
+    imageView.contentMode = .scaleAspectFill
+    imageView.clipsToBounds = true
     return imageView
   }()
   private let titleLabel: UILabel = {
@@ -22,6 +23,11 @@ class InterestCollcetionViewCell: UICollectionViewCell {
     label.numberOfLines = 0
     label.lineBreakMode = .byTruncatingTail
     return label
+  }()
+  private let titleView: UIView = {
+    let view = UIView()
+    view.backgroundColor = .systemGray4
+    return view
   }()
 
 
@@ -54,19 +60,25 @@ class InterestCollcetionViewCell: UICollectionViewCell {
 
   private func layout() {
     self.contentView.addSubview(self.imageView)
-    self.contentView.addSubview(self.titleLabel)
+    self.contentView.addSubview(self.titleView)
+    self.titleView.addSubview(self.titleLabel)
+
+    self.layer.cornerRadius = self.frame.width / 10
+    self.layer.masksToBounds = true
 
     self.imageView.snp.makeConstraints {
       $0.top.equalToSuperview()
       $0.leading.trailing.equalToSuperview()
-      $0.height.equalToSuperview().multipliedBy(0.75)
+      $0.height.equalToSuperview().multipliedBy(0.8)
+    }
+    self.titleView.snp.makeConstraints {
+      $0.top.equalTo(self.imageView.snp.bottom)
+      $0.leading.trailing.bottom.equalToSuperview()
     }
     self.titleLabel.snp.makeConstraints {
-      $0.centerY.equalTo(self.contentView.frame.height - self.imageView.frame.height).multipliedBy(0.5)
+      $0.centerY.equalToSuperview()
       $0.leading.trailing.equalToSuperview().inset(10)
     }
   }
-
-
 }
 
