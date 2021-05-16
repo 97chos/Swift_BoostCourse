@@ -111,5 +111,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     return cell
   }
 }
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let inset = self.collectionViewFlowLayout.sectionInset
+
+    let itemsPerRow: CGFloat = 1.5
+    let widthPadding = inset.left * (itemsPerRow + 1)
+
+    let width: CGFloat = (collectionView.frame.width - widthPadding) / itemsPerRow
+
+    return CGSize(width: width, height: collectionView.frame.height)
   }
 }
