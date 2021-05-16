@@ -68,17 +68,25 @@ class HomeViewController: UIViewController {
     self.collectionView.register(InterestCollcetionViewCell.self, forCellWithReuseIdentifier: "cell")
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
+    self.collectionView.backgroundColor = .none
   }
 
 
   // MARK: Layout
 
   private func layout() {
-    self.view = self.backgroundImageView
+    self.view.addSubview(self.backgroundImageView)
     self.view.addSubview(self.collectionView)
 
+    self.backgroundImageView.snp.makeConstraints{
+      $0.edges.equalToSuperview()
+    }
+
     self.collectionView.snp.makeConstraints{
-      $0.edges.equalTo(self.view.safeAreaLayoutGuide)
+      $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(50)
+      $0.height.equalToSuperview().multipliedBy(0.5)
+      $0.width.equalToSuperview()
+      $0.leading.equalToSuperview()
     }
   }
 
