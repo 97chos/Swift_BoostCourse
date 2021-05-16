@@ -17,6 +17,7 @@
 		FF529B7F264C361000C3807F /* UIImage+applyBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529B7E264C361000C3807F /* UIImage+applyBlur.swift */; };
 		FFBAFC9E264FF516005032B4 /* Interest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBAFC9D264FF516005032B4 /* Interest.swift */; };
 		FFBAFCA2264FF6A4005032B4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBAFCA1264FF6A4005032B4 /* HomeViewModel.swift */; };
+		FFBAFCAE2651600B005032B4 /* CarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBAFCAD2651600B005032B4 /* CarouselLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FF529B7E264C361000C3807F /* UIImage+applyBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+applyBlur.swift"; sourceTree = "<group>"; };
 		FFBAFC9D264FF516005032B4 /* Interest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interest.swift; sourceTree = "<group>"; };
 		FFBAFCA1264FF6A4005032B4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		FFBAFCAD2651600B005032B4 /* CarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				FFBAFC9C264FF506005032B4 /* Model */,
 				FFBAFCA0264FF686005032B4 /* ViewModel */,
 				FF529B60264BC07400C3807F /* Assets.xcassets */,
+				FFBAFCAC26515FF5005032B4 /* CollectionViewFlowLayout */,
 				FF529B62264BC07400C3807F /* LaunchScreen.storyboard */,
 				FF529B65264BC07400C3807F /* Info.plist */,
 			);
@@ -138,6 +141,14 @@
 				FFBAFCA1264FF6A4005032B4 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FFBAFCAC26515FF5005032B4 /* CollectionViewFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				FFBAFCAD2651600B005032B4 /* CarouselLayout.swift */,
+			);
+			path = CollectionViewFlowLayout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +267,7 @@
 				FF529B7F264C361000C3807F /* UIImage+applyBlur.swift in Sources */,
 				FF529B5C264BC07200C3807F /* InterestCollectionViewCell.swift in Sources */,
 				FFBAFCA2264FF6A4005032B4 /* HomeViewModel.swift in Sources */,
+				FFBAFCAE2651600B005032B4 /* CarouselLayout.swift in Sources */,
 				FF529B58264BC07200C3807F /* AppDelegate.swift in Sources */,
 				FFBAFC9E264FF516005032B4 /* Interest.swift in Sources */,
 				FF529B5A264BC07200C3807F /* SceneDelegate.swift in Sources */,
@@ -333,6 +345,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -387,6 +400,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -400,7 +414,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T7JU69Q47J;
 				INFOPLIST_FILE = Interest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -419,7 +435,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T7JU69Q47J;
 				INFOPLIST_FILE = Interest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
