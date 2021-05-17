@@ -21,6 +21,8 @@ class HomeViewController: UIViewController {
   private var collectionView: UICollectionView = {
     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
     collectionView.decelerationRate = .fast
+    collectionView.bounces = false
+    collectionView.showsHorizontalScrollIndicator = false
     return collectionView
   }()
   private let collectionViewFlowLayout: UICollectionViewFlowLayout = {
