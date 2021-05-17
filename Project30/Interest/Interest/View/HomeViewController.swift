@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     let flowLayout = UICollectionViewFlowLayout()
     flowLayout.scrollDirection = .horizontal
     flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-    flowLayout.minimumInteritemSpacing = 30
+    flowLayout.minimumLineSpacing = 10
     return flowLayout
   }()
 
@@ -124,13 +124,36 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let inset = self.collectionViewFlowLayout.sectionInset
+    let inset = self.collectionView.contentInset
+
+    let itemsPerRow: CGFloat = 1.5
+    let widthPadding = inset.left * (itemsPerRow + 1)
+
+    let width: CGFloat = (collectionView.frame.width - widthPadding) / itemsPerRow
+    let sectionSideInset = collectionView.frame.width / 2 - width / 2
+
+    self.collectionViewFlowLayout.sectionInset.left = sectionSideInset
+    self.collectionViewFlowLayout.sectionInset.right = sectionSideInset
+
+    return CGSize(width: width, height: collectionView.frame.height)
+  }
+
+
+  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    let inset = self.collectionView.contentInset
 
     let itemsPerRow: CGFloat = 1.5
     let widthPadding = inset.left * (itemsPerRow + 1)
 
     let width: CGFloat = (collectionView.frame.width - widthPadding) / itemsPerRow
 
-    return CGSize(width: width, height: collectionView.frame.height)
+    let cellWidthIncludeSpacing = width + self.collectionViewFlowLayout.minimumLineSpacing
+
+    var offset = targetContentOffset.pointee
+    let index = (offset.x + scrollView.contentInset.right) / cellWidthIncludeSpacing
+    let roundedIndex: CGFloat = round(index)
+
+    offset = CGPoint(x: roundedIndex * cellWidthIncludeSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
+    targetContentOffset.pointee = offset
   }
 }
