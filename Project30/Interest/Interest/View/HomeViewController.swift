@@ -145,15 +145,20 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     let itemsPerRow: CGFloat = 1.5
     let widthPadding = inset.left * (itemsPerRow + 1)
 
-    let width: CGFloat = (collectionView.frame.width - widthPadding) / itemsPerRow
+    // cell의 넓이
+    let cellWidth: CGFloat = (collectionView.frame.width - widthPadding) / itemsPerRow
 
-    let cellWidthIncludeSpacing = width + self.collectionViewFlowLayout.minimumLineSpacing
+    // spacing을 포함한 cell의 넓이 (스크롤 시 움직일 거리)
+    let cellWidthIncludeSpacing = cellWidth + self.collectionViewFlowLayout.minimumLineSpacing
 
+    // 스크롤이 끝났을 때 예상되는 움직인 거리
     var offset = targetContentOffset.pointee
+    // 움직임이 끝난 후의 cell 인덱스 = 움직인 거리 + cell Spacing / spacing을 포함한 cell의 넓이
     let index = (offset.x + scrollView.contentInset.right) / cellWidthIncludeSpacing
     let roundedIndex: CGFloat = round(index)
 
-    offset = CGPoint(x: roundedIndex * cellWidthIncludeSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
+    // content가 위치할 x좌표 = cell의 spacing을 포함한 넓이 * cell의 인덱스
+    offset = CGPoint(x: cellWidthIncludeSpacing * roundedIndex  - scrollView.contentInset.left, y: scrollView.contentInset.top)
     targetContentOffset.pointee = offset
   }
 }
