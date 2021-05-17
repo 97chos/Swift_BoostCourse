@@ -24,10 +24,10 @@ class HomeViewController: UIViewController {
     return collectionView
   }()
   private let collectionViewFlowLayout: UICollectionViewFlowLayout = {
-    let flowLayout = UICollectionViewFlowLayout()
+    let flowLayout = CarouselLayout()
     flowLayout.scrollDirection = .horizontal
-    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-    flowLayout.minimumLineSpacing = 10
+    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: -30, bottom: 0, right: -30)
+    flowLayout.minimumLineSpacing = -30
     return flowLayout
   }()
 
