@@ -28,6 +28,7 @@ class ListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.configuration()
+    self.layout()
   }
 
   override func viewDidLayoutSubviews() {
@@ -76,5 +77,42 @@ class ListViewController: UIViewController {
   }
 
 
+  // MARK: Layout
+
+  private func layout() {
+    self.view.addSubview(self.tableView)
+
+    self.tableView.snp.makeConstraints{
+      $0.edges.equalTo(self.view.safeAreaLayoutGuide)
+    }
+  }
+
 }
+
+extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.items.count
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else {
+      return UITableViewCell()
+    }
+
+    cell.textLabel?.text = self.items[indexPath.row].rawValue
+
+    return cell
+  }
+
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return "Basic Animations"
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let detailVC = DetailViewController(animateType: self.items[indexPath.row])
+    self.navigationController?.pushViewController(detailVC, animated: true)
+  }
+}
+
 
