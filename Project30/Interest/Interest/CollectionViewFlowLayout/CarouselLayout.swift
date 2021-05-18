@@ -22,30 +22,30 @@ class CarouselLayout: UICollectionViewFlowLayout {
   override func prepare() {
     super.prepare()
 
-    if self.isSetup == false {
-      self.setupLayout()
-      self.isSetup = true
-    }
+//    if self.isSetup == false {
+//      self.setupLayout()
+//      self.isSetup = true
+//    }
   }
 
-  private func setupLayout() {
-    guard let collectionView = self.collectionView else { return }
-
-    let collectionViewSize = collectionView.bounds.size
-
-    // collectionView 내 section 간의 inset 설정
-    let xInset = (collectionViewSize.width - self.itemSize.width) / 2
-    let yInset = (collectionViewSize.height - self.itemSize.height) / 2
-
-    self.sectionInset = UIEdgeInsets(top: yInset, left: xInset, bottom: yInset, right: xInset)
-
-    let itemWidth = self.itemSize.width
-
-    let scaledItemOffset = (itemWidth - itemWidth * self.sideItemScale) / 2
-    self.minimumLineSpacing = self.spacing - scaledItemOffset
-
-    self.scrollDirection = .horizontal
-  }
+//  private func setupLayout() {
+//    guard let collectionView = self.collectionView else { return }
+//
+//    let collectionViewSize = collectionView.bounds.size
+//
+//    // collectionView 내 section 간의 inset 설정
+//    let xInset = (collectionViewSize.width - self.itemSize.width) / 2
+//    let yInset = (collectionViewSize.height - self.itemSize.height) / 2
+//
+//    self.sectionInset = UIEdgeInsets(top: yInset, left: xInset, bottom: yInset, right: xInset)
+//
+//    let itemWidth = self.itemSize.width
+//
+//    let scaledItemOffset = (itemWidth - itemWidth * self.sideItemScale) / 2
+//    self.minimumLineSpacing = self.spacing - scaledItemOffset
+//
+//    self.scrollDirection = .horizontal
+//  }
 
   // 매 스크롤 시마다 레이아웃 변화가 필요할 경우 true를 반환
   override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
@@ -71,7 +71,7 @@ class CarouselLayout: UICollectionViewFlowLayout {
     let contentOffset = collectionView.contentOffset.x
     let center = attributes.center.x - contentOffset
 
-    let maxDistance = self.itemSize.width + self.minimumLineSpacing
+    let maxDistance: CGFloat = self.itemSize.width + self.minimumLineSpacing
     let distance = min(abs(collectionCenter - center), maxDistance)
 
     let ratio = (maxDistance - distance) / maxDistance

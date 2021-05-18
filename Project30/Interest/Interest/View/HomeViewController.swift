@@ -21,13 +21,15 @@ class HomeViewController: UIViewController {
   private var collectionView: UICollectionView = {
     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
     collectionView.decelerationRate = .fast
+    collectionView.bounces = false
+    collectionView.showsHorizontalScrollIndicator = false
     return collectionView
   }()
   private let collectionViewFlowLayout: UICollectionViewFlowLayout = {
-    let flowLayout = UICollectionViewFlowLayout()
+    let flowLayout = CarouselLayout()
     flowLayout.scrollDirection = .horizontal
-    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-    flowLayout.minimumInteritemSpacing = 30
+    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: -30, bottom: 0, right: -30)
+    flowLayout.minimumLineSpacing = -30
     return flowLayout
   }()
 
@@ -124,13 +126,41 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let inset = self.collectionViewFlowLayout.sectionInset
+    let inset = self.collectionView.contentInset
 
     let itemsPerRow: CGFloat = 1.5
     let widthPadding = inset.left * (itemsPerRow + 1)
 
     let width: CGFloat = (collectionView.frame.width - widthPadding) / itemsPerRow
+    let sectionSideInset = collectionView.frame.width / 2 - width / 2
+
+    self.collectionViewFlowLayout.sectionInset.left = sectionSideInset
+    self.collectionViewFlowLayout.sectionInset.right = sectionSideInset
 
     return CGSize(width: width, height: collectionView.frame.height)
+  }
+
+
+  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    let inset = self.collectionView.contentInset
+
+    let itemsPerRow: CGFloat = 1.5
+    let widthPadding = inset.left * (itemsPerRow + 1)
+
+    // cell의 넓이
+    let cellWidth: CGFloat = (collectionView.frame.width - widthPadding) / itemsPerRow
+
+    // spacing을 포함한 cell의 넓이 (스크롤 시 움직일 거리)
+    let cellWidthIncludeSpacing = cellWidth + self.collectionViewFlowLayout.minimumLineSpacing
+
+    // 스크롤이 끝났을 때 예상되는 움직인 거리
+    var offset = targetContentOffset.pointee
+    // 움직임이 끝난 후의 cell 인덱스 = 움직인 거리 + cell Spacing / spacing을 포함한 cell의 넓이
+    let index = (offset.x + scrollView.contentInset.right) / cellWidthIncludeSpacing
+    let roundedIndex: CGFloat = round(index)
+
+    // content가 위치할 x좌표 = cell의 spacing을 포함한 넓이 * cell의 인덱스
+    offset = CGPoint(x: cellWidthIncludeSpacing * roundedIndex  - scrollView.contentInset.left, y: scrollView.contentInset.top)
+    targetContentOffset.pointee = offset
   }
 }
