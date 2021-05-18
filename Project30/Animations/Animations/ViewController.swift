@@ -28,6 +28,25 @@ class ListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
+  // MARK: Load TableView Animation
+
+  private func animateTableView() {
+    self.tableView.reloadData()
+
+    let cells = self.tableView.visibleCells
+    let tableHeight = self.tableView.bounds.size.height
+
+    for cell in cells {
+      cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
+    }
+
+    var index = 0
+    for cell in cells {
+      UIView.animate(withDuration: 1.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 5, options: [], animations: {
+        cell.transform = CGAffineTransform(translationX: 0, y: 0)
+      }, completion: nil)
+      index += 1
+    }
   }
 
 
