@@ -27,7 +27,33 @@ class ListViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
+    self.configuration()
+  }
+
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    self.animateTableView()
+  }
+
+
+  // MARK: Configuration
+
+  private func configuration() {
+    self.configureView()
+    self.configureTableView()
+  }
+
+  private func configureView() {
+    self.view.backgroundColor = .systemBackground
+  }
+
+  private func configureTableView() {
+    self.tableView.delegate = self
+    self.tableView.dataSource = self
+    self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+  }
+
+
   // MARK: Load TableView Animation
 
   private func animateTableView() {
