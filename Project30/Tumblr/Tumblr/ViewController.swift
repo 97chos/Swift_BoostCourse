@@ -30,6 +30,10 @@ class ViewController: UIViewController {
   }()
 
 
+  // MARK: Properties
+
+  private let transition = AnimationTransition()
+
   // MARK: View LifeCycle
 
   override func viewDidLoad() {
@@ -53,7 +57,8 @@ class ViewController: UIViewController {
   // MARK: Functions
 
   @objc private func showMenu() {
-    let menuVC = MenuViewController()
+    let menuVC: MenuViewController = MenuViewController()
+    menuVC.transitioningDelegate = self
     self.present(menuVC, animated: true)
   }
 
@@ -65,5 +70,18 @@ class ViewController: UIViewController {
     self.toolbar.snp.makeConstraints{
       $0.bottom.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
     }
+  }
+}
+
+
+extension ViewController: UIViewControllerTransitioningDelegate {
+  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    transition.presenting = true
+    return transition
+  }
+
+  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    transition.presenting = false
+    return transition
   }
 }
