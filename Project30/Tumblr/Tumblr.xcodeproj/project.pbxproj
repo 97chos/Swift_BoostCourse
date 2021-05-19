@@ -14,6 +14,7 @@
 		FF8B12052654FF0700E54162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF8B12042654FF0700E54162 /* Assets.xcassets */; };
 		FF8B12082654FF0700E54162 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF8B12062654FF0700E54162 /* LaunchScreen.storyboard */; };
 		FF8B121026554AC700E54162 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B120F26554AC700E54162 /* ViewController.swift */; };
+		FF8B12122655630B00E54162 /* AnimationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B12112655630B00E54162 /* AnimationTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		FF8B12072654FF0700E54162 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF8B12092654FF0700E54162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF8B120F26554AC700E54162 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FF8B12112655630B00E54162 /* AnimationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				FF8B11FD2654FF0600E54162 /* SceneDelegate.swift */,
 				FF8B11FF2654FF0600E54162 /* MenuController.swift */,
 				FF8B120F26554AC700E54162 /* ViewController.swift */,
+				FF8B12112655630B00E54162 /* AnimationTransition.swift */,
 				FF8B12042654FF0700E54162 /* Assets.xcassets */,
 				FF8B12062654FF0700E54162 /* LaunchScreen.storyboard */,
 				FF8B12092654FF0700E54162 /* Info.plist */,
@@ -207,6 +210,7 @@
 				FF8B12002654FF0600E54162 /* MenuController.swift in Sources */,
 				FF8B11FC2654FF0600E54162 /* AppDelegate.swift in Sources */,
 				FF8B121026554AC700E54162 /* ViewController.swift in Sources */,
+				FF8B12122655630B00E54162 /* AnimationTransition.swift in Sources */,
 				FF8B11FE2654FF0600E54162 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
