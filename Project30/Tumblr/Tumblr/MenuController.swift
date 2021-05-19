@@ -12,85 +12,85 @@ class MenuViewController: UIViewController {
 
   // MARK: UI
 
-  private let textImageView: UIImageView = {
+  let textImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFill
     imageView.image = UIImage(named: "Text")
     return imageView
   }()
-  private let chatImageView: UIImageView = {
+  let chatImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFill
     imageView.image = UIImage(named: "Chat")
     return imageView
   }()
-  private let linkImageView: UIImageView = {
+  let linkImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFill
     imageView.image = UIImage(named: "Link")
     return imageView
   }()
-  private let photoImageView: UIImageView = {
+  let photoImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFill
     imageView.image = UIImage(named: "Photo")
     return imageView
   }()
-  private let quoteImageView: UIImageView = {
+  let quoteImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFill
     imageView.image = UIImage(named: "Quote")
     return imageView
   }()
-  private let audioImageView: UIImageView = {
+  let audioImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFill
     imageView.image = UIImage(named: "Audio")
     return imageView
   }()
-  private let textLabel: UILabel = {
+  let textLabel: UILabel = {
     let label = UILabel()
     label.font = .boldSystemFont(ofSize: 18)
     label.text = "Text"
     label.textColor = .white
     return label
   }()
-  private let chatLabel: UILabel = {
+  let chatLabel: UILabel = {
     let label = UILabel()
     label.font = .boldSystemFont(ofSize: 18)
     label.text = "Chat"
     label.textColor = .white
     return label
   }()
-  private let linkLabel: UILabel = {
+  let linkLabel: UILabel = {
     let label = UILabel()
     label.font = .boldSystemFont(ofSize: 18)
     label.text = "Link"
     label.textColor = .white
     return label
   }()
-  private let photoLabel: UILabel = {
+  let photoLabel: UILabel = {
     let label = UILabel()
     label.font = .boldSystemFont(ofSize: 18)
     label.text = "Photo"
     label.textColor = .white
     return label
   }()
-  private let quoteLabel: UILabel = {
+  let quoteLabel: UILabel = {
     let label = UILabel()
     label.font = .boldSystemFont(ofSize: 18)
     label.text = "Quote"
     label.textColor = .white
     return label
   }()
-  private let audioLabel: UILabel = {
+  let audioLabel: UILabel = {
     let label = UILabel()
     label.font = .boldSystemFont(ofSize: 18)
     label.text = "Audio"
     label.textColor = .white
     return label
   }()
-  private lazy var cancelButton: UIButton = {
+  lazy var cancelButton: UIButton = {
     let button = UIButton(type: .system)
     button.setTitle("Cancel", for: .normal)
     button.titleLabel?.font = .systemFont(ofSize: 20)
