@@ -28,10 +28,10 @@ class HomeViewController: UIViewController {
   private let collectionViewFlowLayout: UICollectionViewFlowLayout = {
     let flowLayout = CarouselLayout()
     flowLayout.scrollDirection = .horizontal
-    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: -30, bottom: 0, right: -30)
-    flowLayout.minimumLineSpacing = -30
+    flowLayout.minimumLineSpacing = 30
     return flowLayout
   }()
+
 
 
   // MARK: Properties
@@ -126,29 +126,23 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let inset = self.collectionView.contentInset
-
     let itemsPerRow: CGFloat = 1.5
-    let widthPadding = inset.left * (itemsPerRow + 1)
 
-    let width: CGFloat = (collectionView.frame.width - widthPadding) / itemsPerRow
-    let sectionSideInset = collectionView.frame.width / 2 - width / 2
+    let cellWidth: CGFloat = (collectionView.frame.width) / itemsPerRow
+    let sectionSideInset = collectionView.frame.width / 2 - cellWidth / 2
 
     self.collectionViewFlowLayout.sectionInset.left = sectionSideInset
     self.collectionViewFlowLayout.sectionInset.right = sectionSideInset
 
-    return CGSize(width: width, height: collectionView.frame.height)
+    return CGSize(width: cellWidth, height: collectionView.frame.height)
   }
 
 
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-    let inset = self.collectionView.contentInset
-
     let itemsPerRow: CGFloat = 1.5
-    let widthPadding = inset.left * (itemsPerRow + 1)
 
     // cell의 넓이
-    let cellWidth: CGFloat = (collectionView.frame.width - widthPadding) / itemsPerRow
+    let cellWidth: CGFloat = (collectionView.frame.width) / itemsPerRow
 
     // spacing을 포함한 cell의 넓이 (스크롤 시 움직일 거리)
     let cellWidthIncludeSpacing = cellWidth + self.collectionViewFlowLayout.minimumLineSpacing
