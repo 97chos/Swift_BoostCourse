@@ -50,7 +50,7 @@ class ViewController: UIViewController {
   }
 
   private func configureView() {
-    self.view.backgroundColor = .systemBackground
+    self.view.backgroundColor = .systemIndigo
   }
 
 

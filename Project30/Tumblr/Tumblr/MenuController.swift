@@ -115,7 +115,7 @@ class MenuViewController: UIViewController {
   }
 
   private func configureView() {
-    self.view.backgroundColor = .black
+    self.view.backgroundColor = UIColor(white: 0, alpha: 0.7)
   }
 
 
