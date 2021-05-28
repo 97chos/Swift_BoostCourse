@@ -28,7 +28,6 @@ class HomeViewController: UIViewController {
   private let collectionViewFlowLayout: UICollectionViewFlowLayout = {
     let flowLayout = CarouselLayout()
     flowLayout.scrollDirection = .horizontal
-    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: -30, bottom: 0, right: -30)
     flowLayout.minimumLineSpacing = -30
     return flowLayout
   }()
@@ -72,15 +71,6 @@ class HomeViewController: UIViewController {
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
     self.collectionView.backgroundColor = .none
-  }
-
-  private func carousel() {
-    let inset = self.collectionViewFlowLayout.sectionInset
-
-    let itemsPerRow: CGFloat = 1.5
-    let widthPadding = inset.left * (itemsPerRow + 1)
-
-    self.collectionView.contentInset = UIEdgeInsets(top: 0, left: widthPadding, bottom: 0, right: widthPadding)
   }
 
 
