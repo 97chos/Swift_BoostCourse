@@ -13,6 +13,8 @@
 		FFBBEB27266138A2009AEB0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFBBEB25266138A2009AEB0F /* Main.storyboard */; };
 		FFBBEB29266138A3009AEB0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBBEB28266138A3009AEB0F /* Assets.xcassets */; };
 		FFBBEB2C266138A3009AEB0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFBBEB2A266138A3009AEB0F /* LaunchScreen.storyboard */; };
+		FFBBEB3F26628D49009AEB0F /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBBEB3D26628D49009AEB0F /* CollectionHeaderView.swift */; };
+		FFBBEB42266379A1009AEB0F /* CollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFBBEB41266379A1009AEB0F /* CollectionHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		FFBBEB28266138A3009AEB0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFBBEB2B266138A3009AEB0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFBBEB2D266138A3009AEB0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFBBEB3D26628D49009AEB0F /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
+		FFBBEB41266379A1009AEB0F /* CollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +63,22 @@
 				FFBBEB1F266138A2009AEB0F /* AppDelegate.swift */,
 				FFBBEB21266138A2009AEB0F /* SceneDelegate.swift */,
 				FFBBEB23266138A2009AEB0F /* ViewController.swift */,
+				FFBBEB3526628CB3009AEB0F /* CollectionReuseView */,
 				FFBBEB25266138A2009AEB0F /* Main.storyboard */,
 				FFBBEB28266138A3009AEB0F /* Assets.xcassets */,
 				FFBBEB2A266138A3009AEB0F /* LaunchScreen.storyboard */,
 				FFBBEB2D266138A3009AEB0F /* Info.plist */,
 			);
 			path = Vibe_CloneUI;
+			sourceTree = "<group>";
+		};
+		FFBBEB3526628CB3009AEB0F /* CollectionReuseView */ = {
+			isa = PBXGroup;
+			children = (
+				FFBBEB3D26628D49009AEB0F /* CollectionHeaderView.swift */,
+				FFBBEB41266379A1009AEB0F /* CollectionHeaderView.xib */,
+			);
+			path = CollectionReuseView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFBBEB2C266138A3009AEB0F /* LaunchScreen.storyboard in Resources */,
+				FFBBEB42266379A1009AEB0F /* CollectionHeaderView.xib in Resources */,
 				FFBBEB29266138A3009AEB0F /* Assets.xcassets in Resources */,
 				FFBBEB27266138A2009AEB0F /* Main.storyboard in Resources */,
 			);
@@ -138,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFBBEB24266138A2009AEB0F /* ViewController.swift in Sources */,
+				FFBBEB3F26628D49009AEB0F /* CollectionHeaderView.swift in Sources */,
 				FFBBEB20266138A2009AEB0F /* AppDelegate.swift in Sources */,
 				FFBBEB22266138A2009AEB0F /* SceneDelegate.swift in Sources */,
 			);
