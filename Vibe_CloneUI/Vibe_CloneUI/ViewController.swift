@@ -135,7 +135,14 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate, U
         guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerView", for: indexPath) as? CollectionHeaderView else {
             return .init()
         }
-        view.set(title: "곡 순위")
+
+        if indexPath.section == 0 {
+            view.set(title: "VIBE 추천 플레이리스트")
+        } else if indexPath.section == 1{
+            view.set(title: "최신 앨범")
+        } else {
+            view.set(title: "최근 들은 노래")
+        }
 
         return view
     }
