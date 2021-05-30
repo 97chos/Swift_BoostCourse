@@ -23,14 +23,24 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureCollectionView()
+        self.configure()
     }
 
 
     // MARK: Configuration
 
+
+    func configure() {
+        self.configureView()
+        self.configureCollectionView()
+    }
+
+    func configureView() {
+        self.title = "VIBE"
+    }
+
     func configureCollectionView() {
-        self.collectionView.register(CollectionHeaderView.self, forSupplementaryViewOfKind: "header", withReuseIdentifier: "headerView")
+        self.collectionView.register(UINib(nibName: "CollectionHeaderView", bundle: Bundle.main), forSupplementaryViewOfKind: "header", withReuseIdentifier: "headerView")
 
         self.collectionView.collectionViewLayout = self.createLayout()
     }
@@ -79,7 +89,7 @@ class ViewController: UIViewController {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = .init(top: 0, leading: 5, bottom: 16, trailing: 5)
 
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .estimated(300))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .estimated(350))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 5)
 
         let section = NSCollectionLayoutSection(group: group)
@@ -112,7 +122,6 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate, U
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(section)
         if section == 2 {
             return 15
         } else {
