@@ -6,6 +6,8 @@ target 'MusicSearchApp' do
   use_frameworks!
 
  pod 'SnapKit'
+ pod 'Texture'
+ pod 'AsyncDisplayKit'
  pod 'Firebase'
  pod 'Firebase/Database'
   # Pods for MusicSearchApp
